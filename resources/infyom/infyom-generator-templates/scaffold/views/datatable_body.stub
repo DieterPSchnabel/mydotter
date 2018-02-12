@@ -1,0 +1,10 @@
+@section('css')
+    @include('infy.layouts.datatables_css')
+@endsection
+
+{!! $dataTable->table(['width' => '100%']) !!}
+
+@section('scripts')
+    @include('infy.layouts.datatables_js')
+    {!! $dataTable->scripts() !!}
+@endsection

@@ -1,0 +1,1 @@
+@if(in_array('$FIELD_NAME$',$display_cols_arr))<td>{!! mark($cur_rec->$FIELD_NAME$) !!}</td>@endif

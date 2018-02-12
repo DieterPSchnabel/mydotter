@@ -1,0 +1,9 @@
+    <?php $this_col = '$FIELD_NAME$'; $this_model = $this_table_name; ?>
+    @if(in_array($this_col,$display_cols_arr))
+    <th {!! tab_head_td_mark($this_col) !!}>
+        <?php
+        $model_path = ucfirst($this_model);
+        $order = 'order='.$this_col;
+        echo make_col_sortable2($this_col,$this_col,$sortables_arr,$page_para,$dir,$order,$curr_dir,$model_path.'Controller@index')
+        ?>
+    </th>@endif

@@ -1,0 +1,261 @@
+<?php
+
+namespace $NAMESPACE_CONTROLLER$;
+
+use $NAMESPACE_REQUEST$\Create$MODEL_NAME$Request;
+use $NAMESPACE_REQUEST$\Update$MODEL_NAME$Request;
+use $NAMESPACE_REPOSITORY$\$MODEL_NAME$Repository;
+use $NAMESPACE_APP$\Http\Controllers\AppBaseController;
+use Illuminate\Http\Request;
+//use Flash;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Response;
+use Excel;
+use Toastr;
+use DB;
+
+class $MODEL_NAME$Controller extends AppBaseController
+{
+    /** @var  $MODEL_NAME$Repository */
+    private $$MODEL_NAME_CAMEL$Repository;
+
+    public function __construct($MODEL_NAME$Repository $$MODEL_NAME_CAMEL$Repo)
+    {
+        $this->$MODEL_NAME_CAMEL$Repository = $$MODEL_NAME_CAMEL$Repo;
+    }
+
+
+    public function export($type){
+
+        $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->orderBy('id', 'asc')->get();
+
+        Excel::create('$MODEL_NAME_PLURAL_CAMEL$', function($excel) use($$MODEL_NAME_PLURAL_CAMEL$) {
+            $excel->sheet('ExportFile', function($sheet) use($$MODEL_NAME_PLURAL_CAMEL$) {
+                $sheet->fromArray($$MODEL_NAME_PLURAL_CAMEL$);
+            });
+        })->export($type);
+    }
+
+    /**
+     * Display a listing of the $MODEL_NAME$.
+     *
+     * @param Request $request
+     * @return Response
+     */
+
+    public function index(Request $request)
+    {
+     $this_table = '$MODEL_NAME_CAMEL$';
+     $perPageLimit_default = 8;
+     create_dv('$MODEL_NAME_CAMEL$_disp_per_page', $perPageLimit_default, true);
+     $perPageLimit = get_dv('$MODEL_NAME_CAMEL$_disp_per_page');
+
+     $order = NULL;
+     $order = $request->get('order'); // Order by what column?
+     if(is_null($order)) $order = 'id';
+
+     $dir = NULL;
+     $dir = $request->get('dir'); // Order direction: asc or desc
+     if(is_null($dir)) $dir = 'asc';
+
+     $mysearch = NULL;
+     $mysearch = $request->get('mysearch');
+
+     $filter = null;
+     $filter = $request->get('filter');
+
+
+     if(!is_null($filter)) {
+         //create your own, more usefull filters
+         if($filter=='dummy'){
+             $$MODEL_NAME_CAMEL$ = DB::table(snake_case($this_table))->where('id', '<=', 30);
+         }
+
+         $page_appends = [
+             'order' => $order,
+             'dir' => $dir,
+             'filter' => $filter,
+         ];
+         $$MODEL_NAME_CAMEL$ = $$MODEL_NAME_CAMEL$->paginate($perPageLimit);
+         $data[$this_table] = $$MODEL_NAME_CAMEL$;
+         $data['dir'] = $dir ;
+         $data['curr_dir'] = $dir ;
+         $data['order'] = $order;
+         $data['page_appends'] = $page_appends;
+         return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index')->with('data', $data);
+     }
+
+
+     if(!is_null($mysearch)) {
+         // get column names from table for columns with text (char, varchar, text etc.)
+         $table_fields_array = get_columns_from_table_text_only(snake_case($this_table), $as_array=true);
+         $number_cols = count($table_fields_array);
+         //dd($number_cols);
+         //dd($table_fields_array);
+         $$MODEL_NAME_CAMEL$ = DB::table(snake_case($this_table))
+             ->where($table_fields_array[0], 'like', '%'.$mysearch.'%')
+             /*  remove rows that are not needed - or add more rows if $numer_cols > 13  */
+             ->orWhere(isset($table_fields_array[1]) ? $table_fields_array[1] : $table_fields_array[1], 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[2]) ? $table_fields_array[2] : $table_fields_array[1], 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[3]) ? $table_fields_array[3] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[4]) ? $table_fields_array[4] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[5]) ? $table_fields_array[5] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[6]) ? $table_fields_array[6] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[7]) ? $table_fields_array[7] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[8]) ? $table_fields_array[8] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[9]) ? $table_fields_array[9] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[10]) ? $table_fields_array[10] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[11]) ? $table_fields_array[11] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orWhere(isset($table_fields_array[12]) ? $table_fields_array[12] : $table_fields_array[1] , 'like', '%'.$mysearch.'%')
+             ->orderBy($order, $dir);
+
+         // Tell the Paginator to append the following to the page URL as well
+         $page_appends = [
+             'order' => $order,
+             'dir' => $dir,
+             'mysearch' => urlencode($mysearch),
+         ];
+         $$MODEL_NAME_CAMEL$ = $$MODEL_NAME_CAMEL$->paginate($perPageLimit);
+
+         $data[$this_table] = $$MODEL_NAME_CAMEL$;
+         $data['dir'] = $dir ;
+         $data['curr_dir'] = $dir ;
+         $data['order'] = $order;
+         $data['page_appends'] = $page_appends;
+         return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index')->with('data', $data);
+     } // if(!is_null($mysearch))
+
+     $this->$MODEL_NAME_CAMEL$Repository->pushCriteria(new RequestCriteria($request));
+     $page_appends = [
+         'order' => $order,
+         'dir' => $dir,
+     ];
+     $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->orderBy($order, $dir)->paginate($perPageLimit);
+     $data[$this_table] = $$MODEL_NAME_CAMEL$;
+     $data['dir'] = $dir == 'asc' ? 'desc' : 'asc';
+     $data['curr_dir'] = $dir ;
+     $data['order'] = $order;
+     $data['page_appends'] = $page_appends;
+     return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index')->with('data', $data);
+   }
+
+
+    /**
+     * Show the form for creating a new $MODEL_NAME$.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create');
+    }
+
+
+
+    /**
+     * Store a newly created $MODEL_NAME$ in storage.
+     *
+     * @param Create$MODEL_NAME$Request $request
+     *
+     * @return Response
+     */
+    public function store(Create$MODEL_NAME$Request $request)
+    {
+        $input = $request->all();
+
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->create($input);
+
+        Toastr::success('$MODEL_NAME_HUMAN$ saved successfully.');
+
+        return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+    }
+
+    /**
+     * Display the specified $MODEL_NAME$.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            Toastr::error('in $MODEL_NAME_HUMAN$ not found');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
+    }
+
+    /**
+     * Show the form for editing the specified $MODEL_NAME$.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            Toastr::error('in $MODEL_NAME_HUMAN$ not found');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.edit')->with('$MODEL_NAME_CAMEL$', $$MODEL_NAME_CAMEL$);
+    }
+
+    /**
+     * Update the specified $MODEL_NAME$ in storage.
+     *
+     * @param  int              $id
+     * @param Update$MODEL_NAME$Request $request
+     *
+     * @return Response
+     */
+    public function update($id, Update$MODEL_NAME$Request $request)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            Toastr::error('in $MODEL_NAME_HUMAN$ not found');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->update($request->all(), $id);
+
+        Toastr::success($id . 'in $MODEL_NAME_HUMAN$ updated successfully.');
+
+        return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+    }
+
+    /**
+     * Remove the specified $MODEL_NAME$ from storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findWithoutFail($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            Toastr::error('$MODEL_NAME_HUMAN$ not found');
+
+            return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+        }
+
+        $this->$MODEL_NAME_CAMEL$Repository->delete($id);
+
+        Toastr::success($id . ' deleted successfully.');
+
+        return redirect(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'));
+    }
+}

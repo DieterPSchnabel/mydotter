@@ -1,0 +1,183 @@
+# Artisan "optimize" is used to create $compiledPath = __DIR__.'/cache/compiled.php';
+# php artisan code:models
+# php artisan code:models --table=users
+# php artisan backup:run
+# php artisan route:cache ## only when in deployment not in developement (php artisan route:cache) !
+
+# php artisan migrate
+# php artisan make:seeder animals
+# php artisan db:seed  --class=DatatablesSeeder
+
+# Text mit Leerschlag in Anführungszeichen setzen!
+
+# using variables in .env
+# MAIL_USERNAME=hello@laravel-news.com
+# MAIL_FROM_ADDRESS=${MAIL_USERNAME}
+
+#APP ---------------------------------------------------
+APP_NAME="Rappa"
+APP_ENV=local
+APP_KEY=base64:S5B9UhD9y4PgwWkEJvZM8ea1Pb6HGFN5vBeO3vl25Bg=
+APP_DEBUG=true
+APP_LOG_LEVEL=debug
+APP_URL=http://rappasoft.dev:81
+
+APP_LOCALE=de
+APP_FALLBACK_LOCALE=en
+#APP_LOCALE_PHP=en_US
+APP_LOCALE_PHP=de_DE
+
+#APP_TIMEZONE=UTC
+APP_TIMEZONE = Europe/Berlin  # default: UTC oder Europe/Paris
+
+APP_USER_HAS_TO_CONFIRM_HIS_EMAIL = true
+# Whether or not the user has to confirm their email when signing up - in access.php
+
+#DB ----------------------------------------------------
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=rappasoft
+DB_USERNAME=root
+DB_PASSWORD=my4711
+
+#DB_CONNECTION_2=mysql
+#DB_HOST_2=127.0.0.1
+#DB_PORT_2=3306
+#DB_DATABASE_2=laravel_second
+#DB_USERNAME_2=your_db_user2
+#DB_PASSWORD_2=your_db_pwd2
+
+#various -------------------------------------------------
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+SESSION_ENCRYPT=false
+QUEUE_DRIVER=sync
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+#Mail ------------------------------------------------------------
+MAIL_DRIVER=smtp
+MAIL_FROM_ADDRESS=rappasoft@example.com
+MAIL_FROM_NAME=Dev
+
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=0b0f00df11b802
+MAIL_PASSWORD=6b0de6b2c46c7e
+MAIL_ENCRYPTION=tls
+
+#Pusher -------------------------------------------------------------
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+
+#Access ----------------------------------------------------------
+ENABLE_REGISTRATION=true
+CHANGE_EMAIL=false
+
+# This should be one or the other, or neither
+REQUIRES_APPROVAL=false
+CONFIRM_EMAIL=false
+PASSWORD_EXPIRES_DAYS=30
+
+
+
+#Get your credentials at: https://www.google.com/recaptcha/admin
+REGISTRATION_CAPTCHA_STATUS=false
+NOCAPTCHA_SITEKEY=
+NOCAPTCHA_SECRET=
+
+#Socialite Providers ------------------------------
+#FACEBOOK_ACTIVE=false
+#FACEBOOK_CLIENT_ID=
+#FACEBOOK_CLIENT_SECRET=
+#FACEBOOK_REDIRECT=
+
+#BITBUCKET_ACTIVE=false
+#BITBUCKET_CLIENT_ID=
+#BITBUCKET_CLIENT_SECRET=
+#BITBUCKET_REDIRECT=
+
+#GITHUB_ACTIVE=false
+#GITHUB_CLIENT_ID=
+#GITHUB_CLIENT_SECRET=
+#GITHUB_REDIRECT=
+
+#GOOGLE_ACTIVE=false
+#GOOGLE_CLIENT_ID=
+#GOOGLE_CLIENT_SECRET=
+#GOOGLE_REDIRECT=
+
+#LINKEDIN_ACTIVE=false
+#LINKEDIN_CLIENT_ID=
+#LINKEDIN_CLIENT_SECRET=
+#LINKEDIN_REDIRECT=
+
+#TWITTER_ACTIVE=false
+#TWITTER_CLIENT_ID
+#TWITTER_CLIENT_SECRET
+#TWITTER_REDIRECT=
+
+#Amazon S3 ------------------------------
+S3_KEY = 'AKIAIYUZRJYSOYAADEWQ'
+S3_SECRET = '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'
+S3_REGION = 'eu-central-1'
+S3_BUCKET = 'mydotterbackups'
+
+#Backup spatie/laravel-backup ------------------------------
+# where to store backup:
+
+# samples:
+# php artisan db:backup --database=mysql --destination=dropbox --destinationPath=db_backup.sql --compression=gzip
+# php artisan db:backup --database=mysql --destination=local --destinationPath=db_backup.sql --compression=gzip
+# options: local, s3, gcs, rackspace, dropbox, ftp, sftp
+# APP_SPATIE_LARAVEL_BACKUP_DISC = dropbox
+
+# https://timleland.com/backup-your-laravel-app-to-dropbox/
+# spatie/laravel-backup (full backup) und backup-manager (nur DB)
+DROPBOX_ACCESS_TOKEN = gyddMF9WXQwAAAAAAABI99mKHZT6z17d2yEfXsjIYnzLb3q0T8ffyjauFV_fWFBS
+DROPBOX_APP_SECRET = jfr5cnuyj1ug4am
+DROPBOX_APP_KEY = xfw4trvb507xm3y
+DROPBOX_APP_APP =
+DROPBOX_APP_ROOT =
+
+#Laravel Translation Sheet -------------------------------------------
+# https://github.com/nikaia/translation-sheet
+# https://docs.google.com/spreadsheets/
+# siehe folder: resources/google/service-account.json
+# The service account email
+TS_SERVICE_ACCOUNT_EMAIL=laravel-translation-sheet@leafy-audio-798.iam.gserviceaccount.com
+
+# The path to the downloaded service account credentials file
+TS_SERVICE_ACCOUNT_CREDENTIALS_FILE=resources/google/service-account.json
+
+# The ID of the spreadsheet that we will be using for translation
+TS_SPREADSHEET_ID=1xNB1_5IPCBjftQGs96v20QWQxjPCh-ndRVqVyN-O64U
+
+# The locales of the application (separated by comma)
+TS_LOCALES=de,en,fr,es,nl,ru
+
+# usage:
+# 1. nur einmalig:
+# php artisan translation_sheet:setup
+# 2. To avoid some conflicts, we will first run this command to rewrite the locale languages files.
+# php artisan translation_sheet:prepare
+# 3. Publish translation to sheet
+# php artisan translation_sheet:push
+# 4. Share the spreadsheet with clients or project managers for translations.
+# 5. Once done, You can lock the translations on the spreadsheet (to avoid conflicts)
+# php artisan translation_sheet:lock
+# 6. Pull the translations. pull the translations from the spreadsheet, and write it the language files
+# php artisan translation_sheet:pull
+# 7. Unlock the translations on the spreadsheet
+# php artisan translation_sheet:unlock
+# 8. Open the spreadsheet in the browser
+# php artisan translation_sheet:open
+
+#EU cookie hint ---------------------------------------------
+COOKIE_CONSENT_ENABLED = true

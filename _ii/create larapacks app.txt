@@ -1,0 +1,80 @@
+
+https://laravel-news.com/your-first-laravel-application
+------------------------------------------------------------------------
+
+
+php artisan make:migration create_larapacks_table --create=larapacks
+
+
+git_url
+doc_url
+install_str
+
+is_installed
+description
+
+area (blade, artisan, html usw.)
+rating 1-10
+
+
+
+php artisan make:model --factory Larapack
+
+$factory->define(App\Larapack::class, function (Faker $faker) {
+    return [
+        'install_str' => substr($faker->sentence(2), 0, -1),
+        'git_url' => $faker->url,
+        'doc_url' => $faker->url,
+        'is_installed' => $faker->boolean($chanceOfGettingTrue = 50) ,
+        'description' => $faker->paragraph,
+    ];
+});
+
+
+php artisan make:seeder LarapacksTableSeeder
+
+factory(App\Larapack::class, 20)->create();
+
+
+in database/seeds/DatabaseSeeder.php :
+
+$this->call(LarapacksTableSeeder::class);
+
+php artisan db:seed
+
+
+Routes all prefixed wit 'admin' und middleware auth()
+Route::get('dashboard/admintests1', 'DashboardController@admintests1')->name('dashboard.admintests1');
+
+controller:
+return view('backend.admintests.admintests1', ['links' => $links]);
+
+---------------------
+
+php artisan make:controller Backend/Admintests/LarapackController --resource
+
+
+views:
+
+index
+create
+edit
+show
+
+delete mit form oder ajax + reload
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

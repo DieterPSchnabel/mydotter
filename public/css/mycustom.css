@@ -1,0 +1,680 @@
+.skin-blue .main-header .logo {
+    background-color: #3e7ea3;
+}
+
+#navbar-search-input-artikel,
+#navbar-search-input-kunde,
+#navbar-search-input-order{
+
+    background: #6598B6;
+    border:#666;
+    max-width: 150px !important;
+
+}
+
+/*ul.navtabs > li.dropdown:hover{
+    background:#fff;
+}*/
+#toTopImg {
+    opacity:0.5;
+    transition:all .5s ease-in-out;
+}
+#toTopImg:hover {
+    opacity:0.8;
+    transition:all .5s ease-in-out;
+    background: #20A8D8 none repeat scroll 0 0;
+}
+#toTopImg{
+    position: fixed;
+    bottom: 30px;
+    right: 8px;
+    cursor: pointer;
+    display: none;
+    z-index: 999999;
+    background: #5a5a5a none repeat scroll 0 0;
+    display: block;
+    padding: 12px 15px;
+    opacity:0.3;
+    color:#fff;
+}
+
+body.skin-blue{
+    /*background: #ECF0F5;*/
+}
+
+.table-condensed{
+    font-size:1.1em;
+
+}
+
+table.table-responsive {
+    font-size:1.1em;
+
+}
+
+a {
+    transition: all .35s ease-in-out;
+}
+a:hover{
+    text-decoration:underline;
+    /*color:#0a6aa1;*/
+    color:#dd2200;
+}
+
+a.no_uln:hover {
+    text-decoration:none;
+
+}
+
+div.hint-warnings{
+    padding:5px 9px;margin:5px;border:1px #ccc solid;background:#fee;
+}
+
+div.hint-warnings-ok{
+    padding:5px 9px;margin:5px;border:1px #ccc solid;background:#efe;
+}
+
+input#mysearch {
+    /*width:250px;*/
+    /*margin:-14px 34px 0 0;*/
+/*    padding:5px 6px 5px 10px;
+    color:#00a;
+    background:#ffe;*/
+    /*background-image:url('../../../img/icons/mag/mag2_24.png');background-repeat:no-repeat;background-position:98% 50%;padding:2px 6px 2px 2px;*/
+
+}
+
+div .assi-longtxt{
+    padding: 6px 8px 4px 8px;
+    margin:6px 0 ;
+    background:#fff;
+    /*border-style: solid;*/
+    border: 1px #ccc solid;
+    max-width:100%;
+    font-size: 1.0em;
+    border:1px #ccc solid;
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,.2);
+   /* min-height:100px;*/
+    max-height:140px;
+    overflow:auto;
+    transition: all 1.8s ease-in-out;
+    transition-delay: 0.4s;
+}
+div .assi-longtxt p{
+    margin: 0 0 6px 0;
+    line-height:125%;
+}
+div .assi-longtxt:hover {
+    max-height:900px;
+}
+
+div .dev-longtxt{
+    min-height:170px;
+    max-height:170px;
+    overflow:auto;
+    transition: all 1.8s ease-in-out;
+    transition-delay: 0.4s;
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,.2);
+}
+
+div .dev-longtxt:hover {
+    max-height:900px;
+}
+
+.assi_utils_box_shadow{
+    box-shadow: 5px 5px 7px -4px hsla(0,0%,42%,.63)!important;
+}
+
+.hint-box-txt{
+    padding: 12px 62px 10px 22px !important;
+    font-size:1.15em;
+}
+
+label {
+    /*opacity:0.5;*/
+    color:#aaa;
+}
+
+.fa-sm-text-shadow{
+    color:#fff;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7)
+}
+.fa-sm-text-shadow-black{
+    color:#000;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.7)
+}
+
+.round24{border-radius:24px;}
+.round20{border-radius:20px;}
+.round12{border-radius:12px;}
+.round6{border-radius:6px;}
+.round8{border-radius:8px;}
+.round5{border-radius:5px;}
+.round4{border-radius:4px;}
+.round3{border-radius:3px;}
+
+.note-editor.note-frame.fullscreen {
+    position: absolute; /*instead of fixed - opens nicely in the surrounding card */
+    /*top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%!important;*/
+}
+
+div.mce-fullscreen {
+    position: fixed;
+    top: 0px;
+    margin-top:51px
+}
+
+.app-header.navbar .navbar-brand {
+    display: inline-block;
+    width: 155px;
+    height: 55px;
+    padding: 0.5rem 1rem;
+    margin-right: 0;
+    background-color: #fff;
+    background-image: url("/img/backend/logo.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50px auto;
+    border-bottom: 1px solid #c2cfd6;
+    /*border-bottom: 1px solid #29363D;*/
+}
+.app-header.navbar {
+    background-color: #E4E5E6;
+    /*background-color: #29363D;*/
+    border-bottom: 1px solid #c2cfd6;
+    /*border-bottom: 1px solid #29363D;*/
+    /*border-bottom: 1px solid #c2cfd6;*/
+    /*color:#fff;*/
+}
+.app-header.navbar .navbar-brand {
+    background-color: #E4E5E6;
+    /*background-color: #29363D;*/
+
+    /*color:#fff;*/
+}
+
+.zoom100{
+    opacity:0.8;
+    transform: scale(1.0);
+    transition:all .4s ease-in-out;
+}
+.zoom100:hover{
+    opacity:1;
+    transform: scale(1.2);
+}
+
+.zoom80{
+    opacity:0.8;
+    transform: scale(0.8);
+    transition:all .4s ease-in-out;
+}
+.zoom80:hover{
+    opacity:1;
+    transform: scale(1.0);
+}
+
+.no_zoom80{
+    opacity:0.6;
+    transform: scale(0.8);
+    transition:all .4s ease-in-out;
+}
+.no_zoom80:hover{
+    transform: scale(0.8);
+    opacity:1;
+}
+.bg_mark{
+    /*background:#ffe;*/
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffee+0,ffffff+46 */
+    background: #ffffee; /* Old browsers */
+    background: -moz-linear-gradient(left,  #ffffee 0%, #ffffff 60%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #ffffee 0%,#ffffff 60%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #ffffee 0%,#ffffff 60%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.main .container-fluid {
+    padding: 0 12px;
+}
+.breadcrumb {
+     margin-bottom: 0.5rem;
+ }
+.breadcrumb {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.75rem;
+    background-color: #f9f9f9;
+}
+
+
+.pull-left {
+    float: left !important;
+}
+.pull-right {
+    float: right !important;
+}
+.pull-none {
+    float: none !important;
+}
+.hidden{
+    visibility:hidden;
+}
+.nodisplay, .display-none{
+    display:none;
+}
+
+.fa-blue{
+    color:blue !important;
+}
+.fa-red{
+    color:red !important;
+}
+.fa-orange{
+    color:orange !important;
+}
+.fa-green{
+    color:green !important;
+}
+.color_display_sm{
+    width:15px;
+    height:15px;
+    margin-right:12px;
+    display:inline-block;
+}
+div.color_demo{
+    padding:3px 20px;
+    margin:3px;
+    width:100%;
+    border:1px #666 solid;
+}
+pre{
+    font-size:1.1em;
+    color:#009;
+    background:#f9fff9;
+    border:1px #ccc solid;
+    padding:5px 10px
+}
+
+
+
+
+
+
+/*
+
+
+span.tip, a.tip, a.tip:link, a.tip:visited, a.tip:active, span.tip_lu, a.tip_lu, a.tip_lu:link,
+a.tip_lu:visited, a.tip_lu:active, span.tip_lo, a.tip_lo, a.tip_lo:link, a.tip_lo:visited, a.tip_lo:active{
+    position:relative;
+    text-decoration:none;
+    font-style:bold
+}
+
+span.tip:hover, a.tip:hover, span.tip_lu:hover, a.tip_lu:hover, span.tip_lo:hover, a.tip_lo:hover{
+    background:transparent;
+    z-index:100;
+    cursor:help
+}
+
+
+a.tip centerx, span.tip centerx,
+a.tip_lu centerx, span.tip_lu centerx,
+a.tip_lo centerx, span.tip_lo centerx{
+    display:none;
+    !*visibility:hidden;*!
+    text-decoration:none;
+}
+
+a.tip centerx > div > p, span.tip centerx > div > p,
+a.tip_lu centerx > div > p, span.tip_lu centerx > div > p,
+a.tip_lo centerx > div > p, span.tip_lo centerx > div > p{
+    margin:5px 0 4px 0;
+}
+
+a.tip:hover centerx, span.tip:hover centerx,
+a.tip_lu:hover centerx, span.tip_lu:hover centerx,
+a.tip_lo:hover centerx, span.tip_lo:hover centerx, centerx:hover{
+    display:block;
+    !*visibility:visible;*!
+    height:50px;
+    position:absolute;
+    !*   top:10px;
+      left:-2px; *!
+    width:330px;
+    z-index:100;
+    color:#125;
+    !*background:#29363D;background:#29363D;*!
+   !* background: #4d5868;*!
+    !*border:1px #ccc solid;*!
+    padding:2px 4px;
+    font-style: normal;
+    text-align:left;
+    font-size:11px;
+    font-weight:normal;
+   !* box-shadow:3px 3px 6px rgba(0,0,0,.2);*!
+    !*box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);*!
+    !*background-color: #fafbfc;*!
+    white-space:normal;
+    border-radius:4px;
+    border-top-left-radius:0px;
+    z-index:100
+}
+
+a.tip_lu:hover span, span.tip_lu:hover centerx{
+    border-top-left-radius:8px;
+    border-top-right-radius:0px;
+}
+
+*/
+/*
+
+ .tt-text {
+    !*position: absolute;*!
+    display:none;
+    visibility: hidden;
+    line-height:160%;
+!*    left: 10px;
+    top:6px;*!
+    font-weight:normal;
+}
+
+span.tip:hover{
+    color:#c00;
+}
+
+span.tip:hover > div.tt-text:hover{
+   !* position: absolute;*!
+   !* visibility: visible;*!
+    display:block;
+color: #00c;
+!*    top:0;
+    left:0;*!
+    height:50px;
+
+
+    width:330px;
+    z-index:100;
+    color:#125;
+    !*background:#29363D;
+    background:#29363D;*!
+    background: #4d5868;
+    border:1px #ccc solid;
+    padding:2px 4px;
+    font-style: normal;
+    text-align:left;
+    !*font-size:11px;*!
+    font-weight:normal;
+    box-shadow:3px 3px 6px rgba(0,0,0,.2);
+    !*box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);*!
+    background-color: #fafbfc;
+    white-space:normal;
+    border-radius:4px;
+    !*border-top-left-radius:0px;*!
+    z-index:100
+}
+*/
+
+
+
+
+
+/*
+.tip, .tip_lu  {
+   !* position: relative;*!
+    display: inline-block;
+    !*border-bottom: 1px dotted black;*!
+}
+
+.tip .tt-text, .tip_lu .tt-text {
+    visibility: hidden;
+
+    width:300px;
+    z-index:100;
+    color:#125;
+    background: #4d5868;
+    border:1px #ccc solid;
+    padding:5px 10px 1px 10px;
+    font-style: normal;
+    text-align:left;
+    margin:-4px 0 0 0;
+    font-weight:normal;
+    box-shadow:5px 5px 10px rgba(0,0,0,.5);
+
+    background-color: #fafbfc;
+    white-space:normal;
+    border-radius:4px;
+
+    position: absolute;
+
+}
+
+.tip:hover .tt-text, .tip_lu:hover .tt-text {
+    visibility: visible;
+}*/
+
+
+
+
+
+/* begin MY TOOLTIPS */
+span.tip, a.tip, a.tip:link, a.tip:visited, a.tip:active, span.tip_lu, a.tip_lu, a.tip_lu:link,
+a.tip_lu:visited, a.tip_lu:active, span.tip_lo, a.tip_lo, a.tip_lo:link, a.tip_lo:visited, a.tip_lo:active{
+    position:relative;
+    text-decoration:none;
+    font-style:bold
+}
+
+span.tip:hover, a.tip:hover, span.tip_lu:hover, a.tip_lu:hover, span.tip_lo:hover, a.tip_lo:hover{
+    background:transparent;
+    z-index:1000;
+    cursor:help
+}
+
+
+a.tip center, span.tip center, a.tip_lu center, span.tip_lu center, a.tip_lo center, span.tip_lo center{
+    display:none;
+    text-decoration:none;
+}
+
+a.tip center > div > p, span.tip center > div > p, a.tip_lu center > div > p,
+span.tip_lu center > div > p, a.tip_lo center > div > p, span.tip_lo center > div > p{
+    margin:5px 0 4px 0;
+}
+
+a.tip:hover center, span.tip:hover center, a.tip_lu:hover center,
+span.tip_lu:hover center, a.tip_lo:hover center, span.tip_lo:hover center{
+    display:block;
+    position:absolute;
+    width:330px;
+    z-index:1000;
+    color:#125;
+    background:#d7dadd;
+    border:1px #ccc solid;
+    padding:2px 4px;
+    font-style: normal;
+    text-align: left;
+    font-size: 11px;
+    font-weight: normal;
+    box-shadow:3px 5px 18px rgba(0,0,0,.3);
+    white-space: normal;
+    border-radius: 8px;
+    border-top-left-radius: 0px;
+}
+div.tt-innertext{
+    background:#fff;
+    padding:10px 12px 8px 12px;
+    border:1px #bbb solid;
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,.2);
+
+}
+div.tt-innertext p{
+    margin-bottom: 0.4em;
+}
+div.tt-hint-edit {
+    font-size: 0.8em;
+    padding: 1px 6px 16px 4px;
+    height: 19px;
+    margin:-8px 0 9px 0;
+}
+div.tt-hint-wrp {
+    font-size: 14px;
+    color: #000;
+    padding: 2px 0 0 0;
+    z-index:1000 !important;
+}
+a.tt-edit-link{
+    display:inline-block;
+    margin:0 0 5px -13px;
+}
+div.tt-key-disp{
+    display:inline-block;
+    margin:11px 0 -11px 0;
+}
+a.tip_lu:hover span, span.tip_lu:hover center{
+    border-top-left-radius:8px;
+    border-top-right-radius:0px;
+}
+center{
+    animation-duration: 3s;
+}
+/* end MY TOOLTIPS */
+
+.short-hint-edit-link{
+    display:inline-block;
+    border:1px #aaa solid;
+    padding:1px 5px;
+    border-radius:50%;
+    background:#eee;
+    /*box-shadow:1px 3px 4px rgba(90,90,90,.2);*/
+}
+.short-hint-edit-link:hover {
+    border:1px #888 solid;
+    box-shadow: 2px 2px 4px rgba(0,0,0,.2);
+}
+
+#mydotter_overlay {
+    background: #29363D;
+    display: none;
+    position: absolute;
+    height:140%;
+    width:120%;
+    opacity: 0.3;
+    z-index: 21000;
+}
+s, strike, del {
+    text-decoration: line-through;
+}
+
+div.fixed-linkbar, div.sticky {
+    position: fixed;
+    top: 88px;
+    /*top:-3px;*/
+    right:14px;
+    /*left:14px;*/
+    max-width:50%;
+    margin:2px 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding:4px 25px 4px 9px;
+    z-index:1000;
+    min-width:30px;
+    min-height:30px;
+}
+
+#switch_display_fixed_linkbar{
+    display:inline-block;
+    position:absolute;
+    z-index:1001;
+    top:3px;
+    right:9px;
+}
+
+div.shade-demo{
+    width:200px;
+    height:40px;
+    background: #eee;
+    border:1px #ccc;
+    padding: 6px 12px;
+    margin-bottom:12px;
+
+}
+.marker{
+    background:#ffff66;
+}
+
+
+.config-card{
+    background:#fcfdfa;
+    border:1px #ddd solid;
+    box-shadow:2px 2px 4px rgba(90,90,90,.3);
+}
+
+a.nav-link:hover{
+    background:#f7f8f9;
+}
+
+div.table-header-model-name {
+    color:#2490b5;
+    display:inline-block;
+    font-size:2.2em;
+    font-weight: 500;
+    margin:-10px 30px -20px 0;
+    padding-bottom:0
+}
+h4.table-header-model-name {
+    color:#2490b5;
+    font-size:2.0em;
+    font-weight: 500;
+}
+li.hide_cols{
+    border-bottom:1px #ccc solid;
+    background:#fff;
+    padding:0 3px;
+}
+li.hide_cols:hover{
+    background:#eee;
+}
+.dev_hint{
+    /*background:#fff9f0;
+    color:#b75;*/
+    font-size:1.0em;
+    opacity:0.5;
+    color:#c00;
+}
+.dev_only{
+    font-size:0.8em;
+    opacity:0.5;
+    color:#c00;
+}
+div.help_wrapper{
+    background:#def;
+    padding:1.0em
+}
+
+a[target="_blank"] {
+    /*color: green;*/
+}
+a[target="_blank"]:after {
+    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+    margin: 0 3px 0 5px;
+    opacity:0.35;
+}
+
+table#dataset-table th {
+white-space:nowrap;
+}
+
+.dropdown-item o {
+    color:#ccc;
+    font-weight:normal;
+    font-size:0.7em;
+    margin-left:10px;
+}
+
+.table-header-model-name span.o  {
+    color:#123;opacity:0.15;margin-left:12px;font-size:0.5em;
+}
+span.o{
+    color:#123;opacity:0.20;margin-left:12px;font-size:0.9em;
+}
+
+

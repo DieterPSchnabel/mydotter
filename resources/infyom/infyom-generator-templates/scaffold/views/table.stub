@@ -1,0 +1,45 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            $FIELD_HEADERS$
+            <th colspan="3">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{-- @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$) --}}
+    @foreach($dataset as $cur_rec)
+        <tr>
+            $FIELD_BODY$
+            <td>
+                <div class="btn-group dimmed08" role="group" aria-label="">
+
+                        @if($has_action_show)
+                            <a href="{!! route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.show', [$cur_rec->$PRIMARY_KEY_NAME$]) !!}">
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="view">
+                                    <i class="fa fa-eye fa-sm-text-shadow"></i>
+                                </button>
+                            </a>
+                        @endif
+
+                        @if($has_action_edit)
+                        <a href="{!! route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.edit', [$cur_rec->$PRIMARY_KEY_NAME$]) !!}">
+                            <button type="button" class="btn btn-success btn-sm ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="edit">
+                                <i class="fa fa-pencil fa-sm-text-shadow"></i>
+                            </button>
+                        </a>
+                        @endif
+
+                        @if($has_action_delete)
+                        <?php $ident = zuf() ?>
+                        <a href="javascript:delete_in_table('{{$this_table_name}}','{{$cur_rec->$PRIMARY_KEY_NAME$}}','{{$ident}}')">
+                            <button type="button" class="btn btn-danger btn-sm ml-1">
+                                <i class="fa fa-trash fa-sm-text-shadow"></i>
+                            </button>
+                        </a><span id="{{$ident}}_conf"></span></span>
+                        @endif
+                </div>
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
