@@ -4,7 +4,7 @@
     Picker
 @endsection
 @section('page-header')
-    <h4>Picker</h4>
+    <h4>Picker ---</h4>
 @endsection
 
 @section('meta')
