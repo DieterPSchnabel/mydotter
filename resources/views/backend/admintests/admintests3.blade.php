@@ -17,7 +17,117 @@
 @section('before-styles-end')
     <!-- nixxxxxxxxxxxxx before-styles-end -->
 @endsection
-
+<?php
+$language = array(
+    'AFRIKAANS' => 'af',
+    'ALBANIAN' => 'sq',
+    'AMHARIC' => 'am',
+    'ARABIC' => 'ar',
+    'ARMENIAN' => 'hy',
+    'AZERBAIJANI' => 'az',
+    'BASQUE' => 'eu',
+    'BELARUSIAN' => 'be',
+    'BENGALI' => 'bn',
+    'BIHARI' => 'bh',
+    'BRETON' => 'br',
+    'BULGARIAN' => 'bg',
+    'BURMESE' => 'my',
+    'CATALAN' => 'ca',
+    'CHEROKEE' => 'chr',
+    'CHINESE' => 'zh',
+    'CHINESE_SIMPLIFIED' => 'zh-CN',
+    'CHINESE_TRADITIONAL' => 'zh-TW',
+    'CORSICAN' => 'co',
+    'CROATIAN' => 'hr',
+    'CZECH' => 'cs',
+    'DANISH' => 'da',
+    'DHIVEHI' => 'dv',
+    'DUTCH' => 'nl',
+    'ENGLISH' => 'en',
+    'ESPERANTO' => 'eo',
+    'ESTONIAN' => 'et',
+    'FAROESE' => 'fo',
+    'FILIPINO' => 'tl',
+    'FINNISH' => 'fi',
+    'FRENCH' => 'fr',
+    'FRISIAN' => 'fy',
+    'GALICIAN' => 'gl',
+    'GEORGIAN' => 'ka',
+    'GERMAN' => 'de',
+    'GREEK' => 'el',
+    'GUJARATI' => 'gu',
+    'HAITIAN_CREOLE' => 'ht',
+    'HEBREW' => 'iw',
+    'HINDI' => 'hi',
+    'HUNGARIAN' => 'hu',
+    'ICELANDIC' => 'is',
+    'INDONESIAN' => 'id',
+    'INUKTITUT' => 'iu',
+    'IRISH' => 'ga',
+    'ITALIAN' => 'it',
+    'JAPANESE' => 'ja',
+    'JAVANESE' => 'jw',
+    'KANNADA' => 'kn',
+    'KAZAKH' => 'kk',
+    'KHMER' => 'km',
+    'KOREAN' => 'ko',
+    'KURDISH' => 'ku',
+    'KYRGYZ' => 'ky',
+    'LAO' => 'lo',
+    'LATIN' => 'la',
+    'LATVIAN' => 'lv',
+    'LITHUANIAN' => 'lt',
+    'LUXEMBOURGISH' => 'lb',
+    'MACEDONIAN' => 'mk',
+    'MALAY' => 'ms',
+    'MALAYALAM' => 'ml',
+    'MALTESE' => 'mt',
+    'MAORI' => 'mi',
+    'MARATHI' => 'mr',
+    'MONGOLIAN' => 'mn',
+    'NEPALI' => 'ne',
+    'NORWEGIAN' => 'no',
+    'OCCITAN' => 'oc',
+    'ORIYA' => 'or',
+    'PASHTO' => 'ps',
+    'PERSIAN' => 'fa',
+    'POLISH' => 'pl',
+    'PORTUGUESE' => 'pt',
+    'PORTUGUESE_PORTUGAL' => 'pt-PT',
+    'PUNJABI' => 'pa',
+    'QUECHUA' => 'qu',
+    'ROMANIAN' => 'ro',
+    'RUSSIAN' => 'ru',
+    'SANSKRIT' => 'sa',
+    'SCOTS_GAELIC' => 'gd',
+    'SERBIAN' => 'sr',
+    'SINDHI' => 'sd',
+    'SINHALESE' => 'si',
+    'SLOVAK' => 'sk',
+    'SLOVENIAN' => 'sl',
+    'SPANISH' => 'es',
+    'SUNDANESE' => 'su',
+    'SWAHILI' => 'sw',
+    'SWEDISH' => 'sv',
+    'SYRIAC' => 'syr',
+    'TAJIK' => 'tg',
+    'TAMIL' => 'ta',
+    'TATAR' => 'tt',
+    'TELUGU' => 'te',
+    'THAI' => 'th',
+    'TIBETAN' => 'bo',
+    'TONGA' => 'to',
+    'TURKISH' => 'tr',
+    'UKRAINIAN' => 'uk',
+    'URDU' => 'ur',
+    'UZBEK' => 'uz',
+    'UIGHUR' => 'ug',
+    'VIETNAMESE' => 'vi',
+    'WELSH' => 'cy',
+    'YIDDISH' => 'yi',
+    'YORUBA' => 'yo'
+);
+?>
 
 @section('content')
     @include('backend.includes.partials.dev-nav')
@@ -25,175 +135,138 @@
         <div style="font-weight:normal;font-size:1.0em;color:#999;margin:-4px 0 2px 6px">{{$this_filename}}</div>
     @endif
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <span class="float-right dimmed04 ml-3"
-                          style="font-weight:normal;font-size:0.9em;color:#666">{{$this_filename}}</span>
-                    <a target="_blank" href="https://fancyapps.com/fancybox/3/docs/"
-                       class="btn btn-primary btn-sm float-right">Documentation</a>
-                    fancybox3
+                    <h3>Translations</h3>
                 </div>
                 <div class="card-block">
-                    <h4 class="card-title">fancybox3</h4>
-                    <p class="card-text">files in: resources/assets/plugins/fancybox3 </p>
-                </div>
+                    <h4 class="card-title">auto Translations 1</h4>
+                    <p class="card-text">
+                        <?php
+                        //function translate_this($translate_string,$lang_code_target,$lang_code_source='de')
+                        $translate_string = 'Mein Auto ist blau.';
 
-                <div class="card-block">
-                    <h4 class="card-title">Remote Content - in Iframe</h4>
-                    <p class="card-text">Given a URL, that is not an image or video (including unforced types), load the
-                        content using an iFrame.</p>
-                    {{--<a href="http://getbootstrap.com" data-title="Bootstrap" data-width="1200" data-height="800" data-toggle="lightbox" data-gallery="remoteload">Bootstrap Docs</a>--}}
-                    <a type="button" class="btn btn-secondary animated fadeInLeftBig" data-fancybox data-type="iframe"
-                       data-src="http://getbootstrap.com" href="javascript:;">
-                        Webpage
-                    </a>
-                </div>
-            </div>
+                        $translate_string = get_dv('is_dev_nix', $field = 'div_res_long_de');
 
 
-            <div class="card">
-                <div class="card-header">
-                    fancybox3
-                </div>
-                <div class="card-block">
-                    <h4 class="card-title">fancybox3</h4>
-                    <p class="card-text">Local content in popups.</p>
 
-                    <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop1?key=is_dev&amp;lang=all&amp;curr_lang"
-                       href="javascript:;">
-                        open pop1</a>
+                        $lang_code_target = 'en';
+                        //ec( translate_this($translate_string,$lang_code_target,$lang_code_source='de')  );
+                        $x = translate_this($translate_string, $lang_code_target, $lang_code_source = 'de');
+                        //dd($x);
+                        set_dv('is_dev_nix', $x, 'div_res_long_en');
 
-                    <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop2?key=is_dev&amp;lang=all&amp;curr_lang"
-                       href="javascript:;">
-                        open pop2</a>
+                        $source_lang_code = 'de';
+                        $src_text = 'Ich bin der Developer.';
 
-                    <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop3?key=is_dev&amp;lang=all&amp;curr_lang"
-                       href="javascript:;">
-                        open pop3</a>
-                </div>
-            </div>
-
-
-            <div class="card">
-                <div class="card-header">
-                    fancybox3
-                </div>
-                <div class="card-block">
-                    <h4 class="card-title">DEV Links</h4>
-                    <p class="card-text">Local content in popups.</p>
-
-                    {{--<a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_dev_links"
-                       href="javascript:;">--}}
-                    <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/admin/dashboard/admintests10"
-                       href="javascript:;">
-
-                        open DEV Links</a>
-
-                    <br><br>
-
-                    {{--<a class="fancybox fancybox.ajax" href="{{url('admin/languages')}}">--}}
-                    <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{url('admin/languages')}}"
-                       href="javascript:;">
-
-                        Languages in Fancybox</a>
+                        $languages = get_languages();
+                        foreach ($languages as $lang) {
+                            if ($lang->code <> $source_lang_code) {
+                                $target_lang_code = $lang->code;
+                                //dd($target_lang_code);
+                                //return $target_lang_code;
+                                //$target_lang_code = 'en';
+                                //$this_field = str_replace('all',$target_lang_code,$field);
+                                //$translation = translate_this($src_text,$target_lang_code,$source_lang_code);
+                                /*$affected = DB::update("update $table set $this_field = '$translation', updated_at = NOW()  where $id_field = ?", [$id]);
+                                $c_key = $table.'.'.$this_field.'.'.$id_field.'.'.$id;
+                                cache_it($c_key,$translation);*/
+                                //ec($translation);
+                            }
+                        }
 
 
-                    {{--<a class="fancybox fancybox-effects-d fancybox.iframe" href="{{url('admin/languages')}}"><b>Iframe
-                            Languages in Fancybox</b></a>--}}
-
-
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">
-                    <a target="_blank" href="https://unisharp.github.io/laravel-filemanager/installation"
-                       class="btn btn-primary btn-sm float-right">Documentation</a>
-                    Unisharp Filemanager
-                </div>
-
-                <div class="card-block">
-                    <h4 class="card-title">Unisharp Filemanager</h4>
-
-                </div>
-                <div class="card-block">
-                    <p class="card-text">Local content in popups.</p>
-
-                    {{--<a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop1?key=is_dev&amp;lang=all&amp;curr_lang"
-                       href="javascript:;">
-                        Filemanager Demo in neuem Fenster</a>--}}
-
-                    <a class="btn btn-secondary" target="_blank" href="{{url('laravel-filemanager/demo')}}">
-                        Filemanager Demo mit Text-Editoren in neuem Fenster</a>
-
-                    <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{url('laravel-filemanager/demo')}}"
-                       href="javascript:;">
-                        Filemanager Demo mit Text-Editoren in Popup</a>
-
-                    <div style="min-height:4px"></div>
-                    <a type="button" class="btn btn-secondary" target="_blank"
-                       href="{{env('APP_URL')}}/laravel-filemanager?type=Images&amp;langCode=de">
-                        Filemanager in neuem Fenster (für Images)</a>
-
-                    <a type="button" class="btn btn-secondary" target="_blank"
-                       href="{{env('APP_URL')}}/laravel-filemanager?type=Files&amp;langCode=de">
-                        Filemanager in neuem Fenster (für Files)</a>
-
-                    <div style="min-height:4px"></div>
-                    <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/laravel-filemanager?type=Image&amp;langCode=de"
-                       href="javascript:;">
-                        Filemanager in Popup (für Images)</a>
-
-                    <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/laravel-filemanager?type=Files&amp;langCode=de"
-                       href="javascript:;">
-                        Filemanager in Popup (für Files)</a>
-                </div>
-                <div class="card-block" style="background:#ffe">
-                    <p class="card-text">Todo: Filemanager in Popup (für Images) mit Fehler, während Filemanager in
-                        Popup (für Files) funktioniert!?</p>
-                    <p>Beides funktioniert in neuem Fenster.</p>
-                </div>
-
-            </div>
-
-
-            {{--<div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-block">
-                    <h4 class="card-title">Special title treatment</h4>
-                    <p
-                    <ul>
-                        <li><a target="_blank" href="{{url('laravel-filemanager/demo')}}">Filemanager demo1</a></li>
-                        <li><a target="_blank" href="{{url('laravel-filemanager?type=Images&CKEditor=ce&CKEditorFuncNum=0&langCode=')}}{{App::getLocale()}}">Filemanger für Bilder mit Lang-Code</a></li>
-                        --}}{{--<li><a href="{{url('laravel-filemanager?type=Files&CKEditor=ce&CKEditorFuncNum=0&langCode=')}}{{App::getLocale()}}">Filemanger für Files</a></li>--}}{{--
-                        <li><a class="filemanager-fullscreen" href="{{url('laravel-filemanager?type=Images&CKEditor=ce&CKEditorFuncNum=0&langCode=')}}{{App::getLocale()}}">Filemanger für Bilder Moodal</a></li>
-                        <li><a class="filemanager-fullscreen" href="{{url('laravel-filemanager?type=Files&CKEditor=ce&CKEditorFuncNum=0&langCode=')}}{{App::getLocale()}}">Files-Manager Moodal</a></li>
-                        <li><a data-fancybox data-src="{{url('laravel-filemanager?type=Files&langCode=')}}{{App::getLocale()}}" href="javascript:;">Filemanger für Files FancyBox</a></li>
-                        <li><a data-fancybox data-src="{{url('laravel-filemanager?type=Images&CKEditor=ce&CKEditorFuncNum=0&langCode=')}}{{App::getLocale()}}" href="javascript:;">Filemanger für Bilder FancyBox</a></li>
-                    </ul>
-
+                        ?>
                     </p>
-                    <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+
                 </div>
+
             </div>
-        --}}
         </div>
     </div>
+
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Translations</h3>
+                </div>
+
+                <div class="card-block">
+                    <h4 class="card-title">auto Translations 1</h4>
+                    <p>xx</p>
+                    <?php
+
+                    $field = 'div_res';
+                    $id = 'is_dev';
+                    $id_field = 'div_what';
+                    $with_break = false;
+                    $lang = 'all'; //oder all
+                    $with_info = true;
+                    $style = 'width:600px;padding-left:4px;margin-bottom:14px';
+                    $class = 'inline_txt_any_table';
+                    //dd($id);
+
+                    ?>
+                    {{--{!!
+                    //dd($field);
+                    edit_text_in_div($table='diverses',$field, $id,
+                        $id_field='div_what',
+                        $with_break = false,
+                        $lang='all',
+                        $with_info,
+                        $style,
+                        $class)
+                    !!}--}}
+                </div>
+                <div class="card-block">
+                    <?php
+
+                    $field = 'div_res_long';
+                    $id = 'is_dev';
+                    $id_field = 'div_what';
+                    $with_break = false;
+                    $lang = 'all'; //oder all
+                    $with_info = true;
+                    $style = 'width:600px;padding-left:4px;margin-bottom:14px';
+                    $class = 'inline_txt_any_table';
+                    //dd($id);
+
+                    ?>
+                    {!!
+                    //dd($field);
+                    edit_text_in_div($table='diverses',$field, $id,
+                        $id_field='div_what',
+                        $with_break = false,
+                        $lang='all',
+                        $with_info,
+                        $style,
+                        $class)
+                    !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Translations</h3>
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">auto Translations 1</h4>
+                    <p class="card-text">xxx</p>
+                </div>
+                <div class="card-block">
+                    xxxxxxxxxxx111
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection

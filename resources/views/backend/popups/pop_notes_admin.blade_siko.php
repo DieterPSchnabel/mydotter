@@ -75,7 +75,7 @@
         });
     </script>
 
-    {{--{{ env('APP_URL') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js--}}
+{{--{{ config('app.url') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js--}}
 
     <script>
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}

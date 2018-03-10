@@ -64,7 +64,7 @@
                         {{$this_filename}} </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -90,7 +90,7 @@
                         {{$this_filename}} </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -121,7 +121,7 @@
                         {{$this_filename}} </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -147,7 +147,7 @@
                         {{$this_filename}} </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -177,7 +177,7 @@
                         {{$this_filename}} </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -202,7 +202,7 @@
                         {{$this_filename}} </a>
 
                     <a style="margin-right:12px" class="btn btn-primary btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/admin/dashboard/larapacks"
+                       data-src="{{config('app.url')}}/admin/dashboard/larapacks"
                        href="javascript:;">
                         go to Larapacks </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -254,7 +254,7 @@
                     {{$this_filename}} </a>
 
                 {{--<a style="margin-right:12px" class="btn btn-primary btn-sm float-right" data-fancybox data-type="iframe"
-                   data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                   data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                    href="javascript:;">
                     Edit </a>--}}
                 {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -628,7 +628,7 @@
                     {{$this_filename}} </a>
 
                 <a style="margin-right:12px" class="btn btn-primary btn-sm float-right" data-fancybox data-type="iframe"
-                   data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                   data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                    href="javascript:;">
                     Edit </a>
                 {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -666,7 +666,7 @@
                         {{$this_filename}} </a>
 
                     {{--<a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -706,7 +706,8 @@
 
 
                         <tr>
-                            <td>env('APP_URL')</td><td>{{ env('APP_URL') }}</td>
+                            <td>config('app.url')</td>
+                            <td>{{ config('app.url') }}</td>
                         </tr>
 
                         <tr>
@@ -741,7 +742,7 @@
                         {{$this_filename}} </a>
 
                     {{--<a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -788,7 +789,7 @@ APP_FALLBACK_LOCALE = en
                         {{$this_filename}} </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -909,7 +910,7 @@ APP_FALLBACK_LOCALE = en
                         {{$this_filename}} </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>

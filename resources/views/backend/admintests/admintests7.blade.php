@@ -648,6 +648,31 @@ echo get_actionbox_div(
                 <div class="card-block">
                     <pre>nix</pre>
                     <p>
+
+                        <?php
+                        $what = 'is_dev_nix';
+                        $with_panel = true;
+                        $label_text = 'Bitte wählen:';
+                        $with_tooltip = true;
+                        $ax_response = true;
+
+                        echo get_checkbox_div(
+                        $what,
+                        $label_text = '',
+                        $label_style = 'font-weight:bold; margin-right:6px; ',
+                        $with_panel = true,
+                        $data_on = 'On',
+                        $data_off = 'Off',
+                        $wrapper_style = 'padding:2px 9px 0 9px;margin:0 0 4px 0;',
+                        $ax_response = false,
+                        $ax_response_with_page_reload = false,
+                        $with_tooltip = true,
+                        $tt_class = 'tip',
+                        $tt_width = '450px'
+                        )
+
+                        ?>
+
                     </p>
                 </div>
             </div>{{--<div class="card">--}}

@@ -40,9 +40,9 @@
     {{ Html::style(mix('css/backend_2.css')) }}
 
 
-    <link media="all" type="text/css" rel="stylesheet" href="{{ env('APP_URL') }}/my_plugins/toastr/toastr.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="{{ config('app.url') }}/my_plugins/toastr/toastr.min.css">
 
-    <link media="all" type="text/css" rel="stylesheet" href="{{ env('APP_URL') }}/css/mycustom.css">
+    <link media="all" type="text/css" rel="stylesheet" href="{{ config('app.url') }}/css/mycustom.css">
 <!-- begin_page_level_styles  -->
 @yield('page_level_styles')
 <!-- end_page_level_styles  -->
@@ -108,14 +108,14 @@
 
 {{ Html::script('/my_plugins/bootstrap/bootstrap.min.js') }}
 
-<script src="{{ env('APP_URL') }}/my_plugins/toastr/toastr.min.js"></script>
+<script src="{{ config('app.url') }}/my_plugins/toastr/toastr.min.js"></script>
 <!-- begin_page_level_scripts  -->
 @yield('page_level_scripts')
 <!-- end_page_level_scripts  -->
 {{-- immer als letztes!--}}
 {{--{{ Html::script(mix('js/backend_bott.js')) }}--}}
-<script src="{{ env('APP_URL') }}/my_plugins/toastr/config.js"></script>
-<script src="{{ env('APP_URL') }}/my_plugins/custom/custom.js"></script>
+<script src="{{ config('app.url') }}/my_plugins/toastr/config.js"></script>
+<script src="{{ config('app.url') }}/my_plugins/custom/custom.js"></script>
 
 @yield('after-scripts-end')
 
@@ -141,7 +141,9 @@
         });
     </script>
 </div>--}}
-{{--<script src="{{ env('APP_URL') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js"></script>--}}
+{{--
+<script src="{{ config('app.url') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js"></script>
+--}}
 
 
 

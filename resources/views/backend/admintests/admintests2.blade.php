@@ -207,7 +207,8 @@ APP_FALLBACK_LOCALE = en
 
 
                 <tr>
-                    <td>env('APP_URL')</td><td>{{ env('APP_URL') }}</td>
+                    <td>config('app.url')</td>
+                    <td>{{ config('app.url') }}</td>
                 </tr>
 
                 <tr>

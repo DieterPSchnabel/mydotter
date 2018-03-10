@@ -8,9 +8,11 @@
         {{--show debug area?--}}
         <div style="font-size:0.8em;display:inline-block;margin:9px 49px -9px 0" class="float-right">
             <?php
+
             $show_test_debug_area = $this_filename.'_show_test_debug_area';
             create_dv($show_test_debug_area);
             $show_test_area = get_dv($show_test_debug_area);
+
             echo get_checkbox_any_table(
                 $table = 'diverses',
                 $field = 'div_res',
@@ -32,6 +34,7 @@
                 $as_switch = true, //only checkbox or switch?
                 $switch_size = 'no' //xs, sm, no, lg
             );
+
             ?>
         </div></h2>
 @endsection
@@ -264,7 +267,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -301,7 +304,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -338,7 +341,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -379,7 +382,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -417,7 +420,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     @if($url2<>'')
@@ -454,7 +457,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -497,7 +500,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     @if($url4<>'')
@@ -534,7 +537,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     @if($url5<>'')
@@ -571,7 +574,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                         @if($url6<>'')
@@ -610,7 +613,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -647,7 +650,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -685,7 +688,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -726,7 +729,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -764,7 +767,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -801,7 +804,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -843,7 +846,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -880,7 +883,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -917,7 +920,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 

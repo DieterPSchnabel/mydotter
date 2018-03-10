@@ -88,7 +88,14 @@ function do_exec2($id, $para){
             $page_reload = $teile[6];
             $affected = DB::update("update $table set $field = '$checked', updated_at = NOW()  where $id_field = ?", [$id]);
 
+
             $c_key = $table.'.'.$field.'.'.$id_field.'.'.$id;
+            if ($table == 'diverses' and is_numeric($id)) {
+                //$c_key = diverses.div_res.id.63051 not good must be: diverses.div_res.div_what.is_dev
+                $t_div_what = get_div_what_by_id($id);
+                $c_key = $table . '.' . $field . '.' . 'div_what' . '.' . $t_div_what;
+            }
+
             //Cache::forget( $c_key );
             //Cache::put($c_key, $checked, 1);
             cache_it($c_key,$checked);
@@ -105,6 +112,7 @@ function do_exec2($id, $para){
                 $ret_color = '#ddd';
                 $ret_txt = 'gespeichert - OFF';
             }
+            //return $c_key; //debug cache
             $return = "<span id='ret_$ident' style='color:".$ret_color.";font-size:0.9em;vertical-align:top'>
             <i title='".$ret_txt."' class='fa fa-check'></i></span>";
             if($page_reload=='1') $return .= "<script>reload_ax();</script>";
@@ -123,9 +131,8 @@ function do_exec2($id, $para){
             $id_field = $teile[4];
             $id = $teile[5];
             $page_reload = $teile[6];
-//dd(__line.': '.$val.' - '.$field);
+            //dd(__line.': '.$val.' - '.$field);
             $affected = DB::update("update $table set $field = '$val', updated_at = NOW()  where $id_field = ?", [$id]);
-            //cache_it($table,$field,$id,$val);
             $c_key = $table.'.'.$field.'.'.$id_field.'.'.$id;
             //Cache::forget( $c_key );
             //Cache::put($c_key, $val, 1);
@@ -275,7 +282,12 @@ function do_exec2($id, $para){
             $col_str = $teile[2];
             $col_str = substr($col_str,0,-1);
             create_dv($t_key, $value = '1', true, $field = 'div_res_long');
-            set_dv($t_key, $col_str, $field = 'div_res_long', $lang = '');
+            set_dv($t_key, $col_str, 'div_res_long', $lang = '');
+
+            $c_key = 'diverses' . '.' . 'div_res_long' . '.' . 'div_what' . '.' . $t_key;
+            cache_it($c_key, $col_str);
+            //$return = $col_str;
+            //$return = $c_key;
             $return = '<script>reload_ax();</script>';
             return $return;
             break;
@@ -405,11 +417,95 @@ function do_exec2($id, $para){
             $return = '<script>reload_ax();</script>';
             return $return;
             break;
-        case 122:
 
-            $return = '';
+        case 1211:
+            // js: show_only_key_values(table)
+            $table = $para; //must be diverses
+            /*if($table=='diverses'){
+                $active_str = active_languages_str_for_diverses($as_array = false);
+            }else {
+                $active_str = active_languages_str($as_array = false);
+            }*/
+            $active_str = 'id,div_what,div_res,div_res_long,full_key,updated_at';
+            set_dv($table . '_disp_cols_arr', $active_str, 'div_res_long');
+            $return = '<script>reload_ax();</script>';
+
+            //$return = $active_str;
             return $return;
             break;
+
+
+        case 122:
+            //do_transl_auto(target_lang_code, source_lang_code, ident,  method)
+            //ax_jq('/axfe','id=122_'+src_text+'_xyx_'+source_lang_code+'_xyx_'+target_lang_code, target_lang_ident+'_conf');
+            $teile = explode("_xyx_", $para);
+            $src_text = $teile[0];
+            $source_lang_code = $teile[1];
+            $target_lang_code = $teile[2];
+            $table = $teile[3];
+            $field_type = $teile[4];
+            $id_field = $teile[5];
+            $id = $teile[6];
+            $method = $teile[7];
+
+            $src_text = str_replace('__xhochkx__', '\'', $src_text);
+            if ($table == 'diverses') {
+                if ($field_type == 'short') {
+                    $field = 'div_res_' . $target_lang_code;
+                    $field_in_diverses = 'div_res_';
+                } else {
+                    $field = 'div_res_long_' . $target_lang_code;
+                    $field_in_diverses = 'div_res_long_';
+                }
+            } else { //  table = language_lines
+                $field = $target_lang_code; //in language_lines
+            }
+            if ($method == 'all' or $method == 'all_empty' or $method == 'all_but_default') {
+                $languages = get_languages();
+                foreach ($languages as $lang) {
+                    if ($lang->code <> $source_lang_code) {
+                        if ($method == 'all_empty') {
+                            //check if empty
+                            if ($table == 'diverses') {
+                                $this_search_field = $field_in_diverses . $lang->code;
+                            } else {
+                                $this_search_field = $lang->code;
+                            }
+                            $curr_content = lookup($table, $this_search_field, $id, $id_field); //reads from cache
+                            if (!trim(strip_tags($curr_content)) == '') continue; //back to loop begin - don't translate
+                        }
+                        if ($method == 'all_but_default') {
+                            $default = get_default_lang_code(); //from app config
+                            if ($lang->code == $default) continue; //back to loop begin - don't translate
+                        }
+
+                        if ($table == 'diverses') {
+                            $save_to_field = $field_in_diverses . $lang->code;
+                        } else {
+                            $save_to_field = $lang->code;
+                        }
+
+                        /*#######################################################################*/
+                        $translation = translate_this($src_text, $lang->code, $source_lang_code);
+                        /*#######################################################################*/
+                        $affected = DB::update("update $table set $save_to_field = '$translation', updated_at = NOW()  where $id_field = ?", [$id]);
+                        $c_key = $table . '.' . $save_to_field . '.' . $id_field . '.' . $id;
+                        cache_it($c_key, $translation);
+                    }
+                }
+                $return = '<script>reload_ax();</script>';
+                return $return;
+            }
+
+            $translation = translate_this($src_text, $target_lang_code, $source_lang_code);
+            //save to table
+            $affected = DB::update("update $table set $field = '$translation', updated_at = NOW()  where $id_field = ?", [$id]);
+            $c_key = $table . '.' . $field . '.' . $id_field . '.' . $id;
+            cache_it($c_key, $translation);
+            $return = '<script>reload_ax();</script>';
+            return $return;
+            break;
+
         case 123:
 
             $return = '';

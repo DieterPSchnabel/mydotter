@@ -608,6 +608,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12" style="margin:12px 0 0 0">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('admin.diverses.index') !!}" class="btn btn-default">Cancel</a>
+    {!! Form::submit(get_tr('speichern'), ['class' => 'btn btn-primary']) !!}
+    <a href="javascript:fancybox_close()" class="btn btn-default">{!! get_tr('schliessen') !!}</a>
 </div>

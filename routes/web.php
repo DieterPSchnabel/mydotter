@@ -98,6 +98,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('dashboard/pop_dev_any_at', function () {
         return View('backend.popups.pop_dev_any_at');
     });
+    Route::get('dashboard/pop_dev_any_page', function () {
+        return View('backend.popups.pop_dev_any_page');
+    });
 
 
 

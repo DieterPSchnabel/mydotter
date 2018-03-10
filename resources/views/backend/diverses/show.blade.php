@@ -7,11 +7,24 @@
     <div class="card">
         <div class="card-header">
           <div class="table-header-model-name">Diverses
-          <span class="" style="margin-left:12px;font-size:1.0em;color:#ccc">Show</span>
+              <span class="" style="margin-left:12px;font-size:1.0em;color:#ccc">{!! get_tr('Anzeige') !!}</span>
           </div>
         </div>
         <div class="card-body">
-        <a href="{!! route('admin.diverses.index') !!}" class="btn btn-primary ml-4" role="button" aria-disabled="true">Zurück</a><br><br>
+            {{--<a href="{!! route('admin.diverses.index') !!}" class="btn btn-primary ml-4" role="button" aria-disabled="true">Zurück</a>--}}
+            <a href="javascript:fancybox_close()" class="btn btn-primary">{!! get_tr('schliessen') !!}</a>
+
+            {{--<a href="{{ route('admin.diverses.64004.edit') }}" class="btn btn-primary ml-20">edit</a>--}}
+
+            <a style="" class="" title="edit all"
+               href="{{ route('admin.diverses.edit',[$diverses->id]) }}">
+                <button type="button" class="btn btn-primary ml-20" data-toggle="tooltip" data-placement="top"
+                        title="xxx" data-original-title="edit">
+                    <i class="fa fa-pencil fa-sm-text-shadow"></i> {!! get_tr('Bearbeiten') !!}
+                </button>
+            </a>
+
+            <br><br>
 
 <style>
     div.form-group{
@@ -37,7 +50,8 @@
 
             @include('backend.diverses.show_fields')
             <br>
-            <a href="{!! route('admin.diverses.index') !!}" class="btn btn-primary ml-4" role="button" aria-disabled="true">Zurück</a>
+            {{--<a href="{!! route('admin.diverses.index') !!}" class="btn btn-primary ml-4" role="button" aria-disabled="true">Zurück</a>--}}
+            <a href="javascript:fancybox_close()" class="btn btn-primary">{!! get_tr('schliessen') !!}</a>
         </div>
         </div>
         <br><br><br><br>

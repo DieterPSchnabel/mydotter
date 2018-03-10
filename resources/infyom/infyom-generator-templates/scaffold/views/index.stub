@@ -184,6 +184,13 @@ $page_appends = $data['page_appends'];
                     <i class="icon-settings"></i> DEV-Hilfe</a>
             @endif
         @endif
+        @if(is_dev())
+            <a style="margin-right:2px;margin-left:9px" class="btn btn-success float-right" data-fancybox
+               data-type="iframe"
+               data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$this_table_name}}_notes&title={{$this_table_name}}_dev_notes"
+               href="javascript:;">
+                <i class="fa fa-pencil fa-sm-text-shadow"></i> Dev Notes </a>
+        @endif
     </div>
 
     <div class="table-header-model-name">{{ ucfirst($this_table_name)}}</div>
@@ -211,7 +218,7 @@ $page_appends = $data['page_appends'];
             </span>
         @endif
         <span style="margin-left:40px;font-size:0.6em;font-weight:normal">
-        <a class="btn btn-outline-success" href="{!! route('admin.'.$cc_table_name.'.index') !!}">Einige Records sind ausgefiltert, wieder alle Daten anzeigen!</a></span>
+        <a class="btn btn-outline-success btn-sm" href="{!! route('admin.'.$cc_table_name.'.index') !!}">Einige Records sind ausgefiltert, wieder alle Daten anzeigen!</a></span>
     @endif
 </div>
 {{-- / END HEAD  1. ROW ------------}}

@@ -121,19 +121,19 @@
     <!-- CKEditor init 4.8.0 -->
     @if(get_dv($editor_selector_key))
         {{--enhanced version--}}
-        {{--<script src="{{ env('APP_URL') }}/my_plugins/ckeditor_my_version_compact/ckeditor.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_my_version_compact/styles.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_my_version_compact/adapters/jquery.js"></script>--}}
+        {{--<script src="{{ config('app.url') }}/my_plugins/ckeditor_my_version_compact/ckeditor.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_my_version_compact/styles.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_my_version_compact/adapters/jquery.js"></script>--}}
         {{--more enhanced version--}}
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_more_enhanced/ckeditor.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_more_enhanced/styles.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_more_enhanced/adapters/jquery.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_more_enhanced/ckeditor.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_more_enhanced/styles.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_more_enhanced/adapters/jquery.js"></script>
 
     @else
         {{--basic version--}}
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_basic/ckeditor.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_basic/styles.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_basic/adapters/jquery.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_basic/ckeditor.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_basic/styles.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_basic/adapters/jquery.js"></script>
     @endif
 
 
@@ -153,7 +153,7 @@
         });
     </script>
 
-    {{--{{ env('APP_URL') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js--}}
+    {{--{{ config('app.url') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js--}}
 
     <script>
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}

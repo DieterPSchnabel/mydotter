@@ -29,7 +29,13 @@ $tag_arr_pt = get_pearltree_tag_arr();
 
                     <div class="form-group float-right">
                         <input type="submit" class="btn btn-primary" value="Update" />
-                        <a href="{{url()->previous()}}" class="btn btn-outline-primary ml-4 float-right" role="button" aria-disabled="true">Abbruch und zurück</a>
+                        {{--<a href="{{url()->previous()}}" class="btn btn-outline-primary ml-4 float-right" role="button" aria-disabled="true">Abbruch und zurück</a>--}}
+                        {{--{{ route('admin.diverses.edit',['link'=>$cur_rec->id,'q'=>request()->query()]) }}--}}
+                        <a href="{{route('admin.diverses',['q'=>request()->query()])}}"
+                           class="btn btn-outline-primary ml-4 float-right" role="button" aria-disabled="true">Abbruch
+                            und zurück</a>
+
+
                     </div>
                     <h3>Edit Larapack {{ $item->id }}</h3>
                 </div>

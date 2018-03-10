@@ -145,13 +145,13 @@ admintest1
             {{--<a class=" btn btn-link btn-xs dimmed04" type="button" title="Hinweis editieren" data-fancybox="" data-src="http://boiler1.dev:81/admin/dashboard/pop1?key=is_dev&amp;lang=all&amp;curr_lang" href="javascript:;">
                 edit </a>--}}
             <a class="btn btn-secondary" role="button"
-               data-remote="{{env('APP_URL')}}/admin/routes"
+               data-remote="{{config('app.url')}}/admin/routes"
                data-title="" data-width="1600" data-height="800"
                data-toggle="lightbox" data-gallery="remoteload01"
                data-disable-external-check="(true)">routes</a>
 
             <a class="btn btn-secondary "
-               data-remote="{{env('APP_URL')}}/admin/dashboard/larapacks"
+               data-remote="{{config('app.url')}}/admin/dashboard/larapacks"
                data-title="" data-width="1800" data-height="800"
                data-toggle="lightbox" data-gallery="remoteload01"
                data-disable-external-check="(true)">Larapacks</a>
@@ -174,17 +174,17 @@ admintest1
             {{--<a class=" btn btn-link btn-xs dimmed04" type="button" title="Hinweis editieren" data-fancybox="" data-src="http://boiler1.dev:81/admin/dashboard/pop1?key=is_dev&amp;lang=all&amp;curr_lang" href="javascript:;">
                 edit </a>--}}
             <a class="btn btn-primary btn-sm"
-               href="{{env('APP_URL')}}/dashboard/pop1?key=is_dev&amp;lang=all&amp;curr_lang"
+               href="{{config('app.url')}}/dashboard/pop1?key=is_dev&amp;lang=all&amp;curr_lang"
                data-title="" data-width="1200" data-height="800"
                data-toggle="lightbox" data-gallery="remoteload">open pop1</a>
 
             <a class="btn btn-primary btn-sm"
-               href="{{env('APP_URL')}}/dashboard/pop2?key=is_dev&amp;lang=all&amp;curr_lang"
+               href="{{config('app.url')}}/dashboard/pop2?key=is_dev&amp;lang=all&amp;curr_lang"
                data-title="" data-width="1200" data-height="800"
                data-toggle="lightbox" data-gallery="remoteload">open pop2</a>
 
             <a class="btn btn-primary btn-sm"
-               href="{{env('APP_URL')}}/dashboard/pop3?key=is_dev&amp;lang=all&amp;curr_lang"
+               href="{{config('app.url')}}/dashboard/pop3?key=is_dev&amp;lang=all&amp;curr_lang"
                data-title="" data-width="1200" data-height="800"
                data-toggle="lightbox" data-gallery="remoteload">open pop3</a>
 
@@ -198,7 +198,7 @@ admintest1
         </div>
         <div class="card-block">
             <h4 class="card-title">Special title treatment</h4>
-            <p
+            <p>
             <ul>
                 <li><a target="_blank" href="{{url('laravel-filemanager/demo')}}">Filemanager demo1</a></li>
                 <li><a target="_blank" href="{{url('laravel-filemanager?type=Images&CKEditor=ce&CKEditorFuncNum=0&langCode=')}}{{App::getLocale()}}">Filemanger für Bilder mit Lang-Code</a></li>

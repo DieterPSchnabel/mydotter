@@ -22,6 +22,7 @@
         "elibyy/tcpdf-laravel": "^5.5",
         "fideloper/proxy": "~3.3",
         "garygreen/pretty-routes": "^1.0",
+      "google/cloud-translate": "^1.1",
         "hieu-le/active": "^3.5",
         "illuminated/helper-functions": "^5.5",
         "infinety-es/config-manager": "^1.1",

@@ -95,8 +95,8 @@
                     <div class="float-right dev-longtxt">
                         <a style="margin: -17px 0 0 0" class="float-right" data-fancybox
                            data-type="iframe"
-                           data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key_content}}&title={{$t_key_header}}"
-                           href="javascript:;">
+                           data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key_content}}&title={{$t_key_header}}"
+                           href="javascript:">
                             Edit </a>
                     </div>
                     <p>{!! get_dv($t_key_content, 'div_res_long'); !!}</p>

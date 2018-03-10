@@ -388,26 +388,7 @@ function zuf($len=10)
 /**
  * alias function for session_lang_code()
  */
-function get_loc()
-{
-    return session_lang_code();
-}
-function session_lang_code()
-{
-    $loc = session()->get('locale');
-    if ($loc == '') {
-        $loc = env('APP_LOCALE');
-    }
 
-    return $loc;
-}
-function session_lang_code_datepicker()
-{
-    $loc = session_lang_code();
-
-    //eventuelle filter
-    return $loc;
-}
 function is_odd($number)
 {
     return $number & 1; // 0 = even, 1 = odd
@@ -499,6 +480,20 @@ function get_dv($what, $field = 'div_res')
     $res = lookup('diverses', $field, $what, $id_field ='div_what' );
     return $res;
 }
+
+function get_dv_not_cached($what, $field = 'div_res')
+{
+    $what = trim($what);
+    //caching in lookup() !!
+    $res = lookup_without_cache('diverses', $field, $what, $id_field = 'div_what');
+    return $res;
+}
+
+function get_div_what_by_id($div_id)
+{
+    $res = lookup('diverses', 'div_what', $div_id, $id_field = 'id');
+    return $res;
+}
 function __get_dv($what, $field = 'div_res', $lang=null) //div_res or div_res_long for short text or long text in diverses
 {
     if(empty($lang)) {
@@ -520,7 +515,7 @@ function __get_dv($what, $field = 'div_res', $lang=null) //div_res or div_res_lo
         $res = lookup_without_cache('diverses', $new_field, $what, $id_field ='div_what' );
         if( empty($res) ){
             if(is_dev()){
-               return  '<span class="dimmed04" style="color:#c66">#DEV: __get_dv('.$what.'/'.$field.')</span>';
+                return '<span class="dimmed04" style="color:#ddd">#DEV: __get_dv(' . $what . '/' . $field . ')</span>';
             }
             return '';
         }
@@ -558,7 +553,6 @@ function set_dv($what, $value, $field = 'div_res')
 {
     $what = trim($what);
     $c_key = 'diverses'.'.'.$field.'.'.'div_what'.'.'.$what;
-    App\Models\Diverses::where('div_what', '=', $what)->update([$field => $value],['updated_at' => NOW()]); //addslashes??
     cache_it($c_key,$value); //forgets old value and caches new value
 }
 function set_dv_id($id, $value, $field = 'div_res')
@@ -568,7 +562,6 @@ function set_dv_id($id, $value, $field = 'div_res')
     //cache_it('diverses',$field,$id,$value);
 }
 
-//TODO ohne is_dev()
 
 function create_dv($what, $value = '',$first=false, $field = 'div_res')
 {
@@ -580,7 +573,6 @@ function create_dv($what, $value = '',$first=false, $field = 'div_res')
     $what = trim($what);
     //create_dv($what, $value = '1', $field = 'div_res');
     $c_key = 'diverses'.'.'.$field.'.'.'div_what'.'.'.$what.'.count';
-    //if (is_dev() or 1==1 ) {
         $count = 0;
         $count = Cache::remember($c_key, CACHE_MINUTES, function () use ($what,$field)
         {
@@ -590,20 +582,17 @@ function create_dv($what, $value = '',$first=false, $field = 'div_res')
             App\Models\Diverses::create(['div_what' => $what, $field => $value]);
             //$count
             $c_key = 'diverses'.'.'.$field.'.'.'div_what'.'.'.$what.'.count';
-            //cache_it($c_key,$count); // wrong!
             cache_it($c_key,1); //here always value = 1 because it was just created
             //$value
             if($value<>'' and ! $first) {
-                //if value=='' or $first indicates the very first creation of key - so don#t cache yet
+                //if value=='' or $first indicates the very first creation of key - so don't cache it yet
                 //seems to be obsolete ?? but works
                 $c_key = 'diverses' . '.' . $field . '.' . 'div_what' . '.' . $what;
                 cache_it($c_key, $value);
             }
         }
-    //}
 }
 
-//TODO nur 0 oder 1
 function set_app_top($what, $value)
 {
     $what = trim($what);
@@ -616,11 +605,6 @@ function replicate_record_by_div_what($div_what, $new_div_what){
     $dont_copy_array = ['id', 'div_what', 'updated_at', 'created_at'];
 
     //check if exists
-    /*    $anz = 0;
-        $anz = App\Models\Diverses::where(['div_what' => $new_div_what])->count(); //where([array]) ;
-        if ($anz > 0) {
-
-        }*/
     //already checked in myhelper_ax at 112 - gives warning in return if exists - and then stops
 
     $record = App\Models\Diverses::where('div_what', $div_what)->get()->toArray();
@@ -645,7 +629,11 @@ function replicate_record_by_div_what($div_what, $new_div_what){
     return true;
 }
 
-
+function dashboard_settings_show_edit_links()
+{
+    //todo create role for user who are allowed to edit
+    if (is_dev() or get_dv('dashboard_settings_show_edit_links')) return true;
+}
 // my functions
 
 if (! function_exists('img_my_logo')) {

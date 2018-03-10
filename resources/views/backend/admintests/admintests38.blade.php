@@ -148,6 +148,13 @@ $card_counter = 0;
                             <i class="icon-settings"></i> DEV-Hilfe</a>
                     @endif
                 @endif
+                @if(is_dev())
+                    <a style="margin-right:2px;margin-left:9px" class="btn btn-success float-right" data-fancybox
+                       data-type="iframe"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$this_page_name}}_notes&title={{$this_page_name}}_dev_notes"
+                       href="javascript:;">
+                        <i class="fa fa-pencil fa-sm-text-shadow"></i> Dev Notes </a>
+                @endif
             </div>
 
             <div class="table-header-model-name">{{$this_file_title}}
@@ -217,7 +224,7 @@ $card_counter = 0;
                                     echo get_edit_link_short_toggler($t_key_editor_div,'font-size:0.8em');
                                     ?>
                                     <button type="button" class="btn btn-link" data-toggle="modal" data-target="#successModal">
-                                        edit2
+                                        edit233
                                     </button>
 
                                     <div id="{{$t_key_editor_div}}" style="display:none;font-size:0.9em;padding:5px 0 0 5px ;background:#ffe;margin: 10px -8px 0 -8px;border:1px #ddd inset">

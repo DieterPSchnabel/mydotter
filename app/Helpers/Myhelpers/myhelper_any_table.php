@@ -1,9 +1,10 @@
 <?php
 
-function set_field_in_tab($table,$id,$field,$value,$id_field='id') {
+function set_field_in_tab($table, $id, $field, $value, $id_field = 'id')
+{
     $affected = DB::update("update $table set $field = '$value', updated_at = NOW()  where $id_field = ?", [$id]);
-    $c_key = $table.'.'.$field.'.'.$id_field.'.'.$id;
-    cache_it($c_key,$value);
+    $c_key = $table . '.' . $field . '.' . $id_field . '.' . $id;
+    cache_it($c_key, $value);
     return $affected;
 }
 
@@ -35,7 +36,7 @@ function get_checkbox_div(
     $tt_width = '350px' //width of tooltip popup
 )
 {
-    if($ax_response_with_page_reload) $ax_response = true;
+    if ($ax_response_with_page_reload) $ax_response = true;
     $table = 'diverses';
     $field = 'div_res';
     $id_field = 'div_what';
@@ -43,7 +44,7 @@ function get_checkbox_div(
 
     $ident = zuf(); //  returns str_random($len) default length is 10 - makes this widget unique on current page
 
-    if (is_dev()) create_dv($what, $value = '1',true, $field = 'div_res');
+    if (is_dev()) create_dv($what, $value = '1', true, $field = 'div_res');
     //if (allow_import_txt_from_diverses2)  get_text_from_div2($what); //imports short and long text from another table in the db so I must not type it again
 
     if (to_bool(lookup($table, $field, $what, $id_field))) {
@@ -60,9 +61,9 @@ function get_checkbox_div(
     }
 
     $ret = '';
-        //todo  class or data-attribute for parent und/oder child relations
-        $ret .= '
-        <div id="wrp_' . $what .'_'.$ident. '" class="round4" 
+    //todo  class or data-attribute for parent und/oder child relations
+    $ret .= '
+        <div id="wrp_' . $what . '_' . $ident . '" class="round4" 
         style="background:' . $bg_color . ';' . $wrapper_style . ';border:1px #ddd solid;padding-bottom:6px">';
 
     $hint_txt = get_hint_by_t_key_short($what, $text_only = true);
@@ -93,34 +94,34 @@ function get_checkbox_div(
      ';
     /*------------ END js construct -----------------*/
 
-    $t_title= '';
-    if(is_dev()) $t_title= ' title="DEV: '.$what.' - get_checkbox_div()" ';
+    $t_title = '';
+    if (is_dev()) $t_title = ' title="DEV: ' . $what . ' - get_checkbox_div()" ';
 
     /*--------------  begin cb_construct (Checkbox or Switch)  ----------------------------*/
     if ($as_switch) {
 
         $tt = '';
         if ($with_tooltip) {
-            $tt = '<span class="float-right"> &nbsp; ' . tooltip($what, $tt_class, $tt_width).'</span>';
+            $tt = '<span class="float-right"> &nbsp; ' . tooltip($what, $tt_class, $tt_width) . '</span>';
         }
         $ret .= $tt;
 
-        $switch_size='';
-        if ($with_panel) $switch_size='switch-lg';
+        $switch_size = '';
+        if ($with_panel) $switch_size = 'switch-lg';
 
         $cb_construct .= '
-        <label class="switch switch-text switch-pill switch-success '.$switch_size.' float-right zoom100">
-        <input '.$js_construct.' type="checkbox" class="switch-input " '.$checked.'>
-        <span class="switch-label assi_utils_box_shadow" data-on="'. $data_on .'" data-off="'. $data_off .'"></span>
-        <span '.$t_title.' class="switch-handle"></span></label>
+        <label class="switch switch-text switch-pill switch-success ' . $switch_size . ' float-right zoom100">
+        <input ' . $js_construct . ' type="checkbox" class="switch-input " ' . $checked . '>
+        <span class="switch-label assi_utils_box_shadow" data-on="' . $data_on . '" data-off="' . $data_off . '"></span>
+        <span ' . $t_title . ' class="switch-handle"></span></label>
         ';
-        if($label_text<>'') $cb_construct .= '<span class="float-right" style="'.$label_style.'">'.$label_text.'</span>';
+        if ($label_text <> '') $cb_construct .= '<span class="float-right" style="' . $label_style . '">' . $label_text . '</span>';
     } else {
 
         $cb_construct .= '<div class="checkbox checkbox-success float-right" style="display:inline">';
-        if($label_text<>'') $cb_construct .= '<div style="display:inline;'.$label_style.'">
-        <sub style="font-size:1.0em">'.$label_text.'</sub></div>';
-        $cb_construct .= '<input '.$t_title.' '.$js_construct.' class="styled" type="checkbox" id="' . $ident . '" '.$checked.'>
+        if ($label_text <> '') $cb_construct .= '<div style="display:inline;' . $label_style . '">
+        <sub style="font-size:1.0em">' . $label_text . '</sub></div>';
+        $cb_construct .= '<input ' . $t_title . ' ' . $js_construct . ' class="styled" type="checkbox" id="' . $ident . '" ' . $checked . '>
         <label for="' . $ident . '"></label>';
         $cb_construct .= '</div>';
 
@@ -135,16 +136,16 @@ function get_checkbox_div(
     $ret .= '<div class="" style="min-height:30px;padding:0;">'; // the wrapper for the header begin
 
     /*--------------  BEGIN $edit_link_short ----------------------------*/
-        //short text
+    //short text
     $edit_txt_short = 'edit';
     $edit_txt_short_hint = '';
-    if(find_missing_translation($what, false)){
+    if (find_missing_translation($what, false)) {
         $edit_txt_short_hint = ' - es fehlen Übersetzungen!';
         $edit_txt_short = 'edit!';
     }
 
     $edit_link_short = '
-    <a class="dimmed04 ml-1" title="diesen kurzen Text editieren in allen Sprachen'.$edit_txt_short_hint.'"  
+    <a class="dimmed04 ml-1" title="diesen kurzen Text editieren in allen Sprachen' . $edit_txt_short_hint . '"  
     data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop_div_res_short?key=' . $what . $add_l . '') . '" href="javascript:;">
     <sup><i>' . $edit_txt_short . '</i></sup></a>';
     /*--------------  END $edit_link_short ----------------------------*/
@@ -156,20 +157,20 @@ function get_checkbox_div(
            font-weight:bold;font-size:' . $t_font_size . ';max-width:80%">' . strip_tags($hint_txt) . $edit_link_short . '</div>';
 
     /*########################*/
-    $ret.= '<div class="float-right" style="display:inline-block;margin:3px 0 -4px 0">'.$cb_construct.'</div>';
+    $ret .= '<div class="float-right" style="display:inline-block;margin:3px 0 -4px 0">' . $cb_construct . '</div>';
     /*########################*/
     $ret .= '</div>'; // the wrapper for the header end
 
     /*-------------- BEGIN  $edit_link_long ----------------------------*/
-        $edit_txt_long = 'edit';
-        $edit_txt_long_hint = '';
-        if(find_missing_translation($what, true)){
-            $edit_txt_long = 'edit!';
-            $edit_txt_long_hint = ' - es fehlen Übersetzungen!';
-        }
+    $edit_txt_long = 'edit';
+    $edit_txt_long_hint = '';
+    if (find_missing_translation($what, true)) {
+        $edit_txt_long = 'edit!';
+        $edit_txt_long_hint = ' - es fehlen Übersetzungen!';
+    }
 
-        $edit_link_long = '
-            <a title="diesen langen Text editieren in allen Sprachen'.$edit_txt_long_hint.'"  
+    $edit_link_long = '
+            <a title="diesen langen Text editieren in allen Sprachen' . $edit_txt_long_hint . '"  
             data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop1?key=' . $what . $add_l . '') . '" href="javascript:;">
             ' . $edit_txt_long . ' </a>';
     /*-------------- END $edit_link_long ----------------------------*/
@@ -188,15 +189,15 @@ function get_checkbox_div(
 
         $ret .= '
            <div id="wrp_' . $ident . '"  class="round6"
-           style="margin-top:7px">' . $hint_txt ;
+           style="margin-top:7px">' . $hint_txt;
         $ret .= '</div>';
     }
 
     /*-----------------------  DEV Options only visible if is_dev()  -------------------------------------------*/
     if (is_dev() and $with_panel) {
-        $ret .= '<div id="dev_only_'.$ident.'">';
+        $ret .= '<div id="dev_only_' . $ident . '">';
         $ret .= '<div class="text-center" style="width:100%;color:#bbb;font-size:0.8em;border-top:1px #ddd solid">
-        <a title="hide" href="javascript:toggle(\'dev_only_'.$ident.'\')">DEV only:</a></div>';
+        <a title="hide" href="javascript:toggle(\'dev_only_' . $ident . '\')">DEV only:</a></div>';
         /*------------ 1. line - rename ------------------------*/
         $ret .= '<div class="dimmed04" style="margin:5px 0 2px 2px"><input id="old_name_' . $what . '" onClick="this.select()" style="width:40%;max-width:290px;padding:0 4px;background:#ffe" type="text" value="' . $what . '">';
 
@@ -241,19 +242,19 @@ function get_checkbox_any_table(
 )
 {
     //todo remove unneeded parameters above
-    if($dev_only and ! is_dev()) return '';
+    if ($dev_only and !is_dev()) return '';
 
-    if($table=='languages' and $field == 'status') Cache::forget( 'languages.status.1.all' );
-    if($table=='languages' and $field == 'status_frontend') Cache::forget( 'languages.status.1.all' );
+    if ($table == 'languages' and $field == 'status') Cache::forget('languages.status.1.all');
+    if ($table == 'languages' and $field == 'status_frontend') Cache::forget('languages.status.1.all');
 
     $ident = zuf();
     if ($with_page_reload) $ax_response = false;
     $t_key = $id;
-    if (! $from_inside_loop) {
-        if($table=='diverses' and $field='div_res' and $id_field =='div_what'){
-            create_dv($id, '1',true);
+    if (!$from_inside_loop) {
+        if ($table == 'diverses' and $field = 'div_res' and $id_field == 'div_what') {
+            create_dv($id, '1', true);
             $this_value = get_dv($id);
-        }else{
+        } else {
             $this_value = lookup($table, $field, $id, $id_field);
         }
 
@@ -274,7 +275,7 @@ function get_checkbox_any_table(
     //dd($tt_class);
     if ($with_tooltip) {
         $what = $id;
-        $tt = tooltip($what, $tt_class, $tt_width, $style='margin:4px');
+        $tt = tooltip($what, $tt_class, $tt_width, $style = 'margin:4px');
     }
 
     $ret = '';
@@ -283,7 +284,7 @@ function get_checkbox_any_table(
         $ret .= '
         <div id="wrp_' . $id . '" class="container round6 " 
         style="padding:9px;margin:4px 0;background:' . $bg_color . ';border:1px #ddd solid;">';
-    }else{
+    } else {
         /*$ret .= '
         <div id="wrp_' . $id . '" class="container round6 "
         style="padding:9px;margin:4px 0;background:' . $bg_color . ';border:1px #ddd solid;">';*/
@@ -301,33 +302,33 @@ function get_checkbox_any_table(
             \'' . $ident . '\',
             \'' . $table . '\',
             \'' . $field . '\',
-            \'' . $id_field.'\',
+            \'' . $id_field . '\',
             \'' . $id . '\',
-            \''.$page_reload_indic.'\'
+            \'' . $page_reload_indic . '\'
             );"
      ';
     if ($as_switch) {
-        if($label_text<>'') $cb_construct .= '<span style="'.$label_style.'">'.$label_text.'</span>';
+        if ($label_text <> '') $cb_construct .= '<span style="' . $label_style . '">' . $label_text . '</span>';
         $float = '';
         /*if ($with_panel or 1==1 ) {*/
         if ($with_panel and $label_text == '') {
             $float = 'float-right';
         }
-        $lable_title='';
-        if(is_dev()) $lable_title='title="DEV: '.$t_key.' - get_checkbox_any_table() "';
-        $cb_construct .= '<span class="'.$float.'">'.$tt.'</span>';
+        $lable_title = '';
+        if (is_dev()) $lable_title = 'title="DEV: ' . $t_key . ' - get_checkbox_any_table() "';
+        $cb_construct .= '<span class="' . $float . '">' . $tt . '</span>';
         $cb_construct .= '
-        <label '.$lable_title.' class="switch switch-text switch-pill switch-success switch-'.$switch_size.' '.$float.' zoom100">
-        <input '.$js_construct.' type="checkbox" class="switch-input" '.$checked.'>
+        <label ' . $lable_title . ' class="switch switch-text switch-pill switch-success switch-' . $switch_size . ' ' . $float . ' zoom100">
+        <input ' . $js_construct . ' type="checkbox" class="switch-input" ' . $checked . '>
         <span class="switch-label assi_utils_box_shadow" data-on="On" data-off="Off"></span>
         <span  class="switch-handle"></span>';
 
         $cb_construct .= '</label>';
     } else {
         $cb_construct .= '<div class="checkbox checkbox-success" style="display:inline">';
-        if($label_text<>'') $cb_construct .= '<div style="display:inline;'.$label_style.'">
-        <sub style="font-size:1.0em">'.$label_text.'</sub></div>';
-        $cb_construct .= '<input '.$js_construct.' class="styled" type="checkbox" id="' . $ident . '" '.$checked.'>
+        if ($label_text <> '') $cb_construct .= '<div style="display:inline;' . $label_style . '">
+        <sub style="font-size:1.0em">' . $label_text . '</sub></div>';
+        $cb_construct .= '<input ' . $js_construct . ' class="styled" type="checkbox" id="' . $ident . '" ' . $checked . '>
         <label for="' . $ident . '"></label>';
         $cb_construct .= $tt;
         $cb_construct .= '</div>';
@@ -349,15 +350,15 @@ function get_checkbox_any_table(
             href="' . url('admin/dashboard/pop1?key=' . $what . $add_l . '') . '">edit</a>';
         $ret .= '
            <div id="wrp_' . $ident . '"  class="round6" 
-           style="margin-top:7px">' . $hint_txt ;
+           style="margin-top:7px">' . $hint_txt;
         $ret .= '</div>';
     }
 
     /*-----------------------  DEV Options only visible if is_dev()  -------------------------------------------*/
     if (is_dev() and $with_panel) {
-        $ret .= '<div id="dev_only_'.$ident.'">';
+        $ret .= '<div id="dev_only_' . $ident . '">';
         $ret .= '<div class="text-center" style="width:100%;color:#bbb;font-size:0.8em;border-top:1px #ddd solid">
-        <a title="hide" href="javascript:toggle(\'dev_only_'.$ident.'\')">DEV only:</a></div>';
+        <a title="hide" href="javascript:toggle(\'dev_only_' . $ident . '\')">DEV only:</a></div>';
         /*------------ 1. line - rename ------------------------*/
         $ret .= '<div class="text-center dimmed04" style="padding:4px 6px">';
         $ret .= "table: <b>$table</b> &nbsp; field: <b>$field</b> &nbsp; id: <b>$id</b> &nbsp; id_field: <b>$id_field</b>";
@@ -366,7 +367,7 @@ function get_checkbox_any_table(
     }
     /*----------------------- END  DEV Options only visible if is_dev()  -------------------------------------------*/
 
-    if ($with_panel or 1==1) $ret .= '</div>';
+    $ret .= '</div>';
     $ret .= '<span style="width:35px" id="' . $ident . '_conf"></span>';
     return $ret;
 }
@@ -385,7 +386,7 @@ function get_actionbox_div(
 {
 
     $ident = zuf();
-    create_dv($what, $value = '1',true, $field = 'div_res'); //only if not exists
+    create_dv($what, $value = '1', true, $field = 'div_res'); //only if not exists
     $bg_color = '#eef7ea';
     if ($with_panel) {
         $with_tooltip = false;
@@ -410,13 +411,13 @@ function get_actionbox_div(
     //short text
     $edit_txt_short = 'edit';
     $edit_txt_short_hint = '';
-    if(find_missing_translation($what, false)){
+    if (find_missing_translation($what, false)) {
         $edit_txt_short_hint = ' - es fehlen Übersetzungen!';
         $edit_txt_short = 'edit!';
     }
 
     $edit_link_short = '
-    <a class="dimmed04 ml-1" title="diesen kurzen Text editieren in allen Sprachen'.$edit_txt_short_hint.'"  
+    <a class="dimmed04 ml-1" title="diesen kurzen Text editieren in allen Sprachen' . $edit_txt_short_hint . '"  
     data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop_div_res_short?key=' . $what . $add_l . '') . '" href="javascript:;">
     <sup><i>' . $edit_txt_short . '</i></sup></a>';
     /*--------------  END $edit_link_short ----------------------------*/
@@ -424,13 +425,13 @@ function get_actionbox_div(
     /*-------------- BEGIN  $edit_link_long ----------------------------*/
     $edit_txt_long = 'edit';
     $edit_txt_long_hint = '';
-    if(find_missing_translation($what, true)){
+    if (find_missing_translation($what, true)) {
         $edit_txt_long = 'edit!';
         $edit_txt_long_hint = ' - es fehlen Übersetzungen!';
     }
 
     $edit_link_long = '
-            <a title="diesen langen Text editieren in allen Sprachen'.$edit_txt_long_hint.'"  
+            <a title="diesen langen Text editieren in allen Sprachen' . $edit_txt_long_hint . '"  
             data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop1?key=' . $what . $add_l . '') . '" href="javascript:;">
             ' . $edit_txt_long . ' </a>';
     /*-------------- END $edit_link_long ----------------------------*/
@@ -441,7 +442,7 @@ function get_actionbox_div(
     /*########################*/
 
     if ($with_page_reload) $page_reload_indic = '1';
-    $js_construct = 'onclick="exec_exec_box(\''.$hint_txt.'\',\''.$axfe_id.'\',\''.$page_reload_indic.'\',\''.$ident.'\')"';
+    $js_construct = 'onclick="exec_exec_box(\'' . $hint_txt . '\',\'' . $axfe_id . '\',\'' . $page_reload_indic . '\',\'' . $ident . '\')"';
     //$t_title = ' title=' . $what . ' ';
     $tt = '';
     if ($with_tooltip) {
@@ -450,9 +451,9 @@ function get_actionbox_div(
     $ret .= $tt;
     /*--------------  begin button_construct  ----------------------------*/
     $button_construct = '';
-    $button_construct .= '<span id="exec_'.$ident.'_'.$axfe_id.'_conf" class="_float-right" style="margin-left:-90px"></span>';
-    $button_construct .= '<a class="btn btn-primary btn-sm float-right" '.$js_construct.' href="#">
-                        '.$button_title.'</a>';
+    $button_construct .= '<span id="exec_' . $ident . '_' . $axfe_id . '_conf" class="_float-right" style="margin-left:-90px"></span>';
+    $button_construct .= '<a class="btn btn-primary btn-sm float-right" ' . $js_construct . ' href="#">
+                        ' . $button_title . '</a>';
     /*----------------  end button_construct  ----------------------------*/
     $ret .= '<div class="" style="min-height:30px;padding:10px 10px 4px 10px;">';
     $t_font_size = '1.2em';
@@ -473,14 +474,14 @@ function get_actionbox_div(
 
         $ret .= '
            <div id="wrp_' . $ident . '"  class="round6"
-           style="margin-top:7px">' . $hint_txt ;
+           style="margin-top:7px">' . $hint_txt;
         $ret .= '</div>';
     }
     /*----------------------- Superadmin/DEV Options  -------------------------------------------*/
     if (is_dev() and $with_panel) {
-        $ret .= '<div id="dev_only_'.$ident.'">';
+        $ret .= '<div id="dev_only_' . $ident . '">';
         $ret .= '<div class="text-center" style="width:100%;color:#bbb;font-size:0.8em;border-top:1px #ddd solid">
-        <a title="hide" href="javascript:toggle(\'dev_only_'.$ident.'\')">DEV only:</a></div>';
+        <a title="hide" href="javascript:toggle(\'dev_only_' . $ident . '\')">DEV only:</a></div>';
         /*------------ 1. line - rename  -- !! after renaming you must change also $what accordingly !!  ------------------------*/
         $ret .= '<div class="dimmed04" style="margin:5px 0 2px 12px"><input id="old_name_' . $what . '" onClick="this.select()" style="width:40%;max-width:290px;padding:0 4px;background:#ffe" type="text" value="' . $what . '">';
 
@@ -495,12 +496,13 @@ function get_actionbox_div(
         $ret .= '</div>';
         /*------------ 3. line - copy ------------------------*/
         /*axfe_id :  is the unique case number in myhelper_ax.php to be executed - check file */
-        $ret .= '<div class="dimmed04" style="margin:5px 0 2px 12px">axfe-id:  <b>'.$axfe_id.'</b> - with page-reload: <b>'.$page_reload_indic.'</b></div>';
+        $ret .= '<div class="dimmed04" style="margin:5px 0 2px 12px">axfe-id:  <b>' . $axfe_id . '</b> - with page-reload: <b>' . $page_reload_indic . '</b></div>';
     }
     $ret .= '</div>';
     $ret .= '</div>';
     return $ret;
 }
+
 function edit_text_in_div(
     $table = 'diverses',
     $field,
@@ -517,12 +519,13 @@ function edit_text_in_div(
     $r = '';
     //dd(__line__.': '.$field);
     if ($lang <> 'all') {
+        //editor without translation option
         return edit_text_in_any_table($table, $field, $id, $id_field, $with_break, $lang, $with_info, $style, $class,
             $show_translation_opt = true,
             $this_value = '',
             $from_inside_loop = false);
     }
-
+//dd(__line__.': '.$lang);
     $languages = get_languages(); // array - all activated langs incl. frontend in directory order
 
     $r .= '<div class="round6" style="padding:0 0 20px 0;border:1px #ccc solid;background:#F5F6F7">';
@@ -557,10 +560,10 @@ function edit_text_in_div(
 
     if (stristr($field, 'div_res_long')) {
         $r .= '<div style="padding:3px 6px 9px 6px;margin:0 0 6px 0;">';
-        if(!$this_is_html_editor)  $r .= '<a class="btn btn-default btn-sm" data-fancybox="" data-src="' . env('APP_URL') . '/admin/dashboard/pop1?key=' . $id . '&amp;lang=all&amp;curr_lang"  
-href="javascript:;">Text (alle Sprachen) im HTML-Editor öffnen (Popup)</a>';
+        if (!$this_is_html_editor) $r .= '<a class="btn btn-default btn-sm" data-fancybox="" data-src="' . config('app.url') . '/admin/dashboard/pop1?key=' . $id . '&amp;lang=all&amp;curr_lang"  
+                href="javascript:;">Text (alle Sprachen) im HTML-Editor öffnen (Popup)</a>';
 
-        if(!$this_is_html_editor) $r .= tooltip(
+        if (!$this_is_html_editor) $r .= tooltip(
             'get_html_editor_hint',
             $tt_class = 'tip',  // tip oder tip_lu = position rechts-unten oder links-unten
             $tt_width = '300px',  // with px
@@ -569,10 +572,10 @@ href="javascript:;">Text (alle Sprachen) im HTML-Editor öffnen (Popup)</a>';
             $tt_icon = '' // force an icon other than default icon
         );
 
-        if(!$this_is_html_editor) $r .= '<a style="margin-left:18px" class="filemanager-fullscreen btn btn-default btn-sm" href="' . env('APP_URL') . '/admin/dashboard/pop1?key=' . $id . '&amp;lang=all&amp;curr_lang"  
->Text (alle Sprachen) im HTML-Editor öffnen</a>';
+        if (!$this_is_html_editor) $r .= '<a style="margin-left:18px" class="filemanager-fullscreen btn btn-default btn-sm" href="' . config('app.url') . '/admin/dashboard/pop1?key=' . $id . '&amp;lang=all&amp;curr_lang">
+                Text (alle Sprachen) im HTML-Editor öffnen</a>';
 
-        if(!$this_is_html_editor) $r .= tooltip(
+        if (!$this_is_html_editor) $r .= tooltip(
             'get_html_editor_fullscreen_hint',
             $tt_class = 'tip',  // tip oder tip_lu = position rechts-unten oder links-unten
             $tt_width = '300px',  // with px
@@ -581,7 +584,7 @@ href="javascript:;">Text (alle Sprachen) im HTML-Editor öffnen (Popup)</a>';
             $tt_icon = '' // force an icon other than default icon
         );
 
-        if (use_translations() ) {
+        if (use_translations()) {
             $r .= '<div class="pull-right round6 dimmed06" style="display:inline-block;padding:6px;margin:-15px 0 -12px 0;background:#fff;font-size:0.9em;border:none">';
             $r .= 'Autom. und/oder manuelle Übersetzungen: ';
 
@@ -617,11 +620,11 @@ href="javascript:;">Text (alle Sprachen) im HTML-Editor öffnen (Popup)</a>';
 
     foreach ($languages as $lang) {
         $this_lang = $lang->code;
-        $r .= '<div style="padding-top:4px; margin:3px 60px 3px 8px;border-top: 0 #eee solid">';
-
+        $r .= '<div style="padding-top:4px; margin:3px 8px 3px 8px;border: 1px #ccc solid;height:85px;background:#eee">';
+        //dd($style);
         if ($table == 'diverses') {
-        $r .= '<div style="display:inline-block; width:165px;color:#444;font-size:0.9em;vertical-align:top">' . flag_icon($lang->code) . ' <b>' . $lang->name . mark_missing_translation_with_icon($id, $lang->code, true) . '</b></div>';
-//dd(__line__.': '.$this_lang);
+            $r .= '<div style="display:inline-block; width:175px;color:#444;font-size:0.9em;vertical-align:top">' . flag_icon($lang->code) . ' <b>' . $lang->name . mark_missing_translation_with_icon($id, $lang->code, $field == 'div_res' ? false : true) . '</b></div>';
+            //dd(__line__.': '.$field);
             $r .= edit_text_in_any_table($table, $field, $id, $id_field, $with_break, $this_lang, $with_info, $style, $class,
                 $show_translation_opt = true,
                 $this_value = '',
@@ -629,7 +632,8 @@ href="javascript:;">Text (alle Sprachen) im HTML-Editor öffnen (Popup)</a>';
                 $with_page_reload = true);
         }
         if ($table == 'language_lines') {
-            $r .= '<div style="display:inline-block; width:135px;color:#444;font-size:0.9em;vertical-align:top">' . flag_icon($lang->code) . ' <b>' . $lang->name . mark_missing_translation_with_icon_language_lines($id, $lang->code, true) . '</b></div>';
+            $r .= '<div style="display:inline-block; width:155px;color:#444;font-size:0.9em;vertical-align:top">' . flag_icon($lang->code) . ' <b>' . $lang->name . mark_missing_translation_with_icon_language_lines($id, $lang->code, true) . '</b></div>';
+            //dd();
             $r .= edit_text_in_any_table($table, $this_lang, $id, $id_field, $with_break, $this_lang, $with_info, $style, $class,
                 $show_translation_opt = true,
                 $this_value = '',
@@ -662,25 +666,39 @@ function edit_text_in_any_table(
     $with_page_reload = false
 )
 {
-    //dd(__line__.': '.$lang);
-    if($with_page_reload){
+    //dd(__line__.': '.$field);
+    //dd(__line__.': '.$field);
+    if ($with_page_reload) {
         $with_page_reload = '1';
-    }else{
+    } else {
         $with_page_reload = '0';
     }
     $r = '';
-    $ident = zuf();
+    //$ident = zuf();
+    $ident = 'langfield_' . $lang;
+    $store_key = 'lang_selector_' . $lang; //we need a predictable key for the target field
+    //create_dv($store_key,'',true,'div_res');
+    //set_dv($store_key,$ident);
+    //$this_lang_selector = $ident;
 
-    if ($table == 'diverses' and $id_field == 'div_what') {
-        if($lang<>'') $field = $field . '_' . $lang;
+    $field_type = 'short';
+    //if ($table == 'diverses' and $field == 'div_res_long_') {
+    if ($table == 'diverses' and stristr($field, 'div_res_long')) {
+        $field_type = 'long';
     }
-    //dd(__line__.': '.$field);
+    if ($table == 'diverses' and $id_field == 'div_what') {
+        if ($lang <> '') $field = $field . '_' . $lang;
+    }
+
+
+    //dd(__line__.': '.$field_type);
+
     if ($from_inside_loop) {
         $curr_val = $this_value;
     } else {
-        if($table=='diverses'){
+        if ($table == 'diverses') {
             $curr_val = get_dv($id, $field);
-        }else {
+        } else {
             $curr_val = lookup($table, $field, $id, $id_field);
         }
     }
@@ -690,64 +708,111 @@ function edit_text_in_any_table(
         $r .= $curr_val;
         $r .= '</textarea>';
     } else {
-        $r .= '<input onKeypress="save_on_enter(\'' . $ident . '\',event)" id="' . $ident . '" class="' . $class . '" ';
-        $r .= 'style="' . $style . ';background:#fff" ';
+        //dd($lang);
+        $input_ident = 'input_' . $lang;
+        $r .= '<input onKeypress="save_on_enter(\'' . $ident . '\',event)" id="' . $ident . '" data-lang="' . $lang . '" class="' . $class . '" ';
+        //ToDo: $style
+        $r .= 'style="' . $style . ';
+        width:50%;background:#fff;
+        font-size:1.2em;padding:3px 5px;" ';
         $r .= 'type ="text" value="' . $curr_val . '" /> ';
     }
 
     if ($with_break) {
-        $r .= '<br><a id="' . $ident . '_save" class="' . $class . '_save dimmed08 btn btn-success btn-xs mt-5" style="vertical-align:bottom" ';
+        $r .= '<br><a id="' . $ident . '_save" class="' . $class . '_save dimmed08 btn btn-primary  mt-5" style="vertical-align:middle" ';
     } else {
-        $r .= '<a id="' . $ident . '_save" class="' . $class . '_save dimmed08 btn btn-success btn-xs ml-3" style="vertical-align:top" ';
+        $r .= '<a id="' . $ident . '_save" class="' . $class . '_save dimmed08 btn btn-primary  ml-3" style="" ';
     }
     $r .= 'href="javascript:';
     //js: text_to_any_table(ident ,table, field, id, id_field, with_page_reload)
     $save_txt = 'save';
-    if($with_page_reload) $save_txt = 'save & reload';
+    if ($with_page_reload) $save_txt = 'save & reload';
 
     //dd(__line__.': '.$field.' - '.$lang);
     if ($lang <> '') {
-            $r .= 'text_to_any_table(\'' . $ident . '\',\'' . $table . '\',\'' . $field . '\',\'' . $id . '\',\'' . $id_field . '\',\'' . $with_page_reload . '\')">' . $save_txt . ' (' . $lang . ')</a>';
+        $r .= 'text_to_any_table(\'' . $ident . '\',\'' . $table . '\',\'' . $field . '\',\'' . $id . '\',\'' . $id_field . '\',\'' . $with_page_reload . '\')">' . $save_txt . ' (' . $lang . ')</a>';
     } else {
-        $r .= 'text_to_any_table(\'' . $ident . '\',\'' . $table . '\',\'' . $field . '\',\'' . $id . '\',\'' . $id_field . '\',\'' . $with_page_reload . '\')">'.$save_txt.'</a>';
+        $r .= 'text_to_any_table(\'' . $ident . '\',\'' . $table . '\',\'' . $field . '\',\'' . $id . '\',\'' . $id_field . '\',\'' . $with_page_reload . '\')">' . $save_txt . '</a>';
     }
+
+    $what = 'or_press_enter';
+    $class = "tip";  //tip or tip_lu
+    $width = '300px';
+    $style = 'margin-left:5px';
+    $icon = '';
+    if (!stristr($field, 'div_res_long')) $r .= tooltip($what, $class, $width, $style, $icon);
+
     $r .= ' <span style="width:35px;vertical-align:top;display:inline-block" id="' . $ident . '_conf"></span>';
-    $source = $id_field . ' = <b>' . $id . '</b> in ' . $table . ' ' . $field;
+    $r .= ' <span id="langfield_all_conf"></span>';
+    $r .= ' <span id="langfield_all_empty_conf"></span>';
+    $r .= ' <span id="langfield_all_but_default_conf"></span>';
+    $source = $id_field . ' = <b>' . $id . '</b> in table ' . $table . ' field: ' . $field . ' -- my id: <b>' . $ident . '</b>';
+
+
+
 
     if (use_translations() and $show_translation_opt) {
         $languages = get_languages();
-        $r .= '<div class="pull-right dimmed06 round6" style="display:inline;margin:0 0 0 0 ;font-size:0.9em;padding:6px;border: 1px #ccc solid;background:#def;width:260px">';
-        $r .= '<div style="margin:-5px 0 5px 0" class="badge badge-pill badge-primary float-right">auto</div> übersetzen von <b>' . lang_name_from_lang_code($lang) . '</b> ... ';
-        $r .= '<br>';
-        $r .= '<select style="margin-right:8px">';
-        $r .= '<option value="">bitte wählen</option>';
-        $r .= '<option value="all">in alle anderen Sprachen</option>';
-        $r .= '<option value="all_empty">in alle leere Sprachen</option>';
+        $r .= '<div class="float-right round6 shade4" style="display:inline-block;margin:0 12px 0 0 ;font-size:0.9em;padding:6px;border: 1px #ccc solid;background:#def;width:290px">';
+        //$r .= '<div style="margin:-5px 0 5px 0" class="badge badge-pill badge-primary float-right">auto</div> ';
+        $r .= '<div style="margin:0 0 5px 5px">';
+        $r .= 'automatisch übersetzen von <b style="font-size:1.2em">' . lang_name_from_lang_code($lang) . '</b> in... ';
+        $r .= '</div>';
+
+
+        $tab = $table;
+        //dd($tab);
+
+        $r .= '<div class="btn-group" style="margin-left:24px">';
+        $r .= '<button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zielsprache wählen...</button>';
+
+
+        $r .= '<div class="dropdown-menu">';
         foreach ($languages as $langs) {
             if ($langs->code <> $lang) {
-                $r .= '<option value="' . $langs->code . '">nach ' . $langs->name . ' (' . $langs->code . ')</option>';
+                //$this_lang_selector = get_dv('lang_selector_'.$langs->code);
+                //$r .= '<option value="' . $langs->code .'">nach ' . $langs->name . ' (' . $langs->code .')</option>';
+                $href = 'javascript:auto_translate(\'' . $langs->code . '\',\'' . $lang . '\',\'' . $ident . '\',\'' . $tab . '\',\'' . $field_type . '\',\'' . $id_field . '\',\'' . $id . '\')';
+                $r .= '<a class="dropdown-item" href="' . $href . '">' . flag_icon($langs->code, $size = '20') . ' ' . $langs->name . '</a>';
             }
         }
 
-        $r .= '</select>';
-        $r .= '';
-        $r .= '<a title="translate" class="' . $class . '_save btn btn-default btn-xs" style="vertical-align:top;margin-top:-1px" ';
-        $r .= 'href="javascript:alert(\'in Arbeit\')';
-        $r .= '">Go</a>';
-        $r .= '';
+        //$r .= '<div class="dropdown-divider"></div>';
+
+        $href = 'javascript:auto_translate(\'all\',\'' . $lang . '\',\'' . $ident . '\',\'' . $tab . '\',\'' . $field_type . '\',\'' . $id_field . '\',\'' . $id . '\')';
+        $r .= '<a class="dropdown-item" href="' . $href . '">alle anderen Sprachen</a>';
+
+        if ($lang == 'en') {
+            $href = 'javascript:auto_translate(\'all_but_default\',\'' . $lang . '\',\'' . $ident . '\',\'' . $tab . '\',\'' . $field_type . '\',\'' . $id_field . '\',\'' . $id . '\')';
+            $r .= '<a class="dropdown-item" href="' . $href . '">alle anderen Sprachen außer ' . get_default_lang_name() . '</a>';
+        }
+
+        $href = 'javascript:auto_translate(\'all_empty\',\'' . $lang . '\',\'' . $ident . '\',\'' . $tab . '\',\'' . $field_type . '\',\'' . $id_field . '\',\'' . $id . '\')';
+        $r .= '<a class="dropdown-item" href="' . $href . '">alle anderen, leeren Sprachen</a>';
 
         $r .= '</div>';
+        $r .= '</div>';
+
+
+        //$field_type = 'short';
+        //dd($field_type);
+        //$r .= 'href="javascript:auto_translate(\''.$lang.'\',\''.$ident.'\',\''.$tab.'\',\''.$field_type.'\',\''.$id_field.'\',\''.$id.'\')';
+        //$r .= '">Go '.$field_type.'</a>';
+
+        $r .= '</div>';
+
     }
+
 
     if (stristr($field, 'div_res_long')) {
         if ($with_info and is_dev()) {
-            $r .= '<div style="margin:-1px 0 0px 400px;color:#999;font-size:0.8em" class="dimmed04">' . $source . '</div>';
+            $r .= '<div style="text-align:center;margin:-1px 0 0 0;color:#666;font-size:0.8em" class="dimmed08">' . $source . '</div>';
         }
     } else {
         if ($with_info and is_dev()) {
-            $r .= '<div style="margin:-12px 0 13px 400px;color:#999;font-size:0.8em;" class="dimmed04">' . $source . '</div>';
+            $r .= '<div style="text-align:center;margin:-12px 0 13px 0;color:#666;font-size:0.8em;" class="dimmed08">' . $source . '</div>';
         } else {
-            $r .= '<div style="margin:-9px 0 10px 0px;color:#999;font-size:0.8em;" class="dimmed04">&nbsp;</div>';
+            $r .= '<div style="margin:-9px 0 10px 0px;color:#666;font-size:0.8em;" class="dimmed08">&nbsp;</div>';
         }
     }
     return $r;
@@ -781,7 +846,7 @@ function get_colorpicker_any_table(
 
     $what = $id;
 
-    create_dv($what, $value = '',true, $field = 'div_res');
+    create_dv($what, $value = '', true, $field = 'div_res');
 
     $curr_color = lookup($table, $field, $id, $id_field);
     if ($curr_color == '') $curr_color = '#ffffdd';
@@ -835,7 +900,7 @@ function get_colorpicker_any_table(
 
 
     $ret .= '<div style="margin:6px 0 5px 2px">
-            <input type="text" id="' . $id . '" /> ' . $tt . ' <em id="' . $id . '_log"></em> <span id="' . $ident . '_conf"></span> </div>';
+            <input type="text" id="' . $id . '" /> ' . $tt . ' <em id="' . $id . '_log"></em> <span id="' . $ident . '_conf"></span> <span id="all_conf"></span></div>';
 
 
     $ret .= '<script>
@@ -1016,7 +1081,7 @@ $(document).ready(function() {
 
 function get_select_by_t_key(
     $t_key,
-    $t_key_arr ='',
+    $t_key_arr = '',
     $pref = '',
     $suff = '',
     $arr_from = 0,
@@ -1072,7 +1137,7 @@ function get_select_by_t_key(
     //short text
     $edit_txt_short = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>';
     $edit_txt_short_hint = '';
-    if(find_missing_translation($what, false)){
+    if (find_missing_translation($what, false)) {
         $edit_txt_short = '<i style="color:red" class="fa fa-pencil-square-o" aria-hidden="true"></i>';
         $edit_txt_short_hint = ' - es fehlen Übersetzungen!';
     }
@@ -1080,21 +1145,21 @@ function get_select_by_t_key(
     //long text
     $edit_txt_long = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>';
     $edit_txt_long_hint = '';
-    if(find_missing_translation($what, true)){
+    if (find_missing_translation($what, true)) {
         $edit_txt_long = '<i style="color:red" class="fa fa-pencil-square-o" aria-hidden="true"></i>';
         $edit_txt_long_hint = ' - es fehlen Übersetzungen!';
     }
 
     $edit_link_long = '
         <div class="short-hint-edit-link dimmed06" style="margin-top:14px;display:inline-block;' . $add_style . ';" class="pull-right">
-        <a title="diesen langen Text editieren in allen Sprachen'.$edit_txt_long_hint.'"  
+        <a title="diesen langen Text editieren in allen Sprachen' . $edit_txt_long_hint . '"  
         data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop1?key=' . $what . $add_l . '') . '" href="javascript:;">
         ' . $edit_txt_long . ' </a></div>';
 
 
     $edit_link_short = '
         <div class="short-hint-edit-link dimmed06" style="margin-left:24px;' . $add_style . ';">
-        <a title="diesen kurzen Text editieren in allen Sprachen'.$edit_txt_short_hint.'"  
+        <a title="diesen kurzen Text editieren in allen Sprachen' . $edit_txt_short_hint . '"  
         data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop_div_res_short?key=' . $what . $add_l . '') . '" href="javascript:;">
         ' . $edit_txt_short . '</a></div>';
 
@@ -1110,20 +1175,20 @@ function get_select_by_t_key(
         padding:3px 4px;margin:3px 0 -3px 0;border:1px #ccc solid;"
             onchange="set_div(this.options[selectedIndex].value, \'' . $what . '\', \'' . $ident . '\')">';
     /*################ select construct #########################*/
-    if(trim($t_key_arr)=='') {
+    if (trim($t_key_arr) == '') {
         for ($i = $arr_from; $i <= $arr_to; $i = $i + $arr_step) {
             $sel = '';
             if ((int)($curr_value == $i)) $sel = 'selected';
             $ret .= '<option ' . $sel . ' value = "' . $pref . $i . $suff . '">' . $pref . ' ' . $i . ' ' . $suff . '</option>';
         }
-    }else{
+    } else {
 
-        $t_options_arr = explode(',',$t_key_arr);
+        $t_options_arr = explode(',', $t_key_arr);
         //dd(count($t_options_arr));
         for ($i = 0; $i < count($t_options_arr); $i++) {
             $sel = '';
-            if ((int)($curr_value == ($i+1))) $sel = 'selected';
-            $ret .= '<option ' . $sel . ' value = "' . ($i+1) . '">' . ($i+1) .'. '. $t_options_arr[$i] . '</option>';
+            if ((int)($curr_value == ($i + 1))) $sel = 'selected';
+            $ret .= '<option ' . $sel . ' value = "' . ($i + 1) . '">' . ($i + 1) . '. ' . $t_options_arr[$i] . '</option>';
         }
 
 
@@ -1163,7 +1228,7 @@ function get_select_by_t_key(
         style="">' . ' ' . $hint_txt . '</div>';
     }
 
-    if (is_dev() and $with_panel ) {
+    if (is_dev() and $with_panel) {
         /*------------ 1. line - rename ------------------------*/
         $ret .= '<div class="dimmed04" style="margin:5px 0 2px 12px"><input id="old_name_' . $what . '" onClick="this.select()" style="width:40%;max-width:290px;padding:0 4px;background:#ffe" type="text" value="' . $what . '">';
 
@@ -1189,15 +1254,15 @@ function get_colorpicker_by_t_key(
     $wrapper_style = 'margin:0 0 4px 0;',
     $with_panel = true,
     $with_tooltip = true, //becomes false if $with_panel = true
-    $tt_class= 'tip', //tip or tip_lu
+    $tt_class = 'tip', //tip or tip_lu
     $tt_width = '450px'
 )
 {
 
-    if($with_panel) $with_tooltip = false;
+    if ($with_panel) $with_tooltip = false;
     $tt = '';
     if ($with_tooltip) {
-        $tt = tooltip($t_key, $tt_class, $tt_width, $style='');
+        $tt = tooltip($t_key, $tt_class, $tt_width, $style = '');
     }
 
     //$with_panel = false;
@@ -1222,7 +1287,7 @@ function get_colorpicker_by_t_key(
         $ret .= '
         <div id="wrp_' . $t_key . '" class="round4"
         style="background:' . $bg_color . ';' . $wrapper_style . ';padding-bottom:6px;border:1px #ddd solid;">';
-    }else{
+    } else {
         $ret .= '
         <div id="wrp_' . $t_key . '" class="round4"
         style="border:1px #ddd solid;background:' . $bg_color . ';">';
@@ -1237,13 +1302,13 @@ function get_colorpicker_by_t_key(
     /*-------------- BEGIN  $edit_link_long ----------------------------*/
     $edit_txt_long = 'edit';
     $edit_txt_long_hint = '';
-    if(find_missing_translation($what, true)){
+    if (find_missing_translation($what, true)) {
         $edit_txt_long = 'edit!';
         $edit_txt_long_hint = ' - es fehlen Übersetzungen!';
     }
 
     $edit_link_long = '
-            <a title="diesen langen Text editieren in allen Sprachen'.$edit_txt_long_hint.'"  
+            <a title="diesen langen Text editieren in allen Sprachen' . $edit_txt_long_hint . '"  
             data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop1?key=' . $what . $add_l . '') . '" href="javascript:;">
             ' . $edit_txt_long . ' </a>';
     /*-------------- END $edit_link_long ----------------------------*/
@@ -1252,17 +1317,16 @@ function get_colorpicker_by_t_key(
     //short text
     $edit_txt_short = 'edit';
     $edit_txt_short_hint = '';
-    if(find_missing_translation($what, false)){
+    if (find_missing_translation($what, false)) {
         $edit_txt_short_hint = ' - es fehlen Übersetzungen!';
         $edit_txt_short = 'edit!';
     }
 
     $edit_link_short = '
-    <a class="dimmed04 ml-1" title="diesen kurzen Text editieren in allen Sprachen'.$edit_txt_short_hint.'"  
+    <a class="dimmed04 ml-1" title="diesen kurzen Text editieren in allen Sprachen' . $edit_txt_short_hint . '"  
     data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop_div_res_short?key=' . $what . $add_l . '') . '" href="javascript:;">
     <sup><i>' . $edit_txt_short . '</i></sup></a>';
     /*--------------  END $edit_link_short ----------------------------*/
-
 
 
     $ret .= '<div class="" 
@@ -1277,11 +1341,10 @@ function get_colorpicker_by_t_key(
     $ret .= '<span style="color:#aaa;margin-right:6px">andere Farbe wählen: </span>';
 
 
-    $ret.= '<input onchange="save_color(this.value,\'' . $ident . '\',\'' . $what . '\')" value="" type=\'text\' class="float-right" id="togglePaletteOnly_' . $ident . '"/>';
-    $ret .= '<span style="width:35px;margin-left:0px">'.$tt.'</span>';
+    $ret .= '<input onchange="save_color(this.value,\'' . $ident . '\',\'' . $what . '\')" value="" type=\'text\' class="float-right" id="togglePaletteOnly_' . $ident . '"/>';
+    $ret .= '<span style="width:35px;margin-left:0px">' . $tt . '</span>';
     //$ret .= '<span style="width:35px;margin-left:9px">'.$tt.'</span>';
     $ret .= '</span>';
-
 
 
     $t_font_size = '1.1em';
@@ -1296,7 +1359,7 @@ function get_colorpicker_by_t_key(
     if ($with_panel) {
         $hint_txt = get_hint_by_t_key($what, true);
         //the wrapper for the body
-        $ret .= '<div id="wrp_' . $ident . '" class="round6 assi-longtxt">'  . $hint_txt . '';
+        $ret .= '<div id="wrp_' . $ident . '" class="round6 assi-longtxt">' . $hint_txt . '';
         $ret .= '<span class="float-right dimmed04" style="top:3px;right:3px;font-weight:bold;font-size:1.em;margin:-30px 0 0 9px"><i><sub>' . $edit_link_long . '</sub></i></span>';
         $ret .= '</div>';
 
@@ -1304,9 +1367,9 @@ function get_colorpicker_by_t_key(
 
     /*-----------------------  DEV Options only visible if is_dev()  -------------------------------------------*/
     if (is_dev() and $with_panel) {
-        $ret .= '<div id="dev_only_'.$ident.'">';
+        $ret .= '<div id="dev_only_' . $ident . '">';
         $ret .= '<div class="text-center" style="width:100%;color:#bbb;font-size:0.8em;border-top:1px #ddd solid">
-        <a title="hide" href="javascript:toggle(\'dev_only_'.$ident.'\')">DEV only:</a></div>';
+        <a title="hide" href="javascript:toggle(\'dev_only_' . $ident . '\')">DEV only:</a></div>';
         /*------------ 1. line - rename ------------------------*/
         $ret .= '<div class="dimmed04" style="margin:5px 0 2px 2px"><input id="old_name_' . $what . '" onClick="this.select()" style="width:40%;max-width:290px;padding:0 4px;background:#ffe" type="text" value="' . $what . '">';
 
@@ -1323,17 +1386,17 @@ function get_colorpicker_by_t_key(
     }
     /*----------------------- END  DEV Options only visible if is_dev()  -------------------------------------------*/
 
-    if ($with_panel or 1==1) $ret .= '</div>';
+    if ($with_panel or 1 == 1) $ret .= '</div>';
 
     //todo create color pallete
-    $ret.='<script>
+    $ret .= '<script>
     document.addEventListener(\'DOMContentLoaded\', function() {
         $("#togglePaletteOnly_' . $ident . '").spectrum({
             showPaletteOnly: true,
             togglePaletteOnly: true,
             togglePaletteMoreText: \'mehr\',
             togglePaletteLessText: \'weniger\',
-            color: \''.$curr_value.'\',
+            color: \'' . $curr_value . '\',
             /*hideAfterPaletteSelect:true,*/
             showInitial: true,
             showInput: true,

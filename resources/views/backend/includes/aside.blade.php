@@ -195,57 +195,115 @@
 
             <div class="aside-options">
                 <div class="clearfix mt-4">
-                    <small><b>Option 1</b>
-                    </small>
-                    <label class="switch switch-text switch-pill switch-success switch-sm float-right">
-                        <input type="checkbox" class="switch-input" checked="">
-                        <span class="switch-label" data-on="On" data-off="Off"></span>
-                        <span class="switch-handle"></span>
-                    </label>
+                    {{--<small><b>DEV-View</b>
+                    </small>--}}
+
+                    <?php
+                    echo get_checkbox_any_table(
+                        $table = 'diverses',
+                        $field = 'div_res',
+                        $id = 'is_dev',
+                        $id_field = 'div_what',
+                        $with_comment = false,
+                        $tt_hint_key = 'is_dev',
+                        $label_text = 'DEV-View',
+                        $with_panel = false, //if with panel -> no toltip - for text is displayed in panel
+                        $ax_response = true,
+                        $input_style = '',
+                        $label_style = 'font-size:0.9em;margin-left:6px;font-weight:bold;float:right',
+                        $with_tooltip = false,
+                        $tt_class = 'tip_lu',
+                        $tt_width = '400px',
+                        $with_page_reload = false,
+                        $this_value = '',  // !!! only if $from_inside_loop = true fill with {$model->fieldname}
+                        $from_inside_loop = false, // lookup for current value if set to false
+                        $as_switch = true, //only checkbox or switch?
+                        $switch_size = 'sm' //xs, sm, no, lg
+                    );
+
+                    ?>
+                </div>
+                {{--<div>
+                    <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+                </div>--}}
+            </div>
+
+            <div class="aside-options">
+                <div class="clearfix mt-3">
+                    {{--<small><b>Option 2</b>
+                    </small>--}}
+                    <?php
+                    echo get_checkbox_any_table(
+                        $table = 'diverses',
+                        $field = 'div_res',
+                        $id = 'dashboard_settings_sidebar_minimized',
+                        $id_field = 'div_what',
+                        $with_comment = false,
+                        $tt_hint_key = 'is_dev',
+                        $label_text = 'minimize left Sidebar?',
+                        $with_panel = false, //if with panel -> no toltip - for text is displayed in panel
+                        $ax_response = true,
+                        $input_style = '',
+                        $label_style = 'font-size:0.9em;margin-left:6px;font-weight:bold;float:right',
+                        $with_tooltip = false,
+                        $tt_class = 'tip_lu',
+                        $tt_width = '400px',
+                        $with_page_reload = true,
+                        $this_value = '',  // !!! only if $from_inside_loop = true fill with {$model->fieldname}
+                        $from_inside_loop = false, // lookup for current value if set to false
+                        $as_switch = true, //only checkbox or switch?
+                        $switch_size = 'sm' //xs, sm, no, lg
+                    );
+
+                    ?>
                 </div>
                 <div>
-                    <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
-                </div>
+                    {{--    <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+                    </div>--}}
             </div>
 
             <div class="aside-options">
                 <div class="clearfix mt-3">
-                    <small><b>Option 2</b>
-                    </small>
-                    <label class="switch switch-text switch-pill switch-success switch-sm float-right">
-                        <input type="checkbox" class="switch-input">
-                        <span class="switch-label" data-on="On" data-off="Off"></span>
-                        <span class="switch-handle"></span>
-                    </label>
-                </div>
-                <div>
-                    <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+                    {{--<small><b>Option 3</b>
+                    </small>--}}
+                    <?php
+                    echo get_checkbox_any_table(
+                        $table = 'diverses',
+                        $field = 'div_res',
+                        $id = 'dashboard_settings_show_edit_links',
+                        $id_field = 'div_what',
+                        $with_comment = false,
+                        $tt_hint_key = 'is_dev',
+                        $label_text = 'Show edit Links if not DEV?',
+                        $with_panel = false, //if with panel -> no toltip - for text is displayed in panel
+                        $ax_response = true,
+                        $input_style = '',
+                        $label_style = 'font-size:0.9em;margin-left:6px;font-weight:bold;float:right',
+                        $with_tooltip = false,
+                        $tt_class = 'tip_lu',
+                        $tt_width = '400px',
+                        $with_page_reload = true,
+                        $this_value = '',  // !!! only if $from_inside_loop = true fill with {$model->fieldname}
+                        $from_inside_loop = false, // lookup for current value if set to false
+                        $as_switch = true, //only checkbox or switch?
+                        $switch_size = 'sm' //xs, sm, no, lg
+                    );
+
+                    ?>
                 </div>
             </div>
 
-            <div class="aside-options">
-                <div class="clearfix mt-3">
-                    <small><b>Option 3</b>
-                    </small>
-                    <label class="switch switch-text switch-pill switch-success switch-sm float-right">
-                        <input type="checkbox" class="switch-input">
-                        <span class="switch-label" data-on="On" data-off="Off"></span>
-                        <span class="switch-handle"></span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="aside-options">
-                <div class="clearfix mt-3">
-                    <small><b>Option 4</b>
-                    </small>
-                    <label class="switch switch-text switch-pill switch-success switch-sm float-right">
-                        <input type="checkbox" class="switch-input" checked="">
-                        <span class="switch-label" data-on="On" data-off="Off"></span>
-                        <span class="switch-handle"></span>
-                    </label>
-                </div>
-            </div>
+                {{--            <div class="aside-options">
+                                <div class="clearfix mt-3">
+                                    <small><b>Option 4</b>
+                                    </small>
+                                    <label class="switch switch-text switch-pill switch-success switch-sm float-right">
+                                        <input type="checkbox" class="switch-input" checked="">
+                                        <span class="switch-label" data-on="On" data-off="Off"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
+                            </div>--}}
 
             <hr>
             <h6>System Utilization</h6>

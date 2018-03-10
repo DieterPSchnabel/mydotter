@@ -134,7 +134,7 @@
                         <div class="float-right">
                             <a style="margin: -17px 0 0 0" class="float-right dimmed04" data-fancybox
                                data-type="iframe"
-                               data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key_content}}&title={{$t_key_header}}"
+                               data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key_content}}&title={{$t_key_header}}"
                                href="javascript:;">
                                 <i><b> edit </b></i></a>
                         </div>

@@ -87,7 +87,7 @@
                     <i class="fa fa-sticky-note-o fa-blue" aria-hidden="true"></i> Admin-Notes</a>
 
                     <a class="dropdown-item" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_admin"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_admin"
                        href="javascript:;">
                     <i class="fa fa-sticky-note-o fa-blue" aria-hidden="true"></i> Admin-Notes (Popup)</a>
 
@@ -100,12 +100,12 @@
                 </div>
 
                 <a class="dropdown-item" data-fancybox data-type="iframe"
-                   data-src="{{env('APP_URL')}}/admin/dashboard/admintests10"
+                   data-src="{{config('app.url')}}/admin/dashboard/admintests10"
                    href="javascript:;">
                     <i class="fa fa-cogs fa-green" aria-hidden="true"></i> Settings {!! $fa_popup !!}</a>
 
                 <a class="dropdown-item" data-fancybox data-type="iframe"
-                   data-src="{{env('APP_URL')}}/dashboard/pop_dev_links"
+                   data-src="{{config('app.url')}}/dashboard/pop_dev_links"
                    href="javascript:;">
                 <i class="fa fa-link fa-red" aria-hidden="true"></i> Links {!! $fa_popup !!}</a>
 
@@ -115,7 +115,7 @@
                     <i class="fa fa-sticky-note-o fa-blue" aria-hidden="true"></i> Superadmin-Notes </a>
 
                     <a class="dropdown-item" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin"
                        href="javascript:;">
                     <i class="fa fa-sticky-note-o fa-blue" aria-hidden="true"></i> Superadmin-Notes (Popup)</a>
 

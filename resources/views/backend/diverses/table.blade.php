@@ -15,7 +15,16 @@
         <?php
         $model_path = ucfirst($this_model);
         $order = 'order='.$this_col;
-        echo make_col_sortable2($this_col,$this_col,$sortables_arr,$page_para,$dir,$order,$curr_dir,$model_path.'Controller@index')
+            echo make_col_sortable2($this_col, $this_col, $sortables_arr, $page_para, $dir, $order, $curr_dir, $model_path . 'Controller@index');
+
+            echo tooltip(
+                'diverses_edit_translations_hint',
+                $class = 'tip',  // tip oder tip_lu = position rechts-unten oder links-unten
+                $width = '450px',  // with px
+                $lang = '',  // hints are multilang
+                $style = '',
+                $icon = '' // force an icon other than default icon
+            );
         ?>
     </th>@endif
 
@@ -966,51 +975,157 @@
         ?>
     </th>@endif
 
-        <th colspan="3">Action</th>
+        @if(1==2)
+            <th colspan="3">Action</th>@endif
         </tr>
     </thead>
 
     <tbody>
     @foreach($dataset as $cur_rec)
      <tr>
-     @if(in_array('id',$display_cols_arr))<td class="dimmed04">{{$cur_rec->id}}
+         @if(in_array('id',$display_cols_arr))
+             <td class="dimmed06">{{$cur_rec->id}}
             <br>
-             <a style="" class=""
-                data-fancybox data-type="iframe"
-                data-src="http://rappasoft.loc:81/dashboard/pop_div_res_short?key={{$cur_rec->div_what}}&lang=all&curr_lang" href="javascript:;">
-                 <button type="button" class="btn btn-success btn-sm ml-1" data-toggle="tooltip"
-                         title="short text - diesen Hinweis editieren in allen Sprachen"
+
+                 @if(in_array('div_res_'.get_default_lang_code(),$display_cols_arr))
+                     <a class="" title="{!! get_tr('kurzer Text - diesen Hinweis editieren in allen Sprachen') !!}"
+                        data-fancybox
+                        data-type="iframe"
+                        data-src="{{config('app.url')}}/dashboard/pop_div_res_short?key={{$cur_rec->div_what}}&lang=all&curr_lang"
+                        href="javascript:;">
+                         <button type="button" class="btn btn-warning btn-sm mt-6" data-toggle="tooltip"
+                                 title="{!! get_tr('kurzer Text - diesen Hinweis editieren in allen Sprachen') !!}"
                          data-placement="top" title="" data-original-title="edit">
-                     <i class="fa fa-pencil fa-sm-text-shadow"></i>
+                             <i class="fa fa-copy fa-sm-text-shadow"></i> {!! get_tr('kurz') !!}
+                 </button>
+             </a>
+                 @endif
+
+                 <a style="" class="" title="{!! get_tr('langer Text - diesen Hinweis editieren in allen Sprachen') !!}"
+                    data-fancybox data-type="iframe"
+                    data-src="{{config('app.url')}}/dashboard/pop1?key={{$cur_rec->div_what}}&lang=all&curr_lang"
+                    href="javascript:;">
+                     <button type="button" class="btn btn-info btn-sm mt-6" data-toggle="tooltip"
+                             title="{!! get_tr('langer Text - diesen Hinweis editieren in allen Sprachen') !!}"
+
+                         data-placement="top" title="" data-original-title="edit">
+                         <i class="fa fa-copy fa-sm-text-shadow"></i> {!! get_tr('lang') !!}
+                     </button>
+                 </a>
+
+                 @if($has_action_edit or is_dev())
+                     <a style="" class="" title="edit all" data-fancybox data-type="iframe"
+                        data-src="{{ route('admin.diverses.edit',['link'=>$cur_rec->id]) }}"
+                        href="javascript:;">
+                         <button type="button" class="btn btn-success btn-sm mt-6" data-toggle="tooltip"
+                                 data-placement="top" title="" data-original-title="edit">
+                             <i class="fa fa-pencil fa-sm-text-shadow"></i> edit
+                         </button>
+                     </a>
+                 @endif
+
+                 <a style="" class="" title="show all" data-fancybox data-type="iframe"
+                    data-src="{{ route('admin.diverses.show',[$cur_rec->id]) }}"
+                    href="javascript:;">
+                     <button type="button" class="btn btn-primary btn-sm mt-6" data-toggle="tooltip"
+                             data-placement="top" title="" data-original-title="view">
+                         <i class="fa fa-eye fa-sm-text-shadow"></i> show
                  </button>
              </a>
 
-             <a class=""
-                data-fancybox data-type="iframe"
-                data-src="http://rappasoft.loc:81/dashboard/pop1?key={{$cur_rec->div_what}}&lang=all&curr_lang" href="javascript:;">
-                 <button type="button" class="btn btn-info btn-sm ml-1" data-toggle="tooltip"
-                         title="long text - diesen Hinweis editieren in allen Sprachen"
-                         style="margin-top: 6px"
-                         data-placement="top" title="" data-original-title="edit">
-                     <i class="fa fa-pencil fa-sm-text-shadow"></i>
-                 </button>
-             </a>
+                 <?php $ident = zuf() ?>
+                 <a href="javascript:delete_in_table('{{$this_table_name}}','{{$cur_rec->id}}','{{$ident}}')">
+                     <button type="button" class="btn btn-danger btn-sm mt-6">
+                         <i class="fa fa-trash fa-sm-text-shadow"></i> delete
+                     </button>
+                 </a><span id="{{$ident}}_conf"></span></span>
 
-     </td>@endif
+             </td>@endif
 
-     @if(in_array('div_what',$display_cols_arr))<td>{!! mark($cur_rec->div_what) !!}</td>@endif
+         @if(in_array('div_what',$display_cols_arr))
+             <td style="word-wrap:break-word;max-width:250px">{!! mark($cur_rec->div_what) !!}</td>@endif
 
-            @if(in_array('div_res',$display_cols_arr))<td>{!! mark($cur_rec->div_res) !!}</td>@endif
+         @if(in_array('div_res',$display_cols_arr))
+             <td>
+                 {{--{!! mark($cur_rec->div_res) !!}--}}
 
-            @if(in_array('div_res_long',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long) !!}</td>@endif
+                 @if($cur_rec->is_active_switch==1)
+
+                     {!!
+                              get_checkbox_any_table(
+                                 $this_table_name,
+                                 'div_res',
+                                 $cur_rec->id,
+                                 $id_field ='id',
+                                 $with_comment=false,
+                                 $hint_key = $this_table_name.'_div_res_hint',
+                                 $label_text = '',
+                                 $with_panel = false,
+                                 $ax_response = true,
+                                 $input_style= '',
+                                 $label_style = 'font-weight:normal',
+                                 $with_tooltip = false,
+                                 $tt_class = 'tip',
+                                 $tt_width = '300px',
+                                 $with_page_reload = false,
+                                 $this_value = $cur_rec->div_res,
+                                 $from_inside_loop = true,
+                                 $as_switch = true,
+                                 $switch_size = 'no' //xs, sm, no, lg
+                              );
+                             !!}
+                 @else
+                     {!! mark($cur_rec->div_res) !!}
+                 @endif
+
+
+             </td>@endif
+
+         @if(in_array('div_res_long',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_de',$display_cols_arr))<td>{!! mark($cur_rec->div_res_de) !!}</td>@endif
 
-            @if(in_array('div_res_long_de',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_de) !!}</td>@endif
+         @if(in_array('div_res_long_de',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">
+                     {!! mark($cur_rec->div_res_long_de) !!}</div>
+             </td>@endif
 
             @if(in_array('app_top',$display_cols_arr))<td>{!! mark($cur_rec->app_top) !!}</td>@endif
 
-            @if(in_array('is_hint',$display_cols_arr))<td>{!! mark($cur_rec->is_hint) !!}</td>@endif
+         @if(in_array('is_hint',$display_cols_arr))
+             <td>
+
+                 {{--{!! mark($cur_rec->is_hint) !!}--}}
+
+                 {!!
+             get_checkbox_any_table(
+                $this_table_name,
+                'is_hint',
+                $cur_rec->id,
+                $id_field ='id',
+                $with_comment=false,
+                $hint_key = $this_table_name.'_is_hint_hint',
+                $label_text = '',
+                $with_panel = false,
+                $ax_response = true,
+                $input_style= '',
+                $label_style = 'font-weight:normal',
+                $with_tooltip = false,
+                $tt_class = 'tip',
+                $tt_width = '300px',
+                $with_page_reload = false,
+                $this_value = $cur_rec->is_hint,
+                $from_inside_loop = true,
+                $as_switch = true,
+                $switch_size = 'no' //xs, sm, no, lg
+             );
+            !!}
+
+             </td>@endif
 
             @if(in_array('t_key_comment',$display_cols_arr))<td>{!! mark($cur_rec->t_key_comment) !!}</td>@endif
 
@@ -1026,7 +1141,35 @@
 
             @if(in_array('manager_url',$display_cols_arr))<td>{!! mark($cur_rec->manager_url) !!}</td>@endif
 
-            @if(in_array('is_active_switch',$display_cols_arr))<td>{!! mark($cur_rec->is_active_switch) !!}</td>@endif
+         @if(in_array('is_active_switch',$display_cols_arr))
+             <td>
+                 {{--{!! mark($cur_rec->is_active_switch) !!}--}}
+
+                 {!!
+             get_checkbox_any_table(
+                $this_table_name,
+                'is_active_switch',
+                $cur_rec->id,
+                $id_field ='id',
+                $with_comment=false,
+                $hint_key = $this_table_name.'_is_active_switch_hint',
+                $label_text = '',
+                $with_panel = false,
+                $ax_response = true,
+                $input_style= '',
+                $label_style = 'font-weight:normal',
+                $with_tooltip = false,
+                $tt_class = 'tip',
+                $tt_width = '300px',
+                $with_page_reload = false,
+                $this_value = $cur_rec->is_active_switch,
+                $from_inside_loop = true,
+                $as_switch = true,
+                $switch_size = 'no' //xs, sm, no, lg
+             );
+            !!}
+
+             </td>@endif
 
             @if(in_array('c_theme',$display_cols_arr))<td>{!! mark($cur_rec->c_theme) !!}</td>@endif
 
@@ -1038,135 +1181,236 @@
 
             @if(in_array('div_res_fr',$display_cols_arr))<td>{!! mark($cur_rec->div_res_fr) !!}</td>@endif
 
-            @if(in_array('div_res_long_fr',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_fr) !!}</td>@endif
+         @if(in_array('div_res_long_fr',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_fr) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_en',$display_cols_arr))<td>{!! mark($cur_rec->div_res_en) !!}</td>@endif
 
-            @if(in_array('div_res_long_en',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_en) !!}</td>@endif
+         @if(in_array('div_res_long_en',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_en) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_it',$display_cols_arr))<td>{!! mark($cur_rec->div_res_it) !!}</td>@endif
 
-            @if(in_array('div_res_long_it',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_it) !!}</td>@endif
+         @if(in_array('div_res_long_it',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_it) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_ru',$display_cols_arr))<td>{!! mark($cur_rec->div_res_ru) !!}</td>@endif
 
-            @if(in_array('div_res_long_ru',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_ru) !!}</td>@endif
+         @if(in_array('div_res_long_ru',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_ru) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_es',$display_cols_arr))<td>{!! mark($cur_rec->div_res_es) !!}</td>@endif
 
-            @if(in_array('div_res_long_es',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_es) !!}</td>@endif
+         @if(in_array('div_res_long_es',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_es) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_nl',$display_cols_arr))<td>{!! mark($cur_rec->div_res_nl) !!}</td>@endif
 
-            @if(in_array('div_res_long_nl',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_nl) !!}</td>@endif
+         @if(in_array('div_res_long_nl',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_nl) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_tr',$display_cols_arr))<td>{!! mark($cur_rec->div_res_tr) !!}</td>@endif
 
-            @if(in_array('div_res_long_tr',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_tr) !!}</td>@endif
+         @if(in_array('div_res_long_tr',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_tr) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_cr',$display_cols_arr))<td>{!! mark($cur_rec->div_res_cr) !!}</td>@endif
 
-            @if(in_array('div_res_long_cr',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_cr) !!}</td>@endif
+         @if(in_array('div_res_long_cr',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_cr) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_cz',$display_cols_arr))<td>{!! mark($cur_rec->div_res_cz) !!}</td>@endif
 
-            @if(in_array('div_res_long_cz',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_cz) !!}</td>@endif
+         @if(in_array('div_res_long_cz',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_cz) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_da',$display_cols_arr))<td>{!! mark($cur_rec->div_res_da) !!}</td>@endif
 
-            @if(in_array('div_res_long_da',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_da) !!}</td>@endif
+         @if(in_array('div_res_long_da',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_da) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_fi',$display_cols_arr))<td>{!! mark($cur_rec->div_res_fi) !!}</td>@endif
 
-            @if(in_array('div_res_long_fi',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_fi) !!}</td>@endif
+         @if(in_array('div_res_long_fi',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_fi) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_no',$display_cols_arr))<td>{!! mark($cur_rec->div_res_no) !!}</td>@endif
 
-            @if(in_array('div_res_long_no',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_no) !!}</td>@endif
+         @if(in_array('div_res_long_no',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_no) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_pl',$display_cols_arr))<td>{!! mark($cur_rec->div_res_pl) !!}</td>@endif
 
-            @if(in_array('div_res_long_pl',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_pl) !!}</td>@endif
+         @if(in_array('div_res_long_pl',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_pl) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_pt',$display_cols_arr))<td>{!! mark($cur_rec->div_res_pt) !!}</td>@endif
 
-            @if(in_array('div_res_long_pt',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_pt) !!}</td>@endif
+         @if(in_array('div_res_long_pt',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_pt) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_ro',$display_cols_arr))<td>{!! mark($cur_rec->div_res_ro) !!}</td>@endif
 
-            @if(in_array('div_res_long_ro',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_ro) !!}</td>@endif
+         @if(in_array('div_res_long_ro',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_ro) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_sr',$display_cols_arr))<td>{!! mark($cur_rec->div_res_sr) !!}</td>@endif
 
-            @if(in_array('div_res_long_sr',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_sr) !!}</td>@endif
+         @if(in_array('div_res_long_sr',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_sr) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_sv',$display_cols_arr))<td>{!! mark($cur_rec->div_res_sv) !!}</td>@endif
 
-            @if(in_array('div_res_long_sv',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_sv) !!}</td>@endif
+         @if(in_array('div_res_long_sv',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_sv) !!}</div>
+             </td>@endif
 
-            @if(in_array('div_res_bg',$display_cols_arr))<td>{!! mark($cur_rec->div_res_bg) !!}</td>@endif
+         @if(in_array('div_res_bg',$display_cols_arr))
+             <td>{!! mark($cur_rec->div_res_bg) !!}</td>@endif
 
-            @if(in_array('div_res_long_bg',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_bg) !!}</td>@endif
+         @if(in_array('div_res_long_bg',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_bg) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_ca',$display_cols_arr))<td>{!! mark($cur_rec->div_res_ca) !!}</td>@endif
 
-            @if(in_array('div_res_long_ca',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_ca) !!}</td>@endif
+         @if(in_array('div_res_long_ca',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_ca) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_et',$display_cols_arr))<td>{!! mark($cur_rec->div_res_et) !!}</td>@endif
 
-            @if(in_array('div_res_long_et',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_et) !!}</td>@endif
+         @if(in_array('div_res_long_et',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_et) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_gl',$display_cols_arr))<td>{!! mark($cur_rec->div_res_gl) !!}</td>@endif
 
-            @if(in_array('div_res_long_gl',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_gl) !!}</td>@endif
+         @if(in_array('div_res_long_gl',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_gl) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_el',$display_cols_arr))<td>{!! mark($cur_rec->div_res_el) !!}</td>@endif
 
-            @if(in_array('div_res_long_el',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_el) !!}</td>@endif
+         @if(in_array('div_res_long_el',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_el) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_hu',$display_cols_arr))<td>{!! mark($cur_rec->div_res_hu) !!}</td>@endif
 
-            @if(in_array('div_res_long_hu',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_hu) !!}</td>@endif
+         @if(in_array('div_res_long_hu',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_hu) !!}</div>
+             </td>@endif
 
-            @if(in_array('div_res_is',$display_cols_arr))<td>{!! mark($cur_rec->div_res_is) !!}</td>@endif
+         @if(in_array('div_res_is',$display_cols_arr))
+             <td>{!! mark($cur_rec->div_res_is) !!}</td>@endif
 
-            @if(in_array('div_res_long_is',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_is) !!}</td>@endif
+         @if(in_array('div_res_long_is',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_is) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_lv',$display_cols_arr))<td>{!! mark($cur_rec->div_res_lv) !!}</td>@endif
 
-            @if(in_array('div_res_long_lv',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_lv) !!}</td>@endif
+         @if(in_array('div_res_long_lv',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_lv) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_mk',$display_cols_arr))<td>{!! mark($cur_rec->div_res_mk) !!}</td>@endif
 
-            @if(in_array('div_res_long_mk',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_mk) !!}</td>@endif
+         @if(in_array('div_res_long_mk',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_mk) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_uk',$display_cols_arr))<td>{!! mark($cur_rec->div_res_uk) !!}</td>@endif
 
-            @if(in_array('div_res_long_uk',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_uk) !!}</td>@endif
+         @if(in_array('div_res_long_uk',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_uk) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_zh',$display_cols_arr))<td>{!! mark($cur_rec->div_res_zh) !!}</td>@endif
 
-            @if(in_array('div_res_long_zh',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_zh) !!}</td>@endif
+         @if(in_array('div_res_long_zh',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_zh) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_th',$display_cols_arr))<td>{!! mark($cur_rec->div_res_th) !!}</td>@endif
 
-            @if(in_array('div_res_long_th',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_th) !!}</td>@endif
+         @if(in_array('div_res_long_th',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_th) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_pt_BR',$display_cols_arr))<td>{!! mark($cur_rec->div_res_pt_BR) !!}</td>@endif
 
-            @if(in_array('div_res_long_pt_BR',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_pt_BR) !!}</td>@endif
+         @if(in_array('div_res_long_pt_BR',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_pt_BR) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_lt',$display_cols_arr))<td>{!! mark($cur_rec->div_res_lt) !!}</td>@endif
 
-            @if(in_array('div_res_long_lt',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_lt) !!}</td>@endif
+         @if(in_array('div_res_long_lt',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_lt) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_ja',$display_cols_arr))<td>{!! mark($cur_rec->div_res_ja) !!}</td>@endif
 
-            @if(in_array('div_res_long_ja',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_ja) !!}</td>@endif
+         @if(in_array('div_res_long_ja',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_ja) !!}</div>
+             </td>@endif
 
             @if(in_array('div_res_ar',$display_cols_arr))<td>{!! mark($cur_rec->div_res_ar) !!}</td>@endif
 
-            @if(in_array('div_res_long_ar',$display_cols_arr))<td>{!! mark($cur_rec->div_res_long_ar) !!}</td>@endif
+         @if(in_array('div_res_long_ar',$display_cols_arr))
+             <td>
+                 <div class="disp_div_res_long_in_table">{!! mark($cur_rec->div_res_long_ar) !!}</div>
+             </td>@endif
 
             @if(in_array('updated_by',$display_cols_arr))<td>{!! mark($cur_rec->updated_by) !!}</td>@endif
 
@@ -1184,12 +1428,17 @@
             <div style="color:#777;font-size:0.9em">{{formatDate($cur_rec->updated_at)}}</div>
         @endif</td>
     @endif
-
+         @if(1==2)
         <td>
             <div class="btn-group dimmed08" role="group" aria-label="">
             <!--  blade_table_body   -->
                 @if($has_action_show)
-                    <a href="{!! route('admin.diverses.show', [$cur_rec->id]) !!}">
+                    {{--<a href="{!! route('admin.diverses.show', [$cur_rec->id]) !!}">--}}
+
+                    <a style="" class="" title="show all" data-fancybox data-type="iframe"
+                       data-src="{{ route('admin.diverses.show',[$cur_rec->id]) }}"
+                       href="javascript:;">
+
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="view">
                             <i class="fa fa-eye fa-sm-text-shadow"></i>
                         </button>
@@ -1197,7 +1446,11 @@
                 @endif
 
                 @if($has_action_edit)
-                <a href="{!! route('admin.diverses.edit', [$cur_rec->id]) !!}">
+                    {{--<a href="{!! route('admin.diverses.edit', [$cur_rec->id]) !!}">--}}
+
+                    <a style="" class="" title="edit all" data-fancybox data-type="iframe"
+                       data-src="{{ route('admin.diverses.edit',['link'=>$cur_rec->id]) }}"
+                       href="javascript:;">
                     <button type="button" class="btn btn-success btn-sm ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="edit">
                         <i class="fa fa-pencil fa-sm-text-shadow"></i>
                     </button>
@@ -1214,6 +1467,7 @@
                 @endif
             </div>
         </td>
+         @endif
     </tr>
     @endforeach
     </tbody>

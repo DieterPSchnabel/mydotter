@@ -63,10 +63,10 @@ create_dv($editor_selector_key, '0',true);
         );
         ?>
 
-        <a style="margin-left:36px" class="btn btn-info btn-sm" href="javascript:swal('xxx','in Arbeit','warning')" role="button">
-            <i class="fa fa-window-restore"></i> Vorschau mit Backend Stylesheets</a>
-        <a style="margin-left:12px" class="btn btn-info btn-sm ml-2" href="javascript:swal('xxx','in Arbeit','warning')" role="button">
-            <i class="fa fa-window-restore"></i> Vorschau mit Frontend Stylesheets</a>
+        {{-- <a style="margin-left:36px" class="btn btn-info btn-sm" href="javascript:swal('xxx','in Arbeit','warning')" role="button">
+             <i class="fa fa-window-restore"></i> Vorschau mit Backend Stylesheets</a>
+         <a style="margin-left:12px" class="btn btn-info btn-sm ml-2" href="javascript:swal('xxx','in Arbeit','warning')" role="button">
+             <i class="fa fa-window-restore"></i> Vorschau mit Frontend Stylesheets</a>--}}
 
     </div>
     {{--wenn lang_code == '' dann wird in div_res_long gspeichert, sonst in div_res_long_##--}}
@@ -83,8 +83,8 @@ create_dv($editor_selector_key, '0',true);
         <input class="btn btn-success btn-xs" type="submit" title="speichern" value="speichern">
 
         {{--<a class="ml-5" href="javascript:parent.location.reload()">reload</a>--}}
-        <a style="margin-left:76px" class="btn btn-info btn-sm" href="javascript:parent.location.reload()" role="button">
-            <i class="fa fa-refresh fa-lg" aria-hidden="true"></i> Editor schliessen mit Reload der Hintergrundseite</a>
+        {{-- <a style="margin-left:76px" class="btn btn-info btn-sm" href="javascript:parent.location.reload()" role="button">
+             <i class="fa fa-refresh fa-lg" aria-hidden="true"></i> Editor schliessen mit Reload der Hintergrundseite</a>--}}
 
         <?php
         $what = 'editor_pop_reload_hint';
@@ -132,19 +132,19 @@ create_dv($editor_selector_key, '0',true);
     <!-- CKEditor init 4.8.0 -->
     @if(get_dv($editor_selector_key))
     {{--enhanced version--}}
-    {{--<script src="{{ env('APP_URL') }}/my_plugins/ckeditor_my_version_compact/ckeditor.js"></script>
-    <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_my_version_compact/styles.js"></script>
-    <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_my_version_compact/adapters/jquery.js"></script>--}}
+    {{--<script src="{{ config('app.url') }}/my_plugins/ckeditor_my_version_compact/ckeditor.js"></script>
+    <script src="{{ config('app.url') }}/my_plugins/ckeditor_my_version_compact/styles.js"></script>
+    <script src="{{ config('app.url') }}/my_plugins/ckeditor_my_version_compact/adapters/jquery.js"></script>--}}
     {{--more enhanced version--}}
-    <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_more_enhanced/ckeditor.js"></script>
-    <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_more_enhanced/styles.js"></script>
-    <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_more_enhanced/adapters/jquery.js"></script>
+    <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_more_enhanced/ckeditor.js"></script>
+    <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_more_enhanced/styles.js"></script>
+    <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_more_enhanced/adapters/jquery.js"></script>
 
     @else
     {{--basic version--}}
-    <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_basic/ckeditor.js"></script>
-    <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_basic/styles.js"></script>
-    <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_basic/adapters/jquery.js"></script>
+    <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_basic/ckeditor.js"></script>
+    <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_basic/styles.js"></script>
+    <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_basic/adapters/jquery.js"></script>
     @endif
 
 
@@ -164,7 +164,7 @@ create_dv($editor_selector_key, '0',true);
         });
     </script>
 
-    {{--{{ env('APP_URL') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js--}}
+    {{--{{ config('app.url') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js--}}
 
     <script>
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}

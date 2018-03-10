@@ -38,7 +38,7 @@ create_dv($editor_selector_key, '0', true);
 
 
 @section('content')
-    <div style="padding:2px 90px 0 90px;border:0px #c00 solid">{{--pagewrapper--}}
+    <div style="padding:2px 10px 0 10px;border:0px #c00 solid">{{--pagewrapper--}}
         <?php
         $has_help = true;
         $has_help_hints = true;
@@ -48,7 +48,6 @@ create_dv($editor_selector_key, '0', true);
         ?>
         <h4 class="float-left" style="margin:-20px 0 10px 6px;color:#aaa">HTML-Texte für Tooltips und Hinweise im Table 'diverse' <span class="dimmed04">(div_res_long)</span></h4>
         <div class="text-right" style="padding:0 12px 6px 12px;width:100%;">
-
 
             <span style="font-size:0.8em;" class="dimmed06 mr-15">Benötigen Sie mehr Platz?
                 Oder klicken Sie auf <i class="fa fa-arrows-alt" aria-hidden="true"></i> in der Werkzeugleiste des  erweiterten Editors. Oder Editor...</span>
@@ -95,8 +94,10 @@ create_dv($editor_selector_key, '0', true);
                 $switch_size = 'no' //xs, sm, no, lg
             );
             ?>
+
         </div>
-        @include('backend.popups.help_pop1.help-block')
+    <?php $this_page_name = 'pop1'; //required for help-block  ?>
+    @include('backend.popups.help_pop1.help-block-all_pops')
 
         <!-- Custom Tabs -->
         <a class="nav-tabs-custom round6 " style="background:#ECF0F5">
@@ -140,7 +141,7 @@ create_dv($editor_selector_key, '0', true);
                         <div class="tab-pane" id="tab_{{$lang->code}}" style="background:#f5f6f7">
                             <?php } ?>
 
-                            {!! Form::model('Diverses', ['route' => ['admin.diverses.update_long_field_by_div_what', $t_key], 'method' => 'patch']) !!}
+                            {!! Form::model('Diverses', ['route' => ['admin.diverses.update_long_field_by_div_what', $t_key], 'method' => 'patch','name' => 'nixxx','id' => 'div_form' ]) !!}
                             <input name="lang" type="hidden" value="{{$lang->code}}">
 
                             <input name="lang" type="hidden" value="{{$lang->code}}">
@@ -148,6 +149,16 @@ create_dv($editor_selector_key, '0', true);
                             <div style="margin:0 6px 9px 6px;font-weight:bold;color:#aaa">
                                 <span style="font-size:1.3em">
                                     Text bearbeiten - {{$lang->directory}} {!! flag_icon($lang->code) !!}
+                                </span>
+                                <span style="font-weight:normal" class="float-right">aktuelle Einstellungen in config.app: 1. Sprache = <b>{{config('app.locale')}}</b> - Fallback-Sprache = <b>{{config('app.fallback_locale')}}</b>
+                                    <?php
+                                    $what = 'set_main_lang_and_fallback_lang';
+                                    $class = "tip_lu";
+                                    $width = '400px';
+                                    $style = 'margin-left:5px';
+                                    $icon = '';
+                                    echo tooltip($what, $class, $width, $style, $icon);
+                                    ?>
                                 </span>
                             </div>
 
@@ -161,10 +172,11 @@ create_dv($editor_selector_key, '0', true);
                             </textarea>
 
                             <div style="margin:9px 0  6px 12px">
-                                <input class="btn btn-success btn-xs" type="submit" title="speichern"
+                                <input id="submit_btn" class="btn btn-success btn-sm" type="submit" title="speichern"
                                        value="speichern">
 
-                                <a style="margin-left:76px" class="btn btn-info btn-sm" href="javascript:javascript:parent.location.reload()" role="button">
+                                <a style="margin-left:76px" class="btn btn-info btn-sm"
+                                   href="javascript:javascript:submit_and_reload();" role="button">
                                     <i class="fa fa-refresh fa-lg" aria-hidden="true"></i> Editor schliessen mit Reload der Hintergrundseite</a>
 
                                 <?php
@@ -177,8 +189,18 @@ create_dv($editor_selector_key, '0', true);
                                 ?>
 
                             </div>
+
+
                             {!! Form::close() !!}
 
+                            <script>
+                                function submit_and_reload() {
+                                    //div_form.submit;
+                                    //document.getElementById('submit_btn').click();
+                                    //document.getElementById('div_form').submit();
+                                    parent.location.reload();
+                                }
+                            </script>
 
                         </div>
                         <?php  $i++;  ?>
@@ -234,19 +256,19 @@ create_dv($editor_selector_key, '0', true);
     <!-- CKEditor init 4.8.0 -->
     @if(get_dv($editor_selector_key))
         {{--enhanced version--}}
-        {{--<script src="{{ env('APP_URL') }}/my_plugins/ckeditor_my_version_compact/ckeditor.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_my_version_compact/styles.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_my_version_compact/adapters/jquery.js"></script>--}}
+        {{--<script src="{{ config('app.url') }}/my_plugins/ckeditor_my_version_compact/ckeditor.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_my_version_compact/styles.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_my_version_compact/adapters/jquery.js"></script>--}}
         {{--more enhanced version--}}
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_more_enhanced/ckeditor.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_more_enhanced/styles.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_more_enhanced/adapters/jquery.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_more_enhanced/ckeditor.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_more_enhanced/styles.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_more_enhanced/adapters/jquery.js"></script>
 
     @else
         {{--basic version--}}
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_basic/ckeditor.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_basic/styles.js"></script>
-        <script src="{{ env('APP_URL') }}/my_plugins/ckeditor_4.8.0_basic/adapters/jquery.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_basic/ckeditor.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_basic/styles.js"></script>
+        <script src="{{ config('app.url') }}/my_plugins/ckeditor_4.8.0_basic/adapters/jquery.js"></script>
     @endif
 
     <script>
@@ -271,7 +293,7 @@ create_dv($editor_selector_key, '0', true);
         });
     </script>
 
-    {{--{{ env('APP_URL') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js--}}
+    {{--{{ config('app.url') }}/my_plugins/jQuery-Easydrag/jQuery-Easydrag.js--}}
 
     <script>
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}

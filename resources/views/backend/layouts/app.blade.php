@@ -50,7 +50,6 @@ $fa_popup = fa_popup();
 @if(get_dv('dashboard_settings_top_nav_fixed'))  header-fixed @endif
 @if(get_dv('dashboard_settings_bottom_nav_fixed'))  footer-fixed @endif
 ">
-
 <span id="oben1"></span>
     @include('backend.includes.header')
 
@@ -97,7 +96,7 @@ $fa_popup = fa_popup();
 @endif
 
 {{-- always last!--}}
-<script src="{{ env('APP_URL') }}/js/custom/mycustom.js"></script>
+<script src="{{ config('app.url') }}/js/custom/mycustom.js"></script>
 
 @yield('after-scripts')
 

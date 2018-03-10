@@ -1,5 +1,6 @@
 <footer class="app-footer" style="background:#f9f9f9">
-    <strong>{{ __('labels.general.copyright') }} &copy; {{ date('Y') }} <a href="http://laravel-boilerplate.com">{{ __('strings.backend.general.boilerplate_link') }}</a></strong> {{ __('strings.backend.general.all_rights_reserved') }}
+    <strong>{{ __('labels.general.copyright') }} &copy; {{ date('Y') }} <a target="_blank"
+                                                                           href="https://lara1.mydotter.de">{{ __('strings.backend.general.boilerplate_link') }}</a></strong> {{ __('strings.backend.general.all_rights_reserved') }}
 
-    <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a></span>
+    <span class="float-right dimmed04">Laravel {{laravel_version()}}</span>
 </footer>

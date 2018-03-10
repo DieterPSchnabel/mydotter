@@ -282,5 +282,5 @@
     </div>--}}
 
 
-    {{--<script type="text/javascript" src="{{ env('APP_URL') }}/resources/assets/plugins/date-input-polyfill.dist.js"></script>--}}
+    {{--<script type="text/javascript" src="{{ config('app.url') }}/resources/assets/plugins/date-input-polyfill.dist.js"></script>--}}
 @endsection

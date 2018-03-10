@@ -222,8 +222,8 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     @if($url1<>'')
@@ -261,8 +261,8 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
                     @if($url2<>'')
                         <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url2}}">
@@ -305,8 +305,8 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     @if($url3<>'')
@@ -348,7 +348,7 @@
 
                     {{--<a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
                     @if($url4<>'')
@@ -406,7 +406,7 @@
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
                     @if($url5<>'')
@@ -461,7 +461,7 @@
 
                     {{--<a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
                     @if($url6<>'')
@@ -516,7 +516,7 @@
 
                     {{--<a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
 
@@ -580,8 +580,8 @@ more key may be active, copy/paste all above under #3
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url8}}">
@@ -620,8 +620,8 @@ more key may be active, copy/paste all above under #3
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url9}}">
@@ -658,8 +658,8 @@ more key may be active, copy/paste all above under #3
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox
                        data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url10}}">

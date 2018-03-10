@@ -682,6 +682,7 @@ $( "#tab_cols" ).on( "submit", function( event ) {
     event.preventDefault();
     cols= $( this ).serialize();
     //console.log( $( this ).serialize() );
+    //alert(cols);
     cols_arr = cols.split("&");
     //console.log( cols_arr );
     var str, str2
@@ -700,7 +701,7 @@ $( "#tab_cols" ).on( "submit", function( event ) {
             table_name = str2.replace('table_name=', '')
         }
     }
-    //console.log(colstring);
+    console.log(colstring);
     //console.log(table_name);
     var t_key = table_name+'_disp_cols_arr'
     //console.log(t_key);
@@ -855,9 +856,87 @@ function show_only_activated_langs(table){
     ax_jq('/axfe','id=121_'+table,'show_only_activated_langs_conf');
 }
 
+function show_only_key_values(table) {
+    ax_jq('/axfe', 'id=1211_' + table, 'show_only_activated_langs_conf');
+}
 function save_on_enter(ident,event){
     if (event.which == 13) {
         event.preventDefault();
         document.getElementById(ident+'_save').click();
     }
+}
+
+function set_opacity(id, op_val) {
+    obj = $(id);
+    if (obj) {
+        obj.setStyle({opacity: op_val});
+    }
+}
+
+//////////////////////// auto translation
+function customCleaner2(txt) {
+    return txt.replace(/'/g, "__xhochkx__");
+    return txt
+}
+
+function auto_translate(selected, from_lang, ident, tab, field_type, id_field, id) {
+    /*
+    select options:
+    empty
+    all
+    all_empty
+    all_but_default
+    $lang = target_lang
+    */
+    //alert(ident);
+    //var e = document.getElementById("select_"+ident);
+    //var selected = e.options[e.selectedIndex].value;
+    var method = 'plain';
+
+    if (selected == '') {
+        swal('Bitte wählen...', 'in welche Sprache/n soll übersetzt werden?');
+        return;
+    }
+    if (selected == 'all') {
+        var method = 'all';
+    }
+    if (selected == 'all_empty') {
+        var method = 'all_empty';
+    }
+    if (selected == 'all_but_default') {
+        var method = 'all_but_default';
+    }
+    //var method = selected;
+    var target_lang_code = selected;
+    var source_lang_code = from_lang;
+
+    return do_transl_auto(target_lang_code, source_lang_code, ident, method, tab, field_type, id_field, id);
+}
+
+
+function do_transl_auto(target_lang_code, source_lang_code, ident, method, tab, field_type, id_field, id) {
+
+    var e = document.getElementById(ident);
+    var src_text = e.value;
+    src_text = customCleaner2(src_text) //replace all ' with  "__xhochkx__" - will be replaced back before save to db in myhelper_ax
+    //console.log(src_text)
+    //alert(ident)
+    if (src_text == '') {
+        swal('Nicht möglich!', 'Quelltext (' + source_lang_code + ') ist leer.');
+        return;
+    }
+
+
+    var target_lang_ident = 'langfield_' + target_lang_code;
+
+//alert(target_lang_ident); //langfield_all
+    //get translation via ax_updater
+
+    ax_jq('/axfe', 'id=122_' + src_text + '_xyx_' + source_lang_code + '_xyx_' + target_lang_code + '_xyx_' + tab + '_xyx_' + field_type + '_xyx_' + id_field + '_xyx_' + id + '_xyx_' + method, target_lang_ident + '_conf');
+
+    //eintragen in form - not needed since page reload
+    //var e1 = document.getElementById(target_lang_ident);
+    //e1.value = 'Hier die Übersetzung'
+
+
 }

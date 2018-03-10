@@ -16,10 +16,8 @@ function find_missing_translation($what, $long)
     $missing = false;
     $languages = get_languages();
     foreach($languages as $lang) {
-
-        //$content = get_dv($res_field);
-        $content = $res->$res_field;
-        //ec($content);
+        $this_res_field = $res_field . $lang->code;
+        $content = $res->$this_res_field;
         if( trim($content) == ''){
             $missing = true;
             break;
@@ -44,13 +42,12 @@ function mark_missing_translation_with_icon($what, $lang_code, $long)
     }
 
     //$res = App\Models\Diverses::where('div_what', $what)->firstOrFail();
-    $c_key = 'diverses.'.$what.'.'.$res_field;
-    //dd(__line__.': '.$what);
+    /*$c_key = 'diverses.'.$what.'.'.$res_field;
     $res = Cache::remember($c_key, CACHE_MINUTES_SHORT, function () use ($what) {
         //return App\Models\Diverses::where('div_what', $what)->firstOrFail();
         return App\Models\Diverses::where('div_what', $what)->first();
-    });
-    //$res = App\Models\Diverses::where('div_what', $what)->first();
+    });*/
+    $res = App\Models\Diverses::where('div_what', $what)->first();
     $missing = false;
     //dd($res);
     if(is_null($res)){

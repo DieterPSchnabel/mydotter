@@ -26,6 +26,37 @@ function get_languages($lang='', $anz=false)
     }
 }
 
+
+function get_languages_with_en($lang = '', $anz = false)
+{
+// create switch: translate_to_english_first
+//if we want to use the advantage in translations to translate first into english and
+//then from english into all other langs (exept default language) we must make shure that
+//english is in this array
+
+    if ($lang == '' or $lang == 'all') {
+        //Cache::forget( 'languages.status.1.all' );
+        $languages = Cache::remember('languages.status.1.all', CACHE_MINUTES_SHORT, function () {
+            return App\Models\Languages::where('status', 1)
+                ->orWhere('status_frontend', 1)
+                ->orWhere('code', 'en')
+                /*->orderBy('id', 'asc')*/
+                ->orderBy('sort_order', 'asc')
+                ->get();
+        });
+    } else {
+        //Cache::forget( 'languages.code.'.$lang );
+        $languages = Cache::remember('languages.code.' . $lang, CACHE_MINUTES_SHORT, function () use ($lang) {
+            return App\Models\Languages::where('code', $lang)->get();
+        });
+    }
+    if ($anz) {
+        return count($languages);
+    } else {
+        return $languages;
+    }
+}
+
 function get_languages_all($sorder = 'code', $rf='asc', $anz=false)
 {
     if(!$anz) {
@@ -56,13 +87,16 @@ function active_languages_str($as_array=false){
     }
     return $r;
 }
-function active_languages_str_for_diverses($as_array=false){
+
+function active_languages_str_for_diverses($as_array = false, $type = 'both')
+{
+    //$type both short or long
     $languages = get_languages();
     $r = '';
     foreach ($languages as $lang) {
         //$r .= '\''.$lang->code.'\',';
-        $r .= 'div_res_'.$lang->code.',';
-        $r .= 'div_res_long_'.$lang->code.',';
+        if ($type == 'both' or $type == 'short') $r .= 'div_res_' . $lang->code . ',';
+        if ($type == 'both' or $type == 'long') $r .= 'div_res_long_' . $lang->code . ',';
     }
     $r = substr($r,0,-1);
     if($as_array){
@@ -72,6 +106,19 @@ function active_languages_str_for_diverses($as_array=false){
     return $r;
 }
 
+function active_languages_str_for_diverses_raw_query()
+{
+    $lang_arr = active_languages_str_for_diverses($as_array = true);
+    //return $lang_arr;
+    $r = '';
+    foreach ($lang_arr as $lang) {
+        $r .= $lang . '=\'\' or ';
+
+
+    }
+    $r = substr($r, 0, -3);
+    return $r;
+}
 
 function all_languages_str($as_array=false){
     $languages = get_languages_all();
@@ -151,3 +198,34 @@ function lang_dir_from_lang_code($code)
     }
 }
 
+function get_fallback_lang_code()
+{
+    return config('app.fallback_locale');
+}
+
+function get_default_lang_code()
+{
+    return config('app.locale');
+}
+
+function get_default_lang_name()
+{
+    $code = config('app.locale');
+    $languages = get_languages();
+
+    foreach ($languages as $lang) {
+        $name = $lang->name;
+        if ($lang->code == $code) return $name;
+    }
+}
+
+function get_fallback_lang_name()
+{
+    $code = config('app.fallback_locale');
+    $languages = get_languages();
+
+    foreach ($languages as $lang) {
+        $name = $lang->name;
+        if ($lang->code == $code) return $name;
+    }
+}

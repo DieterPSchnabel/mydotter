@@ -224,8 +224,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     @if($url1<>'')
@@ -261,8 +261,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
                     @if($url2<>'')
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url2}}">
@@ -301,8 +301,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url3}}">
@@ -338,8 +338,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url4}}">
@@ -377,8 +377,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url5}}">
@@ -414,8 +414,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url6}}">
@@ -453,8 +453,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url7}}">
@@ -489,8 +489,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url8}}">
@@ -528,8 +528,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url9}}">
@@ -565,8 +565,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       href="javascript:">
                         Edit </a>
 
                     <a class="btn btn-primary btn-sm float-right mr-10" target="_blank" href="{{$url10}}">

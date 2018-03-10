@@ -98,7 +98,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -125,7 +125,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -158,7 +158,7 @@
                         Page Reload </a>
 
                     {{--<a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
 
@@ -230,7 +230,7 @@
                         Page Reload </a>
 
                     {{--<a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
 
@@ -362,7 +362,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -389,7 +389,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -419,7 +419,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -446,7 +446,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -476,7 +476,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -503,7 +503,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -533,7 +533,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -560,7 +560,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -590,7 +590,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -617,7 +617,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -647,7 +647,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -674,7 +674,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -704,7 +704,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -731,7 +731,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -761,7 +761,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -788,7 +788,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -818,7 +818,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -845,7 +845,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -875,7 +875,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -902,7 +902,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -937,7 +937,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -968,7 +968,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1002,7 +1002,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1036,7 +1036,7 @@ str_possessive  echo str_possessive('Brian') . ' house.'; // "Brian's house."
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1076,7 +1076,7 @@ str_possessive  echo str_possessive('Brian') . ' house.'; // "Brian's house."
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1108,7 +1108,7 @@ str_possessive  echo str_possessive('Brian') . ' house.'; // "Brian's house."
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1270,7 +1270,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         Page Reload </a>
 
                     {{--<a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -1644,7 +1644,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -1689,7 +1689,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
 
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1698,7 +1698,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         {{$t_title}}</a>
 
                     {{--<a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>--}}
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -1727,7 +1727,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
                     {{$t_title}} <span style="margin-left:12px;font-size:0.7em;font-weight:normal;color:#999">{{$t_key}}</span>
@@ -1756,7 +1756,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1783,7 +1783,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1813,7 +1813,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1840,7 +1840,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1873,7 +1873,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -1900,7 +1900,7 @@ $full_link = 'https://github.com/danielstjules/Stringy';
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 

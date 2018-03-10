@@ -48,15 +48,16 @@ function get_hint_by_t_key(
     $add_l = '&lang=all'; //defaults to session_lang()
     $add_l .= '&curr_lang'; //defaults to session_lang()
 
-    $ret .= '<a style="" class="tt-edit-link btn btn-link btn-xs dimmed04 " title="diesen Hinweis editieren in allen Sprachen" 
-            data-fancybox data-type="iframe" data-src="'.url('/dashboard/pop1?key='.$t_key.$add_l.'').'" href="javascript:;">            
+    if (dashboard_settings_show_edit_links()) {
+        $ret .= '<a style="" class="tt-edit-link btn btn-link btn-xs dimmed04 " title="diesen Hinweis editieren in allen Sprachen" 
+            data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop1?key=' . $t_key . $add_l . '') . '" href="javascript:;">            
             <b>edit</b>';
-    //check for missing translations
-    if(find_missing_translation($t_key, true)){
-        $ret .= '<span style="margin-left:6px;font-size:0.7em;color:#c66">es fehlen Übersetzungen!</span>';
+        //check for missing translations
+        if (find_missing_translation($t_key, true)) {
+            $ret .= '<span style="margin-left:6px;font-size:0.7em;color:#c66">es fehlen Übersetzungen!</span>';
+        }
+        $ret .= '</a>';
     }
-    $ret .= '</a>';
-
     if (is_dev()) {
         $ret .= '<div class="tt-key-disp pull-right dimmed04">'.$t_key.'</div>';
     }
@@ -155,7 +156,7 @@ function tooltip(
         $style_add = ' style="'.$style.'" ';
     }
 
-    $ident = str_random(6).'_'.$t_key.'_center';
+    $ident = str_random(10) . '_' . $t_key . '_center';
     if ($class == 'tip') {
         $ret = '
             <span class="'.$class.'" '.$style_add.'>

@@ -29,7 +29,6 @@
         </li>
         @endif
     </ul>
-
     <div class="tab-content">
         @if($has_help_hints)
         <div style="padding:1.2em" class="tab-pane active animated fadeIn" id="home3" role="tabpanel" aria-expanded="true">

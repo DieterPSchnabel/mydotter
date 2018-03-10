@@ -25,7 +25,7 @@
 {!! script(mix('js/backend.js')) !!}
 {!! script(mix('js/backend2.js')) !!}
 {{-- immer als letztes!--}}
-<script src="{{ env('APP_URL') }}/js/custom/mycustom.js"></script>
+<script src="{{ config('app.url') }}/js/custom/mycustom.js"></script>
 
 @stack('after-scripts')
 

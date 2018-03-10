@@ -1,27 +1,27 @@
 {{-- backend/includes/partials/dev-nav.blade--}}
 <div style="padding:8px 12px;background:#eee;margin:0 0 8px 0;font-size:1.5em">
     <a class="btn btn-default btn-sm ml-1 mr-5" data-fancybox data-type="iframe"
-       data-src="{{env('APP_URL')}}/dashboard/pop_dev_links"
+       data-src="{{config('app.url')}}/dashboard/pop_dev_links"
        href="javascript:;">
         Links {!! fa_popup() !!}</a>
 
     <a class="btn btn-default btn-sm ml-1 " data-fancybox data-type="iframe"
-       data-src="{{env('APP_URL')}}/dashboard/pop_dev_info"
+       data-src="{{config('app.url')}}/dashboard/pop_dev_info"
        href="javascript:;">
         Dev Info {!! fa_popup() !!}</a>
 
     {{--<a class="btn btn-default btn-sm ml-1 " data-fancybox data-type="iframe"
-       data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto"
+       data-src="{{config('app.url')}}/dashboard/pop_dev_howto"
        href="javascript:;">
         How to {!! fa_popup() !!}</a>--}}
 
     <a class="btn btn-default btn-sm ml-1 " data-fancybox data-type="iframe"
-       data-src="{{env('APP_URL')}}/dashboard/pop_dev_settings"
+       data-src="{{config('app.url')}}/dashboard/pop_dev_settings"
        href="javascript:;">
         Settings {!! fa_popup() !!}</a>
 
     <a class="btn btn-default btn-sm ml-1 " data-fancybox data-type="iframe"
-       data-src="{{env('APP_URL')}}/dashboard/pop_dev_helpers"
+       data-src="{{config('app.url')}}/dashboard/pop_dev_helpers"
        href="javascript:;">
         Helpers {!! fa_popup() !!}</a>
 
@@ -33,52 +33,52 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=18"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=18"
                href="javascript:;">
                 Spatie - How to 18 {!! fa_popup() !!}</a>
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=19"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=19"
                href="javascript:;">
                 Translations - How to 19 {!! fa_popup() !!}</a>
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=20"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=20"
                href="javascript:;">
                 Artisan - How to 20 {!! fa_popup() !!}</a>
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=21"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=21"
                href="javascript:;">
                 Generators - How to 21 {!! fa_popup() !!}</a>
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=22"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=22"
                href="javascript:;">
                 Filesystem - How to 22 {!! fa_popup() !!}</a>
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=23"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=23"
                href="javascript:;">
                 Auth/Permissions - How to 23 {!! fa_popup() !!}</a>
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=24"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=24"
                href="javascript:;">
                 Date/Time - How to 24 {!! fa_popup() !!}</a>
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=25"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=25"
                href="javascript:;">
                 to Javascript - How to 25 {!! fa_popup() !!}</a>
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=26"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=26"
                href="javascript:;">
                 Infyom - How to 26 {!! fa_popup() !!}</a>
 
             <a class="dropdown-item" data-fancybox data-type="iframe"
-               data-src="{{env('APP_URL')}}/dashboard/pop_dev_howto?p=27"
+               data-src="{{config('app.url')}}/dashboard/pop_dev_howto?p=27"
                href="javascript:;">
                 Allgemein - How to 27 {!! fa_popup() !!}</a>
 
@@ -88,12 +88,12 @@
     <span class="ml-1" style="opacity:0.15">||</span>
 
     <a class="btn btn-default btn-sm ml-1 " data-fancybox data-type="iframe"
-       data-src="{{env('APP_URL')}}/admin/decompose"
+       data-src="{{config('app.url')}}/admin/decompose"
        href="javascript:;">
         Decomposer {!! fa_popup() !!}</a>
 
     <a class="btn btn-default btn-sm ml-1 " data-fancybox data-type="iframe"
-       data-src="{{env('APP_URL')}}/admin/dashboard/installed_as_per_decomposer"
+       data-src="{{config('app.url')}}/admin/dashboard/installed_as_per_decomposer"
        href="javascript:;">
         installed Larapacks {!! fa_popup() !!}</a>
 

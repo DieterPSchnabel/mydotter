@@ -1,4 +1,33 @@
 <div class="sidebar">
+
+    <div class="dimmed04" style="color:#eee;margin:6px 0 0 16px">
+        <?php
+        echo get_checkbox_any_table(
+            $table = 'diverses',
+            $field = 'div_res',
+            $id = 'dashboard_settings_sidebar_minimized',
+            $id_field = 'div_what',
+            $with_comment = false,
+            $tt_hint_key = 'is_dev',
+            $label_text = 'Sidebar minimal?',
+            $with_panel = false,
+            $ax_response = true,
+            $input_style = '',
+            $label_style = 'margin-right:6px;font-weight:normal;',
+            $with_tooltip = false,
+            $tt_class = 'tip zindex-max',
+            $tt_width = '300px',
+            $with_page_reload = true,
+            $this_value = '',  // !!! only if $from_inside_loop = true fill with {$model->fieldname}
+            $from_inside_loop = false, // lookup for current value if set to false
+            $as_switch = true, //only checkbox or switch?
+            $switch_size = 'xs' //xs, sm, no, lgz-index:100000 !important;
+        );
+
+        ?>
+    </div>
+
+
     <nav class="sidebar-nav">
         <ul class="nav">
             <li class="nav-title">

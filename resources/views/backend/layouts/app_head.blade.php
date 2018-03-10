@@ -37,7 +37,7 @@
     {{--<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">--}}
     {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css" rel="stylesheet">--}}
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">--}}
-    <link media="all" type="text/css" rel="stylesheet" href="{{env('APP_URL')}}/css/mycustom.css">
+    <link media="all" type="text/css" rel="stylesheet" href="{{config('app.url')}}/css/mycustom.css">
     {{--<link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">--}}
 

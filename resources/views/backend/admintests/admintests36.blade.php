@@ -2042,37 +2042,36 @@ echo get_checkbox_div(
                                     </div>
                                     <div id="php_code_{{$t_key}}" style="display:none;margin:9px 0 0 0">
                                                 <pre><code>
-$what = 'dashboard_settings_sidebar_minimized';
 echo get_checkbox_div(
-    $what, //the key in table 'diverses' in field 'div_what'
-    $label_text = '', //label is only available if $with_panel == false
+    $what = 'translate_to_english_first',
+    $label_text = '',
     $label_style = 'font-weight:bold; margin-right:6px; ',
-    $with_panel = false, //wrap all in a box?
+    $with_panel = true,
     $data_on = 'On',
     $data_off = 'Off',
     $wrapper_style = 'padding:2px 9px 0 9px;margin:0 0 4px 0;',
-    $ax_response = false, //if true: a little tick appears for confirmation after change
-    $ax_response_with_page_reload = false, //if true: page will be reloaded on change
-    $with_tooltip = true, //always false if $with_panel == true
-    $tt_class = 'tip', // tip (right) or tip_lu (left)
-    $tt_width = '450px' //width of tooltip popup
+    $ax_response = false,
+    $ax_response_with_page_reload = false,
+    $with_tooltip = true,
+    $tt_class = 'tip_lu',
+    $tt_width = '450px'
 )
                                                 </code></pre>
                                     </div>
 
                                     <?php
                                     echo get_checkbox_div(
-                                    $what = 'dashboard_settings_sidebar_minimized',
+                                    $what = 'translate_to_english_first',
                                     $label_text = '',
                                     $label_style = 'font-weight:bold; margin-right:6px; ',
-                                    $with_panel = false,
+                                    $with_panel = true,
                                     $data_on = 'On',
                                     $data_off = 'Off',
                                     $wrapper_style = 'padding:2px 9px 0 9px;margin:0 0 4px 0;',
                                     $ax_response = false,
-                                    $ax_response_with_page_reload = true,
+                                    $ax_response_with_page_reload = false,
                                     $with_tooltip = true,
-                                    $tt_class = 'tip',
+                                    $tt_class = 'tip_lu',
                                     $tt_width = '450px'
                                     )
                                     ?>
@@ -2150,27 +2149,26 @@ echo get_checkbox_div(
                                     </div>
                                     <div id="php_code_{{$t_key}}" style="display:none;margin:9px 0 0 0">
                                                 <pre><code>
-$what = 'dashboard_settings_sidebar_minimized';
 echo get_checkbox_div(
-    $what, //the key in table 'diverses' in field 'div_what'
-    $label_text = '', //label is only available if $with_panel == false
+    $what = 'allow_auto_translate_to_all_active_languages',
+    $label_text = '',
     $label_style = 'font-weight:bold; margin-right:6px; ',
-    $with_panel = false, //wrap all in a box?
+    $with_panel = false,
     $data_on = 'On',
     $data_off = 'Off',
     $wrapper_style = 'padding:2px 9px 0 9px;margin:0 0 4px 0;',
-    $ax_response = false, //if true: a little tick appears for confirmation after change
-    $ax_response_with_page_reload = false, //if true: page will be reloaded on change
-    $with_tooltip = true, //always false if $with_panel == true
-    $tt_class = 'tip', // tip (right) or tip_lu (left)
-    $tt_width = '450px' //width of tooltip popup
+    $ax_response = false,
+    $ax_response_with_page_reload = true,
+    $with_tooltip = true,
+    $tt_class = 'tip_lu',
+    $tt_width = '450px'
 )
                                                 </code></pre>
                                     </div>
 
                                     <?php
                                     echo get_checkbox_div(
-                                    $what = 'dashboard_settings_sidebar_minimized',
+                                    $what = 'allow_auto_translate_to_all_active_languages',
                                     $label_text = '',
                                     $label_style = 'font-weight:bold; margin-right:6px; ',
                                     $with_panel = false,
@@ -2180,7 +2178,7 @@ echo get_checkbox_div(
                                     $ax_response = false,
                                     $ax_response_with_page_reload = true,
                                     $with_tooltip = true,
-                                    $tt_class = 'tip',
+                                    $tt_class = 'tip_lu',
                                     $tt_width = '450px'
                                     )
                                     ?>

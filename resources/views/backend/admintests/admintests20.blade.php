@@ -156,7 +156,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -191,7 +191,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -231,7 +231,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -268,7 +268,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -309,7 +309,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -348,7 +348,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -388,7 +388,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -424,7 +424,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -463,7 +463,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -500,7 +500,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -539,7 +539,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 
@@ -575,7 +575,7 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-success btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key}}&title={{$t_title}}"
                        href="javascript:;">
                         Edit </a>
 

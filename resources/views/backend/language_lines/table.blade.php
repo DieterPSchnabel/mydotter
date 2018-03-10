@@ -10,7 +10,7 @@
         echo make_col_sortable2($this_col,$this_col,$sortables_arr,$page_para,$dir,$order,$curr_dir,$model_path.'Controller@index')
         ?>
     </th>@endif
-        <th>Edit
+        <th>Übersetzen
         <?php
             $what = $this_table_name.'_edit_translations_hint';
             $class="tip";  //tip or tip_lu
@@ -482,10 +482,12 @@
 
          <a style="" class="" title="diesen Hinweis editieren in allen Sprachen"
             data-fancybox data-type="iframe"
-            data-src="http://rappasoft.loc:81/dashboard/pop2?full_key={{$cur_rec->full_key}}&lang=all&curr_lang" href="javascript:;">
+            data-src="{{config('app.url')}}/dashboard/pop2?full_key={{$cur_rec->full_key}}&lang=all&curr_lang"
+            href="javascript:;">
 
-             <button type="button" class="btn btn-success btn-sm ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="edit">
-                 <i class="fa fa-pencil fa-sm-text-shadow"></i>
+             <button type="button" class="btn btn-info btn-sm ml-1" data-toggle="tooltip" data-placement="top" title=""
+                     data-original-title="edit">
+                 <i class="fa fa-copy fa-sm-text-shadow"></i>
              </button>
 
          </a>
@@ -493,7 +495,18 @@
 
      </td>
 
-     @if(in_array('full_key',$display_cols_arr))<td>{!! mark($cur_rec->full_key) !!}</td>@endif
+         @if(in_array('full_key',$display_cols_arr))
+             <td>{!! mark($cur_rec->full_key) !!}
+
+                 @if(is_dev())
+                     <div title="DEV only" class="dimmed04">
+                         <input class="zoom80" onfocus="this.select()" type="text"
+                                value="__('{{$cur_rec->full_key}}')"/>
+                     </div>
+                     </div>
+                 @endif
+
+             </td>@endif
 
             @if(in_array('group',$display_cols_arr))<td>{!! mark($cur_rec->group) !!}</td>@endif
 

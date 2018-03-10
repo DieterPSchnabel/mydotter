@@ -31,8 +31,8 @@
                         Page Reload </a>
 
                     <a style="margin-right:12px" class="btn btn-primary btn-sm float-right" data-fancybox data-type="iframe"
-                       data-src="{{env('APP_URL')}}/dashboard/pop_notes_admin"
-                       href="javascript:;">
+                       data-src="{{config('app.url')}}/dashboard/pop_notes_admin"
+                       href="javascript:">
                         Edit </a>
 
                     Admin Notes
