@@ -117,17 +117,59 @@ function performLfmRequest(url, parameter, type) {
     });
   }
 
+    /*return $.ajax({
+        type: 'GET',
+        dataType: type || 'text',
+        url: lfm_route + '/' + url,
+        data: data,
+        cache: false
+    }).fail(function () {
+        alert(xhr.status);
+        alert(thrownError);
+        alert(xhr.responseText);
+        console.log('128:' + lfm_route + '/' + url);
+        notify('Action failed, due to server error. on 128 ' + lfm_route + '/' + url + ' '+xhr.status);
+    });*/
+
   return $.ajax({
     type: 'GET',
     dataType: type || 'text',
     url: lfm_route + '/' + url,
     data: data,
     cache: false
-  }).fail(function () {
+  }).error;
+:
+    (function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+        alert(xhr.responseText);
       console.log('128:' + lfm_route + '/' + url);
-    notify('Action failed, due to server error. on 128 ' + lfm_route + '/' + url);
+        notify('Action failed, due to server error. on 128 ' + lfm_route + '/' + url + ' ' + xhr.status);
   });
 }
+
+/*$.ajax({
+    type:'POST',
+    url: url,
+    data:{id:param},
+    //dataType: 'html'  /!*weglassen dann werden scripts evaluiert siehe 147  *!/  ,
+    error: function(xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+        alert(xhr.responseText);
+        alert('Fehler line 92...')
+    },
+    success: function(data) {
+        if( $("#"+target) )  $("#"+target).html(data.msg); //oder json(data)
+    }
+});*/
+
+/*error: function(xhr, ajaxOptions, thrownError) {
+    alert(xhr.status);
+    alert(thrownError);
+    alert(xhr.responseText);
+    alert('Fehler line 92...')
+},*/
 
 var refreshFoldersAndItems = function (data) {
   loadFolders();
@@ -140,7 +182,7 @@ var refreshFoldersAndItems = function (data) {
 var hideNavAndShowEditor = function (data) {
   $('#nav-buttons').addClass('hidden');
   $('#content').html(data);
-}
+};
 
 function loadFolders() {
   performLfmRequest('folders', {}, 'html')
@@ -302,7 +344,7 @@ function defaultParameters() {
 }
 
 function notImp() {
-  bootbox.alert('Not yet implemented!');;
+    bootbox.alert('Not yet implemented!');
 }
 
 function notify(message) {
