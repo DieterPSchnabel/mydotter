@@ -43,17 +43,32 @@ function confirm_swal(headertxt,text,confirm_text,type) {
   });
 }
 
-function delete_in_table(table,id,ident) {
+function delete_in_table(table, id, ident, title, text, confirmButtonText, cancelButtonText) {
     swal({
-        title: "ID: #"+id+" wirklich löschen?",
+        title: title,
+        text: text,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: confirmButtonText,
+        cancelButtonText: cancelButtonText
+        /*title: "ID: #"+id+" wirklich löschen?",
         text: "",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Abbruch'*/
+
+
+
+
     }).then((result) => {
-        if (result.value) {
+        if(result.value;
+)
+    {
         /*swal(
             'Deleted!',
             'Your file has been deleted.',
@@ -86,7 +101,7 @@ function ax_jq(url,param,target) {
             alert(xhr.status);
             alert(thrownError);
             alert(xhr.responseText);
-            alert('Fehler line 92...')
+            alert('Error line 92... , looks like you reached session timeout,  you must reload this page first (F5).')
         },
         success: function(data) {
           if( $("#"+target) )  $("#"+target).html(data.msg); //oder json(data)
@@ -244,7 +259,9 @@ function text_to_any_table(ident ,table, field, id, id_field, with_page_reload){
             confirmButtonText: 'Ja, speichern!',
             cancelButtonText: 'Abbruch'
         }).then((result) => {
-            if (result.value) {
+            if(result.value;
+    )
+        {
                 ax_jq('/axfe','id=103_'+val+'_xyx_'+ident+'_xyx_'+table+'_xyx_'+field+'_xyx_'+id_field+'_xyx_'+id+'_xyx_'+with_page_reload,ident+'_conf');
         }
         })
@@ -300,11 +317,11 @@ String.prototype.replaceAll = function(
     var strText = this;
     var intIndexOfMatch = strText.indexOf( strTarget );
     while (intIndexOfMatch != -1){
-    strText = strText.replace( strTarget, strSubString )
+        strText = strText.replace(strTarget, strSubString);
     intIndexOfMatch = strText.indexOf( strTarget );
   }
   return( strText );
-}
+};
 
 function strtolower(str) {
   return (str + '')
@@ -348,13 +365,13 @@ tempval.select();
 // trim
 String.prototype.trim = function() {
    return this.replace(/^\s+|\s+$/g,"");
-}
+};
 String.prototype.ltrim = function() {
    return this.replace(/^\s+/g,"");
-}
+};
 String.prototype.rtrim = function() {
    return this.replace(/\s+$/g,"");
-}
+};
 
 function Right(str, n){
     if (n <= 0){
@@ -685,13 +702,13 @@ $( "#tab_cols" ).on( "submit", function( event ) {
     //alert(cols);
     cols_arr = cols.split("&");
     //console.log( cols_arr );
-    var str, str2
-    var colstring = ''
-    var table_name = ''
+    var str, str2;
+    var colstring = '';
+    var table_name = '';
 
     for (var i = 0, len = cols_arr.length; i < len; i++) {
-        str = cols_arr[i]
-        str2 = str.replace('=on', '')
+        str = cols_arr[i];
+        str2 = str.replace('=on', '');
         //console.log(cols_arr[i]);
         //console.log(str2);
         if (str2.indexOf("table_name=") == -1) {
@@ -703,9 +720,9 @@ $( "#tab_cols" ).on( "submit", function( event ) {
     }
     console.log(colstring);
     //console.log(table_name);
-    var t_key = table_name+'_disp_cols_arr'
+    var t_key = table_name + '_disp_cols_arr';
     //console.log(t_key);
-    var ident = table_name+'_get_cols'
+    var ident = table_name + '_get_cols';
     ax_jq('/axfe','id=110_'+table_name+'_xyx_'+t_key+'_xyx_'+colstring, ident+'_conf');
 });
 
@@ -766,7 +783,9 @@ function create_index(table_name,field) {
         confirmButtonText: 'Yes, create it!',
         cancelButtonText: 'No, don\'t create it'
     }).then((result) => {
-        if (result.value) {
+        if(result.value;
+)
+    {
         ax_jq('/axfe','id=116_'+table_name+'_xyx_'+field,'create_'+field+'_conf');
         // result.dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
     } else if (result.dismiss === 'cancel') {
@@ -787,7 +806,9 @@ function recreate_index(table_name,field) {
         confirmButtonText: 'Yes, recreate it!',
         cancelButtonText: 'No, don\'t recreate it'
     }).then((result) => {
-        if (result.value) {
+        if(result.value;
+)
+    {
         ax_jq('/axfe','id=117_'+table_name+'_xyx_'+field,'recreate_'+field+'_conf');
     } else if (result.dismiss === 'cancel') {
         swal(
@@ -807,7 +828,9 @@ function drop_index(table_name,field) {
         confirmButtonText: 'Yes, delete it!',
         cancelButtonText: 'No, keep it'
     }).then((result) => {
-    if (result.value) {
+        if(result.value;
+)
+    {
 
         /*swal(
             'Deleted!',
@@ -836,7 +859,9 @@ function exec_exec_box(header,axfe,page_reload_indic,ident) {
         confirmButtonText: 'Yes, go on!',
         cancelButtonText: 'Cancel'
     }).then((result) => {
-        if (result.value) {
+        if(result.value;
+)
+    {
         ax_jq('/axfe','id='+axfe+'_'+ page_reload_indic,'exec_'+ident+'_'+axfe+'_conf');
     } else if (result.dismiss === 'cancel') {
         swal(
@@ -918,7 +943,7 @@ function do_transl_auto(target_lang_code, source_lang_code, ident, method, tab, 
 
     var e = document.getElementById(ident);
     var src_text = e.value;
-    src_text = customCleaner2(src_text) //replace all ' with  "__xhochkx__" - will be replaced back before save to db in myhelper_ax
+    src_text = customCleaner2(src_text); //replace all ' with  "__xhochkx__" - will be replaced back before save to db in myhelper_ax
     //console.log(src_text)
     //alert(ident)
     if (src_text == '') {
