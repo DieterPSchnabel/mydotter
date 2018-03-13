@@ -110,7 +110,7 @@
 
     <a class="btn btn-default btn-sm ml-1 " target="_blank" href="https://mailtrap.io/inboxes">MailTrap Inbox</a>
 
-    <?php $this_ident = zuf() ?>
+    <?php $this_ident = rand_str() ?>
     <a class="btn btn-default btn-sm ml-1" href="javascript:flush_cache('{{$this_ident}}')"><i
                 class="fa fa-th-list fa-orange" aria-hidden="true"></i> Cache::flush() <span style="margin-left:8px"
                                                                                              id="{{$this_ident}}_conf"></span></a>

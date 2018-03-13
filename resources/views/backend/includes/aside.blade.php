@@ -290,6 +290,11 @@
                     );
 
                     ?>
+
+                    <a type="button" class="btn btn-primary btn-sm" data-fancybox data-type="iframe"
+                       data-src="{{ url('dashboard/pop_dev_settings') }}?key=ca1"
+                       href="javascript:;">
+                        ConfigAssistant1 (ca1) in Popup </a>
                 </div>
             </div>
 

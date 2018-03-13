@@ -125,7 +125,7 @@
                                data-src="{{url('/dashboard/pop1?key='.$this_editabel_content_key_hints.'&amp;lang=all&amp;curr_lang')}}"
                                title="info-text"
                                href="javascript:;">
-                                <sup><i>edit</i></sup></a>
+                                <sup><i>{!! get_tr('edit') !!}</i></sup></a>
                         @endif
                         <?= __get_dv($this_editabel_content_key_hints, 'div_res_long') ?>
                     </div>
@@ -147,7 +147,7 @@
                                data-src="{{url('/dashboard/pop1?key='.$this_editabel_content_key_help.'&amp;lang=all&amp;curr_lang')}}"
                                title="info-text"
                                href="javascript:;">
-                                <sup><i>edit</i></sup></a>
+                                <sup><i>{!! get_tr('edit') !!}</i></sup></a>
                         @endif
                         <?= __get_dv($this_editabel_content_key_help, 'div_res_long') ?>
                     </div>
@@ -169,7 +169,7 @@
                                data-src="{{url('/dashboard/pop1?key='.$this_editabel_content_key_related.'&amp;lang=all&amp;curr_lang')}}"
                                title="info-text"
                                href="javascript:;">
-                                <sup><i>edit</i></sup></a>
+                                <sup><i>{!! get_tr('edit') !!}</i></sup></a>
                         @endif
                         <?= __get_dv($this_editabel_content_key_related, 'div_res_long') ?>
                     </div>

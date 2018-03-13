@@ -359,10 +359,7 @@ if (! function_exists('getRtlCss')) {
 
 
 
-function use_translations()
-{
-    if(env('APP_USE_GOOGLE_TRANSLATION') and get_app_is_multilang() ) return true;
-}
+
 
 //todo app_top
 function is_admin_area()
@@ -381,9 +378,10 @@ function to_bool($val)
         return false;
     }
 }
-function zuf($len=10)
+
+function rand_str($len = 10)
 {
-    return str_random($len);
+    return str_random($len); //laravel function
 }
 /**
  * alias function for session_lang_code()
@@ -395,12 +393,7 @@ function is_odd($number)
 }
 
 /*   ............. 4 Diverses .................. */
-function cache_it($c_key,$value,$minutes=CACHE_MINUTES){
-    //$c_key = $table.'.'.$field.'.'.$id_field.'.'.$id;
-    Cache::forget( $c_key );
-    Cache::put($c_key, $value, $minutes);
-    return true;
-}
+
 function is_dev()
 {
 
@@ -515,7 +508,7 @@ function __get_dv($what, $field = 'div_res', $lang=null) //div_res or div_res_lo
         $res = lookup_without_cache('diverses', $new_field, $what, $id_field ='div_what' );
         if( empty($res) ){
             if(is_dev()){
-                return '<span class="dimmed04" style="color:#ddd">#DEV: __get_dv(' . $what . '/' . $field . ')</span>';
+                return '<span class="dimmed04" style="color:#aaa">DEV only: __get_dv(' . $what . '/' . $field . ')</span>';
             }
             return '';
         }
@@ -546,12 +539,12 @@ function get_dv_c_key($what, $field = 'div_res')
     $res = Cache::remember($c_key, CACHE_MINUTES, function () use ($what,$field) {
         return lookup('diverses', $field, $what, $id_field = 'div_what' );
     });
-    //$res = lookup('diverses', $field, $what, $id_field ='div_what' );
     return $c_key;
 }
 function set_dv($what, $value, $field = 'div_res')
 {
     $what = trim($what);
+    App\Models\Diverses::where('div_what', '=', $what)->update([$field => $value], ['updated_at' => NOW()]);
     $c_key = 'diverses'.'.'.$field.'.'.'div_what'.'.'.$what;
     cache_it($c_key,$value); //forgets old value and caches new value
 }
@@ -629,11 +622,7 @@ function replicate_record_by_div_what($div_what, $new_div_what){
     return true;
 }
 
-function dashboard_settings_show_edit_links()
-{
-    //todo create role for user who are allowed to edit
-    if (is_dev() or get_dv('dashboard_settings_show_edit_links')) return true;
-}
+
 // my functions
 
 if (! function_exists('img_my_logo')) {

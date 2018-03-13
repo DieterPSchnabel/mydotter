@@ -88,7 +88,7 @@
 
                     <a class="dropdown-item" data-fancybox data-type="iframe"
                        data-src="{{config('app.url')}}/dashboard/pop_notes_admin"
-                       href="javascript:;">
+                       href="javascript:">
                     <i class="fa fa-sticky-note-o fa-blue" aria-hidden="true"></i> Admin-Notes (Popup)</a>
 
 
@@ -101,12 +101,12 @@
 
                 <a class="dropdown-item" data-fancybox data-type="iframe"
                    data-src="{{config('app.url')}}/admin/dashboard/admintests10"
-                   href="javascript:;">
+                   href="javascript:">
                     <i class="fa fa-cogs fa-green" aria-hidden="true"></i> Settings {!! $fa_popup !!}</a>
 
                 <a class="dropdown-item" data-fancybox data-type="iframe"
                    data-src="{{config('app.url')}}/dashboard/pop_dev_links"
-                   href="javascript:;">
+                   href="javascript:">
                 <i class="fa fa-link fa-red" aria-hidden="true"></i> Links {!! $fa_popup !!}</a>
 
 
@@ -116,13 +116,13 @@
 
                     <a class="dropdown-item" data-fancybox data-type="iframe"
                        data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin"
-                       href="javascript:;">
+                       href="javascript:">
                     <i class="fa fa-sticky-note-o fa-blue" aria-hidden="true"></i> Superadmin-Notes (Popup)</a>
 
 
                 <a class="dropdown-item" href="#"><i class="fa fa-th-list fa-orange" aria-hidden="true"></i> Todo List<span class="badge badge-primary">0</span></a>
 
-                <?php $this_ident = zuf() ?>
+                <?php $this_ident = rand_str() ?>
                 <a class="dropdown-item" href="javascript:flush_cache('{{$this_ident}}')"><i class="fa fa-th-list fa-orange" aria-hidden="true"></i> Cache::flush() <span style="margin-left:8px" id="{{$this_ident}}_conf"></span></a>
 
 

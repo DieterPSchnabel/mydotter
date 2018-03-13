@@ -34,9 +34,10 @@ function my_active_link(
     return $r;
 }
 
-function get_edit_link_short($t_key,$style='',$edit_txt_short='edit')
+//function get_edit_link_short($t_key,$style='',$edit_txt_short='edit')
+function get_edit_link_short($t_key, $style = '')
 {
-    //$edit_txt_short = 'edit';
+    $edit_txt_short = get_tr('edit');
     $edit_link_short = '
     <a style="'.$style.'" class="dimmed04 ml-1" title="diesen Text editieren"
     data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop_div_res_short?key=' . $t_key .  '') . '" href="javascript:;">

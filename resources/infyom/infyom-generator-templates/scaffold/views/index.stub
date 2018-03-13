@@ -384,11 +384,11 @@ $page_appends = $data['page_appends'];
                         onchange="set_dv(this.options[selectedIndex].value)">
                     {!! get_options_for_records_per_page($dataset->total(),$currently_selected) !!}
                 </select>
-                <?php $zuf = zuf(); ?>
-                <span id="{!! $zuf !!}_conf" style="width:25px;margin-left:8px"></span>
+                <?php $rand_str = rand_str(); ?>
+                <span id="{!! $rand_str !!}_conf" style="width:25px;margin-left:8px"></span>
                 <script>
                     function set_dv(anz) {
-                        ax_jq('/axfe','id=106_'+anz+'_xyx_'+'{{$cc_table_name}}_disp_per_page','{!! $zuf !!}'+'_conf');
+                        ax_jq('/axfe','id=106_'+anz+'_xyx_'+'{{$cc_table_name}}_disp_per_page','{!! $rand_str !!}'+'_conf');
                     }
                 </script>
             </div>

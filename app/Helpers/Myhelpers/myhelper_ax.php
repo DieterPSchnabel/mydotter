@@ -235,6 +235,9 @@ function do_exec2($id, $para){
             $teile = explode("_xyx_", $para);
             $table = $teile[0];
             $id = $teile[1];
+
+            //before dele all cached items run
+            //forget_all_cached_fields_for($table, $id_field, $id);
             delete_in_any_table($table, $id);
 
             if($table == 'manufacturers'){
@@ -256,6 +259,7 @@ function do_exec2($id, $para){
             $teile = explode("_xyx_", $para);
             $val = $teile[0];
             $key = $teile[1]; //div_what
+            //dd($key);
             set_dv($key,$val);
             //$return = '<script>reload_ax();</script>';
             return $val;
@@ -447,8 +451,9 @@ function do_exec2($id, $para){
             $id_field = $teile[5];
             $id = $teile[6];
             $method = $teile[7];
-
             $src_text = str_replace('__xhochkx__', '\'', $src_text);
+
+
             if ($table == 'diverses') {
                 if ($field_type == 'short') {
                     $field = 'div_res_' . $target_lang_code;

@@ -17,29 +17,6 @@ class DashboardController extends Controller
         return view('backend.dashboard');
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-/*    public function admintests1()
-    {
-        //echo 'admintest1';
-        $links = \App\Models\Admintests\Larapack::all();
-        return view('backend.admintests.admintests1', ['links' => $links]);
-    }*/
-
- /*   public function admintests1_submit()
-    {
-        //echo 'admintest1';
-        //dd('nixxxxx');
-        $links = \App\Models\Admintests\Larapack::all();
-        return view('backend.admintests.admintests1_submit', ['links' => $links]);
-    }*/
-
-
-
-    /**
-     * @return \Illuminate\View\View
-     */
     public function admintests1()
     {
         //echo 'admintest2';
@@ -315,7 +292,10 @@ class DashboardController extends Controller
     }
 
 
-
+    public function ca1()
+    {
+        return view('backend.config_assistants.ca1');
+    }
 
 
 }

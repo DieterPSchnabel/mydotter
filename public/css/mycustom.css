@@ -15,28 +15,7 @@
 /*ul.navtabs > li.dropdown:hover{
     background:#fff;
 }*/
-#toTopImg {
-    opacity:0.5;
-    transition:all .5s ease-in-out;
-}
-#toTopImg:hover {
-    opacity:0.8;
-    transition:all .5s ease-in-out;
-    background: #20A8D8 none repeat scroll 0 0;
-}
-#toTopImg{
-    position: fixed;
-    bottom: 30px;
-    right: 8px;
-    cursor: pointer;
-    display: none;
-    z-index: 999999;
-    background: #5a5a5a none repeat scroll 0 0;
-    display: block;
-    padding: 12px 15px;
-    opacity:0.3;
-    color:#fff;
-}
+
 
 body.skin-blue{
     /*background: #ECF0F5;*/
@@ -527,4 +506,24 @@ div.disp_div_res_long_in_table {
     position:relative;
 }*/
 
+/*https://css-tricks.com/examples/hrs/*/
+hr.style-four {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
 
+hr.style-five {
+    border: 0;
+    height: 0; /* Firefox... */
+    box-shadow: 0 0 10px 1px black;
+}
+
+hr.style-five:after { /* Not really supposed to work, but does */
+    content: "\00a0"; /* Prevent margin collapse */
+}
+
+a:active, a:focus {
+    outline: none;
+    border: none;
+}

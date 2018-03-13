@@ -55,12 +55,12 @@
                     <p>
                     <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
                        data-src="{{url('admin/languages')}}"
-                       href="javascript:;">
+                       href="javascript:">
                         Languages in Popup (fancybox)</a>
 
                     <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
                        data-src="{{url('admin/languages')}}"
-                       href="javascript:;">
+                       href="javascript:">
                         Languages in Popup (fancybox) nur die reine Tabelle??</a>
                     </p>
                 </div>
@@ -76,13 +76,25 @@ tab=table&fld=field&idf=id_field&id=id&is_l=1&lang=de/all&curr_lang=fr</pre>
                     <p>
                         <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
                            data-src="{{ url('dashboard/pop1') }}?key=order_phone_text"
-                           href="javascript:;">
+                           href="javascript:">
                             Editor in Popup (fancybox)</a>
 
                         <a type="button" class="btn btn-secondary" target="_blank"
                            href="{{ url('dashboard/pop1') }}?key=order_phone_text">
                             Editor in neuem Tab</a>
                     </p>
+
+                    <p>Konfig Assis:</p>
+
+                    <p>
+                        <a type="button" class="btn btn-secondary" data-fancybox data-type="iframe"
+                           data-src="{{ url('dashboard/pop_dev_settings') }}?key=ca1"
+                           href="javascript:">
+                            ca1 in Popup </a>
+
+                    </p>
+
+
                 </div>
             </div>{{--<div class="card">--}}
 

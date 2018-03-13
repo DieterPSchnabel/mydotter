@@ -483,7 +483,7 @@
          <a style="" class="" title="diesen Hinweis editieren in allen Sprachen"
             data-fancybox data-type="iframe"
             data-src="{{config('app.url')}}/dashboard/pop2?full_key={{$cur_rec->full_key}}&lang=all&curr_lang"
-            href="javascript:;">
+            href="javascript:">
 
              <button type="button" class="btn btn-info btn-sm ml-1" data-toggle="tooltip" data-placement="top" title=""
                      data-original-title="edit">
@@ -1371,8 +1371,15 @@
                 @endif
 
                 @if($has_action_delete)
-                    <?php $ident = zuf() ?>
-                    <a href="javascript:delete_in_table('{{$this_table_name}}','{{$cur_rec->id}}','{{$ident}}')">
+                    <?php
+                    $ident = rand_str();
+                    $swal_title = '#' . $cur_rec->id . ' - ' . get_tr('Wirklich löschen?');
+                    $swal_text = '';
+                    $swal_confirmButtonText = get_tr('Ja, löschen!');
+                    $swal_cancelButtonText = get_tr('Abbruch');
+                    ?>
+                    {{--delete_in_table(table,id,ident,title,text,confirmButtonText,cancelButtonText)--}}
+                    <a href="javascript:delete_in_table('{{$this_table_name}}','{{$cur_rec->id}}','{{$ident}}','{{$swal_title}}','{{$swal_text}}','{{$swal_confirmButtonText}}','{{$swal_cancelButtonText}}')">
                         <button type="button" class="btn btn-danger btn-sm ml-1">
                             <i class="fa fa-trash fa-sm-text-shadow"></i>
                         </button>

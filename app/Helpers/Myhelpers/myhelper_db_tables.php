@@ -92,6 +92,11 @@ function get_columns_from_table($table_name)
     }
     return $r;
 }
+
+function get_columns_from_table_as_array($table_name)
+{
+    return get_columns_from_table_sortable($table_name, $as_array = true);
+}
 function get_columns_from_table_text_only($table_name, $as_array=false)
 {
     $r = '';

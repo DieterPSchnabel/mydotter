@@ -26,7 +26,6 @@ function get_languages($lang='', $anz=false)
     }
 }
 
-
 function get_languages_with_en($lang = '', $anz = false)
 {
 // create switch: translate_to_english_first
@@ -166,27 +165,41 @@ function flag_icon($code,$size='32')
     $img = '<img style="margin:0 5px;width:'.$size.'px;height:'.$size.'px" src="'.$url.'"  />';
 return $img;
 }
+
 function flag_icon_by_col_name($col_name,$size='24')
 {
-    if(stristr($col_name,'div_res_long_')) $col_name = str_replace('div_res_long_','',$col_name);
-    if(stristr($col_name,'div_res_')) $col_name = str_replace('div_res_','',$col_name);
+    $col = $col_name;
+    if (stristr($col_name, 'div_res_long_')) $col_name = str_replace('div_res_long_', '', $col_name);
+    if (stristr($col_name, 'div_res_')) $col_name = str_replace('div_res_', '', $col_name);
 
     $code = $col_name;
 
     if ($size <> '') {
         $url = url('img/icons/png_flags/32/' . $code . '.png');
-    }else{
+    } else {
         $url = url('img/icons/png_flags/32/' . $code . '.png');
     }
-    $img = '<img style="margin:0 5px;width:'.$size.'px;height:'.$size.'px" src="'.$url.'"  />';
-    return $img;
+
+    if (dashboard_settings_show_edit_links()) {
+        $img = '<img class="zoom100" style="margin:0 5px;width:' . $size . 'px;height:' . $size . 'px;border:none;" src="' . $url . '"  />';
+        $r = '<a title="' . get_tr("hier klicken für weitere Aktionen im Popup") . '" style="border:none;" data-fancybox data-type="iframe" ';
+        $r .= 'data-src="';
+        $r .= url('dashboard/pop_div_actions') . '?key=' . $col;
+        $r .= '" href="javascript:;">';
+        $r .= $img;
+        $r .= '</a>';
+        return $r;
+    } else {
+        $img = '<img style="margin:0 5px;width:' . $size . 'px;height:' . $size . 'px;border:none;" src="' . $url . '"  />';
+        return $img;
+    }
 }
 
 function lang_name_from_lang_code($code)
 {
     $languages = get_languages_all();
     foreach($languages as $lang) {
-        if ($lang->code==$code) return $lang->name;
+        if ($lang->code == $code) return $lang->name; //todo get_tr
     }
 }
 

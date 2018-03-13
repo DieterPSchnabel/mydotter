@@ -235,7 +235,7 @@
             {{--@if ($link->is_installed)
                 <td style="text-align:center;"><span style="padding:1.2em" class="badge badge-pill badge-success fa-sm-text-shadow">ja</span></td>
             @else
-                <td style="text-align:center;color:#bbb">nein --}}{{--{!! zuf() !!}--}}{{--</td>
+                <td style="text-align:center;color:#bbb">nein --}}{{--{!! rand_str() !!}--}}{{--</td>
             @endif--}}
 
             <td style="text-align:center;">

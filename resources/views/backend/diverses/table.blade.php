@@ -11,7 +11,7 @@
     <tr>
     <?php $this_col = 'id'; $this_model = $this_table_name; ?>
     @if(in_array($this_col,$display_cols_arr))
-        <th {!! tab_head_td_mark($this_col) !!}>
+            <th {!! tab_head_td_mark($this_col) !!} style="min-width:160px">
         <?php
         $model_path = ucfirst($this_model);
         $order = 'order='.$this_col;
@@ -988,55 +988,67 @@
             <br>
 
                  @if(in_array('div_res_'.get_default_lang_code(),$display_cols_arr))
+                     @if(dashboard_settings_show_edit_links())
                      <a class="" title="{!! get_tr('kurzer Text - diesen Hinweis editieren in allen Sprachen') !!}"
                         data-fancybox
                         data-type="iframe"
                         data-src="{{config('app.url')}}/dashboard/pop_div_res_short?key={{$cur_rec->div_what}}&lang=all&curr_lang"
-                        href="javascript:;">
+                        href="javascript:">
                          <button type="button" class="btn btn-warning btn-sm mt-6" data-toggle="tooltip"
-                                 title="{!! get_tr('kurzer Text - diesen Hinweis editieren in allen Sprachen') !!}"
-                         data-placement="top" title="" data-original-title="edit">
+                                 title="{!! get_tr('kurzer Text - diesen Text editieren in allen Sprachen') !!}"
+                                 data-placement="top" title="" data-original-title="edit">
                              <i class="fa fa-copy fa-sm-text-shadow"></i> {!! get_tr('kurz') !!}
-                 </button>
-             </a>
+                         </button>
+                     </a>
+                     @endif
                  @endif
 
-                 <a style="" class="" title="{!! get_tr('langer Text - diesen Hinweis editieren in allen Sprachen') !!}"
-                    data-fancybox data-type="iframe"
-                    data-src="{{config('app.url')}}/dashboard/pop1?key={{$cur_rec->div_what}}&lang=all&curr_lang"
-                    href="javascript:;">
-                     <button type="button" class="btn btn-info btn-sm mt-6" data-toggle="tooltip"
-                             title="{!! get_tr('langer Text - diesen Hinweis editieren in allen Sprachen') !!}"
-
-                         data-placement="top" title="" data-original-title="edit">
-                         <i class="fa fa-copy fa-sm-text-shadow"></i> {!! get_tr('lang') !!}
-                     </button>
-                 </a>
+                 @if(dashboard_settings_show_edit_links())
+                     <a style="" class=""
+                        title="{!! get_tr('langer Text - diesen Text editieren in allen Sprachen') !!}"
+                        data-fancybox data-type="iframe"
+                        data-src="{{config('app.url')}}
+                                /dashboard/pop1?key={{$cur_rec->div_what}}&lang=all&curr_lang"
+                        href="javascript:">
+                         <button type="button" class="btn btn-info btn-sm mt-6" data-toggle="tooltip"
+                                 title="{!! get_tr('langer Text - diesen Text editieren in allen Sprachen') !!}"
+                                 data-placement="top" title="" data-original-title="edit">
+                             <i class="fa fa-copy fa-sm-text-shadow"></i> {!! get_tr('lang') !!}
+                         </button>
+                     </a>
+                 @endif
 
                  @if($has_action_edit or is_dev())
                      <a style="" class="" title="edit all" data-fancybox data-type="iframe"
                         data-src="{{ route('admin.diverses.edit',['link'=>$cur_rec->id]) }}"
-                        href="javascript:;">
+                        href="javascript:">
                          <button type="button" class="btn btn-success btn-sm mt-6" data-toggle="tooltip"
                                  data-placement="top" title="" data-original-title="edit">
-                             <i class="fa fa-pencil fa-sm-text-shadow"></i> edit
+                             <i class="fa fa-pencil fa-sm-text-shadow"></i> {!! get_tr('edit') !!}
                          </button>
                      </a>
                  @endif
 
                  <a style="" class="" title="show all" data-fancybox data-type="iframe"
                     data-src="{{ route('admin.diverses.show',[$cur_rec->id]) }}"
-                    href="javascript:;">
+                    href="javascript:">
                      <button type="button" class="btn btn-primary btn-sm mt-6" data-toggle="tooltip"
                              data-placement="top" title="" data-original-title="view">
-                         <i class="fa fa-eye fa-sm-text-shadow"></i> show
+                         <i class="fa fa-eye fa-sm-text-shadow"></i> {!! get_tr('zeigen') !!}
                  </button>
              </a>
 
-                 <?php $ident = zuf() ?>
-                 <a href="javascript:delete_in_table('{{$this_table_name}}','{{$cur_rec->id}}','{{$ident}}')">
+                 <?php
+                 $ident = rand_str();
+                 $swal_title = '#' . $cur_rec->id . ' - ' . get_tr('Wirklich löschen?');
+                 $swal_text = '';
+                 $swal_confirmButtonText = get_tr('Ja, löschen!');
+                 $swal_cancelButtonText = get_tr('Abbruch');
+                 ?>
+                 {{--delete_in_table(table,id,ident,title,text,confirmButtonText,cancelButtonText)--}}
+                 <a href="javascript:delete_in_table('{{$this_table_name}}','{{$cur_rec->id}}','{{$ident}}','{{$swal_title}}','{{$swal_text}}','{{$swal_confirmButtonText}}','{{$swal_cancelButtonText}}')">
                      <button type="button" class="btn btn-danger btn-sm mt-6">
-                         <i class="fa fa-trash fa-sm-text-shadow"></i> delete
+                         <i class="fa fa-trash fa-sm-text-shadow"></i> {!! get_tr('löschen') !!}
                      </button>
                  </a><span id="{{$ident}}_conf"></span></span>
 
@@ -1437,7 +1449,7 @@
 
                     <a style="" class="" title="show all" data-fancybox data-type="iframe"
                        data-src="{{ route('admin.diverses.show',[$cur_rec->id]) }}"
-                       href="javascript:;">
+                       href="javascript:">
 
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="" data-original-title="view">
                             <i class="fa fa-eye fa-sm-text-shadow"></i>
@@ -1450,7 +1462,7 @@
 
                     <a style="" class="" title="edit all" data-fancybox data-type="iframe"
                        data-src="{{ route('admin.diverses.edit',['link'=>$cur_rec->id]) }}"
-                       href="javascript:;">
+                       href="javascript:">
                     <button type="button" class="btn btn-success btn-sm ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="edit">
                         <i class="fa fa-pencil fa-sm-text-shadow"></i>
                     </button>
@@ -1458,7 +1470,7 @@
                 @endif
 
                 @if($has_action_delete)
-                    <?php $ident = zuf() ?>
+                    <?php $ident = rand_str() ?>
                     <a href="javascript:delete_in_table('{{$this_table_name}}','{{$cur_rec->id}}','{{$ident}}')">
                         <button type="button" class="btn btn-danger btn-sm ml-1">
                             <i class="fa fa-trash fa-sm-text-shadow"></i>

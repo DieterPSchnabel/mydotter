@@ -50,7 +50,7 @@
                     onchange="set_dv(this.options[selectedIndex].value)">
                 {!! get_options_for_boxes_per_page(30,$currently_selected) !!}
             </select>
-            <?php $zuf = zuf(); ?>
+            <?php $zuf = rand_str(); ?>
             <span id="{!! $zuf !!}_conf" style="width:25px;margin-left:8px"></span>
             <script>
                 function set_dv(anz) {
@@ -135,7 +135,7 @@
                             <a style="margin: -17px 0 0 0" class="float-right dimmed04" data-fancybox
                                data-type="iframe"
                                data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$t_key_content}}&title={{$t_key_header}}"
-                               href="javascript:;">
+                               href="javascript:">
                                 <i><b> edit </b></i></a>
                         </div>
                         <p>{!! get_dv($t_key_content, 'div_res_long'); !!}</p>

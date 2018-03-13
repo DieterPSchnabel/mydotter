@@ -42,7 +42,7 @@ $class = 'inline_txt_any_table';
 <div style="margin:0 6px 19px 6px;font-weight:bold;color:#aaa">
     <span>
         <a class="btn btn-info btn-sm mr-5" role="button" target="_blank" href="{{url()->full()}}">
-                ...in neuem Fenster öffnen </a>
+                ...in neuem Fenster öffnen (DEV)</a>
     </span>
     </span>
 

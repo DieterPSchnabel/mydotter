@@ -380,7 +380,7 @@
                     $arr_to = 700,
                     $style='font-size:1.2em;',
                     $arr_step ='1',
-                    $with_tooltip = false,
+                        $with_tooltip = true,
                     $tt_class = 'tip',
                     $tt_width = '300px'
                     );

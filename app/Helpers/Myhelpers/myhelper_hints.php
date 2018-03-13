@@ -51,7 +51,7 @@ function get_hint_by_t_key(
     if (dashboard_settings_show_edit_links()) {
         $ret .= '<a style="" class="tt-edit-link btn btn-link btn-xs dimmed04 " title="diesen Hinweis editieren in allen Sprachen" 
             data-fancybox data-type="iframe" data-src="' . url('/dashboard/pop1?key=' . $t_key . $add_l . '') . '" href="javascript:;">            
-            <b>edit</b>';
+            <b>' . get_tr('edit') . '</b>';
         //check for missing translations
         if (find_missing_translation($t_key, true)) {
             $ret .= '<span style="margin-left:6px;font-size:0.7em;color:#c66">es fehlen Übersetzungen!</span>';

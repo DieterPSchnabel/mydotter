@@ -330,7 +330,7 @@ $page_appends = $data['page_appends'];
                         onchange="set_dv(this.options[selectedIndex].value)">
                     {!! get_options_for_records_per_page($dataset->total(),$currently_selected) !!}
                 </select>
-                <?php $zuf = zuf(); ?>
+                <?php $zuf = rand_str(); ?>
                 <span id="{!! $zuf !!}_conf" style="width:25px;margin-left:8px"></span>
                 <script>
                     function set_dv(anz) {

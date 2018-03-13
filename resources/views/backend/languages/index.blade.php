@@ -177,7 +177,7 @@ $page_appends = $data['page_appends'];
                 <a style="margin-right:2px;margin-left:9px" class="btn btn-success float-right" data-fancybox
                    data-type="iframe"
                    data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key={{$this_table_name}}_notes&title={{$this_table_name}}_dev_notes"
-                   href="javascript:;">
+                   href="javascript:">
                     <i class="fa fa-pencil fa-sm-text-shadow"></i> Dev Notes </a>
             @endif
     </div>
@@ -372,7 +372,7 @@ $page_appends = $data['page_appends'];
                         onchange="set_dv(this.options[selectedIndex].value)">
                     {!! get_options_for_records_per_page($dataset->total(),$currently_selected) !!}
                 </select>
-                <?php $zuf = zuf(); ?>
+                <?php $zuf = rand_str(); ?>
                 <span id="{!! $zuf !!}_conf" style="width:25px;margin-left:8px"></span>
                 <script>
                     function set_dv(anz) {

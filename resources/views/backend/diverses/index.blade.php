@@ -127,11 +127,27 @@ $page_appends = $data['page_appends'];
                 {{--<span class="float-right" style="color:#abc;font-size:1.2em;font-weight:bold">test & debug</span>--}}
                 <?php
 
+                $table = 'diverses';
+                $t_id = 'das.schiff.ist.grun'; //diverses.div_res_de.div_what.das.schiff.ist.grun
+                $arr = get_columns_from_table_as_array($table);
+                $c_key = '';
+                foreach ($arr as $field) {
+                    $c_key = $table . '.' . $field . '.' . $id_field . '.' . $t_id;
+                    //Cache::forget( $c_key );
+                    //ec($c_key);
+                    //ec( cache($c_key) );
 
+                    //if( cache($c_key) ) dd( cache($c_key) );
+                    if (cache($c_key)) {
+                        //ec( cache($c_key) .' - '.$field.' - '.$c_key);
+                        //Cache::forget( $c_key );
+                    }
+                    //if( cache($c_key) ) Cache::forget( $c_key );
+                }
                 //$languages = get_languages_with_en();
                 //dd($languages);
 
-                $content = 'Das Schiff ist grün';
+                $content = 'Das Schiff ist grün'; //das.schiff.ist.grun
                 //ec  ( get_tr($content, $from_lang_code = null, $re_translate=false) );
 
                 //                $id = 'diverses_table_has_table_search';
@@ -200,7 +216,7 @@ $page_appends = $data['page_appends'];
                 @if($has_action_ceate_new)
                     <a style="" class="" title="edit all" data-fancybox data-type="iframe"
                        data-src="{{ route('admin.'.$cc_table_name.'.create') }}"
-                       href="javascript:;">
+                       href="javascript:">
                         <button type="button" class="btn btn-primary ml-1" data-toggle="tooltip" data-placement="top"
                                 title="" data-original-title="edit">
                             <i class="fa fa-pencil fa-sm-text-shadow"></i> {!! get_tr('neuer Datensatz') !!}
@@ -233,7 +249,7 @@ $page_appends = $data['page_appends'];
                     <a style="margin-right:2px;margin-left:9px" class="btn btn-success float-right" data-fancybox
                        data-type="iframe"
                        data-src="{{config('app.url')}}/dashboard/pop_notes_superadmin?key=diverses_dev_notes&title=diverses_dev_notes"
-                       href="javascript:;">
+                       href="javascript:">
                         <i class="fa fa-pencil fa-sm-text-shadow"></i> Dev Notes </a>
                 @endif
             </div>
@@ -506,7 +522,7 @@ $page_appends = $data['page_appends'];
                                 onchange="set_dv(this.options[selectedIndex].value)">
                             {!! get_options_for_records_per_page($dataset->total(),$currently_selected) !!}
                         </select>
-                        <?php $zuf = zuf(); ?>
+                        <?php $zuf = rand_str(); ?>
                         <span id="{!! $zuf !!}_conf" style="width:25px;margin-left:8px"></span>
                         <script>
                             function set_dv(anz) {
@@ -535,7 +551,7 @@ $page_appends = $data['page_appends'];
                              aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" data-fancybox data-type="iframe"
                                data-src="{{url('admin/languages')}}"
-                               href="javascript:;">
+                               href="javascript:">
                                 {!! get_tr('als Popup') !!} {!! get_popup_icon($style='margin-left:4px;font-size:0.8em;font-weight:normal') !!}</a>
 
                             {!! link_to_route('admin.languages.index',get_tr('gehe zu').' Languages',[],[ 'target="_blank"', 'class="dropdown-item"']) !!}
@@ -570,7 +586,7 @@ $page_appends = $data['page_appends'];
                 @if($has_action_ceate_new)
                         <a style="" class="" title="edit all" data-fancybox data-type="iframe"
                            data-src="{{ route('admin.'.$cc_table_name.'.create') }}"
-                           href="javascript:;">
+                           href="javascript:">
                     <button type="button" class="btn btn-primary ml-1" data-toggle="tooltip" data-placement="top"
                             title="" data-original-title="edit">
                     <i class="fa fa-pencil fa-sm-text-shadow"></i> {!! get_tr('neuer Datensatz') !!}

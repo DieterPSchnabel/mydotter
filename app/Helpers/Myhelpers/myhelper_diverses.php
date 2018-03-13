@@ -53,6 +53,7 @@ function create_lang_cols_in_div_2()
     }
     return $r;
 }
+
 function get_text_from_div2_temp($what)
 {
     $table = 'diverses2';
@@ -65,8 +66,6 @@ function get_text_from_div2_temp($what)
 
     return $txt_short;
 }
-
-
 
 function get_text_from_div2($what){
     $table = 'diverses2';

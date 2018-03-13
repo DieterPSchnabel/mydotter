@@ -10,9 +10,8 @@ function set_field_in_tab($table, $id, $field, $value, $id_field = 'id')
 
 function delete_in_any_table($table, $id)
 {
-    // does it have touch() -  does it change updated_at - needed for caching models / records ???
-    $deleted = DB::delete('delete from ' . $table . ' where id= ?', [$id]);
-    //Cache::forget( 'all_languages' );
+    forget_all_cached_fields_for($table, $id);
+    DB::delete('delete from ' . $table . ' where id= ?', [$id]);
 }
 
 function destroy_in_any_table($app_table, $id)
@@ -42,7 +41,7 @@ function get_checkbox_div(
     $id_field = 'div_what';
     $id = $what;
 
-    $ident = zuf(); //  returns str_random($len) default length is 10 - makes this widget unique on current page
+    $ident = rand_str(); //  returns str_random($len) default length is 10 - makes this widget unique on current page
 
     if (is_dev()) create_dv($what, $value = '1', true, $field = 'div_res');
     //if (allow_import_txt_from_diverses2)  get_text_from_div2($what); //imports short and long text from another table in the db so I must not type it again
@@ -247,7 +246,7 @@ function get_checkbox_any_table(
     if ($table == 'languages' and $field == 'status') Cache::forget('languages.status.1.all');
     if ($table == 'languages' and $field == 'status_frontend') Cache::forget('languages.status.1.all');
 
-    $ident = zuf();
+    $ident = rand_str();
     if ($with_page_reload) $ax_response = false;
     $t_key = $id;
     if (!$from_inside_loop) {
@@ -347,7 +346,7 @@ function get_checkbox_any_table(
         $add_l .= '&curr_lang'; //defaults to session_lang()
 
         $edit_link_long = '<a class="fancybox-effects-d fancybox.iframe btn btn-link btn-xs dimmed04" type="button" title="edit" 
-            href="' . url('admin/dashboard/pop1?key=' . $what . $add_l . '') . '">edit</a>';
+            href="' . url('admin/dashboard/pop1?key=' . $what . $add_l . '') . '">' . get_tr('edit') . '</a>';
         $ret .= '
            <div id="wrp_' . $ident . '"  class="round6" 
            style="margin-top:7px">' . $hint_txt;
@@ -385,7 +384,7 @@ function get_actionbox_div(
 )
 {
 
-    $ident = zuf();
+    $ident = rand_str();
     create_dv($what, $value = '1', true, $field = 'div_res'); //only if not exists
     $bg_color = '#eef7ea';
     if ($with_panel) {
@@ -674,7 +673,7 @@ function edit_text_in_any_table(
         $with_page_reload = '0';
     }
     $r = '';
-    //$ident = zuf();
+    //$ident = rand_str();
     $ident = 'langfield_' . $lang;
     $store_key = 'lang_selector_' . $lang; //we need a predictable key for the target field
     //create_dv($store_key,'',true,'div_res');
@@ -841,7 +840,7 @@ function get_colorpicker_any_table(
 )
 
 {
-    $ident = hash('sha1', $table . zuf());
+    $ident = hash('sha1', $table . rand_str());
     if ($cb_type == '') $cb_type = 'success';
 
     $what = $id;
@@ -888,9 +887,9 @@ function get_colorpicker_any_table(
         $add_l .= '&curr_lang'; //defaults to session_lang()
 
         $edit_link = '';
-        if (is_dev()) $edit_link = '<div style="font-size:0.8em" class="pull-right">
+        if (dashboard_settings_show_edit_links()) $edit_link = '<div style="font-size:0.8em" class="pull-right">
             <a class="fancybox-effects-d fancybox.iframe btn btn-link btn-xs dimmed04" type="button" title="edit" 
-            href="' . url('admin/dashboard/pop1?key=' . $what . $add_l . '') . '">editxx4</a>
+            href="' . url('admin/dashboard/pop1?key=' . $what . $add_l . '') . '">' . get_tr('edit') . '</a>
         </div>';
 
         $ret .= '
@@ -973,7 +972,7 @@ function date_time_picker_new_any_table(
 {
     $dateonly = false;
     if ($picker_type == 'date') $dateonly = true;
-    $ident = zuf();
+    $ident = rand_str();
 
     $curr_value = lookup($table, $field, $id, $id_field);
     //dd($field);
@@ -1099,7 +1098,7 @@ function get_select_by_t_key(
     $field = 'div_res';
     $id_field = 'div_what';
 
-    $ident = zuf();
+    $ident = rand_str();
     $bg_color = '#eef7ea';
     $what = $t_key;
 
@@ -1270,7 +1269,7 @@ function get_colorpicker_by_t_key(
     $field = 'div_res';
     $id_field = 'div_what';
 
-    $ident = zuf();
+    $ident = rand_str();
     $bg_color = '#eef7ea';
     $what = $t_key;
 

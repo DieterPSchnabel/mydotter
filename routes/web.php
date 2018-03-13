@@ -120,6 +120,11 @@ Route::group(['middleware' => 'admin'], function () {
         return View('backend.popups.pop_div_res_short');
     });
 
+    Route::get('dashboard/pop_div_actions', function () {
+        return View('backend.popups.pop_div_actions');
+    });
+
+
     Route::get('admin/languages/export/{type}', ['as'=> 'admin.languages.export.{type}','uses' => 'LanguagesController@export']);
     Route::get('admin/languages', ['as'=> 'admin.languages.index', 'uses' => 'LanguagesController@index']);
     Route::post('admin/languages', ['as'=> 'admin.languages.store', 'uses' => 'LanguagesController@store']);

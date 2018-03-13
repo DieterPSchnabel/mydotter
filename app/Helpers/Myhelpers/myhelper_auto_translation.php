@@ -29,7 +29,7 @@ function translate_this($translate_string, $lang_code_target, $lang_code_source 
 {
 
     $GOOGLE_API_KEY = config('google.translation.api.key');
-    if (trim(strip_tags($translate_string)) == '') return $translate_string; //if $translate_string = ''
+    if (trim(strip_tags($translate_string)) == '') return $translate_string; //if $translate_string is empty
 
     require_once(app_path() . '/Classes/gtranslate-api-php-0.7.9.1/googleapiversion2/GTranslateV2.php');
 
@@ -49,7 +49,6 @@ function translate_to_all_other_langs($key, $translate_string, $lang_code_source
 {
     $src_text = $translate_string;
     $source_lang_code = $lang_code_source;
-//    $target_lang_code = $teile[2];
     $table = 'diverses';
     $field_type = 'short';
     $id_field = 'div_what';
@@ -71,7 +70,7 @@ function translate_to_all_other_langs($key, $translate_string, $lang_code_source
         }
         if ($method == 'all' or $method == 'all_empty' or $method == 'all_but_default') {
 
-            $languages = get_languages_with_en(); //we want to translate into english first, then from english to others
+            $languages = get_languages_with_en(); //we have forced to translate into english first, then from english to others with switch $translate_to_english_first
             if ($source_lang_code <> 'en') {
                 if ($table == 'diverses') {
                     $this_search_field = $field_in_diverses . 'en';
@@ -100,8 +99,8 @@ function translate_to_all_other_langs($key, $translate_string, $lang_code_source
                 }
                 $source_lang_code_temp = 'en';
             }
-            //return true;
-        } // translate_to_english_first
+            if (get_dv('translate_to_english_only_if_set_to_first_test')) return true;
+        } // end of: translate_to_english_first
 
         foreach ($languages as $lang) {
             if ($lang->code <> $source_lang_code and $lang->code <> $source_lang_code_temp) {
@@ -158,7 +157,7 @@ function get_tr($content, $from_lang_code = null, $overwrite = false, $re_transl
     $key = substr($content, 0, 120);
     $key = trim($key);
     $key = str_slug($key, '.');
-    //$uniqer = zuf(6); //makes sure this key is unique
+    //$uniqer = rand_str(6); //makes sure this key is unique
     //$key .= '|__|'.$uniqer;
 
     //create key if not exists - with content into session_lang_code
@@ -178,12 +177,20 @@ function get_tr($content, $from_lang_code = null, $overwrite = false, $re_transl
     }
 
     $translation = get_dv($key, 'div_res_' . $from_lang_code);
-    return ucfirst($translation);
 
+    if (get_dv('first_letter_in_translation_always_display_uppercase')) {
+        return ucfirst($translation);
+    }
+    return $translation;
 }
 
-function display_edit_links_for_translations_in_backend_to_everyone()
+function dashboard_settings_show_edit_links()
 {
-    //switch display_edit_links_for_translations_in_backend_to_everyone
+    //todo create role for user who are allowed to edit
+    if (is_dev() or get_dv('dashboard_settings_show_edit_links')) return true;
+}
 
+function use_translations()
+{
+    if (env('APP_USE_GOOGLE_TRANSLATION') and get_app_is_multilang()) return true;
 }

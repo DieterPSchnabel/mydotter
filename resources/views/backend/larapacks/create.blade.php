@@ -305,7 +305,7 @@ $tag_arr_pt = get_pearltree_tag_arr();
                         @if ($link->is_installed)
                             <td style="text-align:center;"><span style="padding:1.2em" class="badge badge-pill badge-success fa-sm-text-shadow">ja</span></td>
                         @else
-                            <td style="text-align:center;color:#bbb">nein {{--{!! zuf() !!}--}}</td>
+                            <td style="text-align:center;color:#bbb">nein {{--{!! rand_str() !!}--}}</td>
                         @endif
 
                         <td style="max-width:200px  !important"><a href="{{ $link->pt_title }}" target="_blank">{!!  mark($link->pt_title) !!}</a></td>
